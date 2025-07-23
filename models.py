@@ -15,11 +15,11 @@ class NERResponse(BaseModel):
 
 # Entity Store Models
 class EntityStatus(str, Enum):
-    delete = "delete"
+    ignore = "ignore"
     backlog = "backlog"
     queue = "queue"
-    processing = "processing"
-    processed = "processed"
+    researching = "researching"
+    researched = "researched"
 
 class CreateEntityRequest(BaseModel):
     entity_name: str = Field(..., description="The name of the entity (e.g., 'Palm City, FL')")
@@ -70,19 +70,26 @@ class Source(BaseModel):
     reliability: SourceReliability = Field(..., description="Editorial reliability and standards")
     depth: SourceDepth = Field(..., description="Coverage depth of the source")
 
+class ResearchedEntityResponse(BaseModel):
+    id: str = Field(..., description="Generated ID from entity name")
+    name: str = Field(..., description="Original entity name")
+    context: str = Field(..., description="Entity context or description")
+    status: EntityStatus = Field(..., description="Current processing status")
+    notability_status: Optional[str] = Field(None, description="Notability evaluation result (exceeds, meets, fails, null)")
+    notability_rationale: Optional[str] = Field(None, description="Rationale for notability evaluation")
+    sources: List[Source] = Field(default=[], description="Array of evaluated sources")
+
 class NotabilityData(BaseModel):
     id: str = Field(..., description="Entity ID (matches entities.txt)")
-    is_notable: Optional[bool] = Field(None, description="Whether the entity is notable (true/false/null)")
+    notability_status: Optional[str] = Field(None, description="Notability evaluation result (exceeds, meets, fails, null)")
     openai_research_request_id: Optional[str] = Field(None, description="OpenAI research request ID")
     sources: List[Source] = Field(default=[], description="Array of evaluated sources")
     openai_notability_request_id: Optional[str] = Field(None, description="OpenAI notability request ID")
+    notability_rationale: Optional[str] = Field(None, description="Rationale for notability evaluation")
 
 class CreateNotabilityRequest(BaseModel):
-    entity_id: str = Field(..., description="Entity ID to create notability data for")
-    is_notable: Optional[bool] = Field(None, description="Whether the entity is notable")
-    openai_research_request_id: Optional[str] = Field(None, description="OpenAI research request ID")
-    sources: List[Source] = Field(default=[], description="Array of evaluated sources")
-    openai_notability_request_id: Optional[str] = Field(None, description="OpenAI notability request ID")
+    # No fields needed - the entity ID will come from the URL path parameter
+    pass
 
 class ResearchRequest(BaseModel):
     id: str = Field(..., description="Entity ID to research")
@@ -97,6 +104,15 @@ class ResearchStatusResponse(BaseModel):
     status: str = Field(..., description="Status of the research request (pending, completed, failed)")
     openai_research_request_id: Optional[str] = Field(None, description="OpenAI research request ID")
     sources: Optional[List[Source]] = Field(None, description="Parsed sources if completed")
+
+class NotabilityStatusRequest(BaseModel):
+    id: str = Field(..., description="Entity ID to check notability status for")
+
+class NotabilityStatusResponse(BaseModel):
+    status: str = Field(..., description="Status of the notability request (pending, completed, failed)")
+    openai_notability_request_id: Optional[str] = Field(None, description="OpenAI notability request ID")
+    notability_status: Optional[str] = Field(None, description="Notability evaluation result (exceeds, meets, fails)")
+    notability_rationale: Optional[str] = Field(None, description="Rationale for the notability evaluation")
 
 # Basic API Response Models
 class HealthResponse(BaseModel):

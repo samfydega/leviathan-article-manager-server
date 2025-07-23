@@ -3,7 +3,7 @@ from typing import List
 import json
 import os
 import re
-from models import CreateEntityRequest, EntityResponse, UpdateEntityStatusRequest, EntityStatus
+from models import CreateEntityRequest, EntityResponse, UpdateEntityStatusRequest, EntityStatus, ResearchedEntityResponse, Source
 
 # Create router for entity endpoints
 router = APIRouter(
@@ -64,6 +64,27 @@ def create_entity(request: CreateEntityRequest):
     # Add to in-memory store
     entities_store[entity_id] = entity_data
     
+    # If status is queue, create notability entry if it doesn't exist
+    if request.status.value == 'queue':
+        from routers.notability import notability_exists, notability_store, save_notability_data
+        
+        if not notability_exists(entity_id):
+            # Create notability entry with all null values
+            notability_data = {
+                'id': entity_id,
+                'notability_status': None,
+                'openai_research_request_id': None,
+                'sources': [],
+                'openai_notability_request_id': None,
+                'notability_rationale': None
+            }
+            
+            # Add to notability store
+            notability_store[entity_id] = notability_data
+            save_notability_data()
+            
+            print(f"[DEBUG] Created notability entry for new entity {entity_id} with queue status")
+    
     # Save to file
     save_entities()
     
@@ -73,6 +94,60 @@ def create_entity(request: CreateEntityRequest):
 def get_all_entities():
     """Get all entities in the store"""
     return [EntityResponse(**entity_data) for entity_data in entities_store.values()]
+
+@router.get("/status/researched", response_model=List[ResearchedEntityResponse])
+def get_researched_entities_with_notability():
+    """Get all researched entities with their notability data included"""
+    
+    from routers.notability import notability_store, load_notability_data
+    
+    # Load fresh notability data
+    load_notability_data()
+    
+    researched_entities = []
+    
+    # Load fresh entity data from file to ensure we have latest
+    if os.path.exists(entities_file):
+        with open(entities_file, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#'):
+                    try:
+                        entity_data = json.loads(line)
+                        # Check if entity has researched status
+                        if entity_data.get('status') == 'researched':
+                            entity_id = entity_data.get('id')
+                            
+                            # Get notability data if it exists
+                            notability_data = notability_store.get(entity_id, {})
+                            
+                            # Convert sources from dict format to Source objects
+                            sources_data = notability_data.get('sources', [])
+                            sources = []
+                            for source_data in sources_data:
+                                try:
+                                    if isinstance(source_data, dict):
+                                        sources.append(Source(**source_data))
+                                except Exception:
+                                    # Skip invalid sources
+                                    continue
+                            
+                            # Create combined response
+                            researched_entity = ResearchedEntityResponse(
+                                id=entity_data.get('id', ''),
+                                name=entity_data.get('name', ''),
+                                context=entity_data.get('context', ''),
+                                status=EntityStatus(entity_data.get('status', 'researched')),
+                                notability_status=notability_data.get('notability_status'),
+                                notability_rationale=notability_data.get('notability_rationale'),
+                                sources=sources
+                            )
+                            researched_entities.append(researched_entity)
+                            
+                    except json.JSONDecodeError:
+                        continue
+    
+    return researched_entities
 
 @router.get("/status/{status}", response_model=List[EntityResponse])
 def get_entities_by_status(status: EntityStatus):
@@ -111,7 +186,7 @@ def get_queue_entities():
                     try:
                         entity_data = json.loads(line)
                         # Check if entity has queue status
-                        if entity_data.get('status') == 'queue':
+                        if entity_data.get('status') == EntityStatus.queue.value:
                             queue_entities.append(EntityResponse(**entity_data))
                     except json.JSONDecodeError:
                         continue
@@ -128,6 +203,27 @@ def update_entity_status(entity_id: str, request: UpdateEntityStatusRequest):
     
     # Update the status in memory
     entities_store[entity_id]['status'] = request.status.value
+    
+    # If status is being set to queue, create notability entry if it doesn't exist
+    if request.status.value == 'queue':
+        from routers.notability import notability_exists, notability_store, save_notability_data
+        
+        if not notability_exists(entity_id):
+            # Create notability entry with all null values
+            notability_data = {
+                'id': entity_id,
+                'notability_status': None,
+                'openai_research_request_id': None,
+                'sources': [],
+                'openai_notability_request_id': None,
+                'notability_rationale': None
+            }
+            
+            # Add to notability store
+            notability_store[entity_id] = notability_data
+            save_notability_data()
+            
+            print(f"[DEBUG] Created notability entry for entity {entity_id} when status set to queue")
     
     # Save to file
     save_entities()
