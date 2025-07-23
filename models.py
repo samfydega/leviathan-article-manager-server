@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List, Literal
+from typing import List, Literal, Optional, Union
 from enum import Enum
 
 # NER Models
@@ -18,12 +18,16 @@ class EntityStatus(str, Enum):
     delete = "delete"
     backlog = "backlog"
     queue = "queue"
+    processing = "processing"
     processed = "processed"
 
 class CreateEntityRequest(BaseModel):
     entity_name: str = Field(..., description="The name of the entity (e.g., 'Palm City, FL')")
     entity_context: str = Field(..., description="Context or description of the entity")
     status: EntityStatus = Field(..., description="Status of the entity processing")
+
+class UpdateEntityStatusRequest(BaseModel):
+    status: EntityStatus = Field(..., description="New status for the entity")
 
 class EntityResponse(BaseModel):
     id: str = Field(..., description="Generated ID from entity name (e.g., 'palm-city-fl')")
@@ -33,6 +37,66 @@ class EntityResponse(BaseModel):
 
 class EntitiesListResponse(BaseModel):
     entities: List[EntityResponse] = Field(default=[], description="List of all entities")
+
+# Notability Store Models
+class SourceProximity(str, Enum):
+    primary = "primary"
+    secondary = "secondary"
+    tertiary = "tertiary"
+
+class SourceIndependence(str, Enum):
+    THIRD_PARTY = "THIRD_PARTY"
+    AFFILIATED = "AFFILIATED"
+    SELF_PUBLISHED = "SELF_PUBLISHED"
+
+class SourceReliability(str, Enum):
+    PEER_REVIEWED = "PEER_REVIEWED"
+    HIGH_QUALITY = "HIGH_QUALITY"
+    MIXED = "MIXED"
+    QUESTIONABLE = "QUESTIONABLE"
+    UNRELIABLE = "UNRELIABLE"
+
+class SourceDepth(str, Enum):
+    SUBSTANTIAL = "SUBSTANTIAL"
+    ROUTINE = "ROUTINE"
+    MINIMAL = "MINIMAL"
+
+class Source(BaseModel):
+    url: str = Field(..., description="The URL of the source, as an absolute string")
+    page_title: str = Field(..., min_length=1, description="The title of the page or article")
+    publish_date: str = Field(..., min_length=1, description="Publication date in ISO 8601 format (YYYY-MM-DD)")
+    proximity: SourceProximity = Field(..., description="How directly the source is tied to the subject")
+    independence: SourceIndependence = Field(..., description="Independence of the outlet from the subject")
+    reliability: SourceReliability = Field(..., description="Editorial reliability and standards")
+    depth: SourceDepth = Field(..., description="Coverage depth of the source")
+
+class NotabilityData(BaseModel):
+    id: str = Field(..., description="Entity ID (matches entities.txt)")
+    is_notable: Optional[bool] = Field(None, description="Whether the entity is notable (true/false/null)")
+    openai_research_request_id: Optional[str] = Field(None, description="OpenAI research request ID")
+    sources: List[Source] = Field(default=[], description="Array of evaluated sources")
+    openai_notability_request_id: Optional[str] = Field(None, description="OpenAI notability request ID")
+
+class CreateNotabilityRequest(BaseModel):
+    entity_id: str = Field(..., description="Entity ID to create notability data for")
+    is_notable: Optional[bool] = Field(None, description="Whether the entity is notable")
+    openai_research_request_id: Optional[str] = Field(None, description="OpenAI research request ID")
+    sources: List[Source] = Field(default=[], description="Array of evaluated sources")
+    openai_notability_request_id: Optional[str] = Field(None, description="OpenAI notability request ID")
+
+class ResearchRequest(BaseModel):
+    id: str = Field(..., description="Entity ID to research")
+
+class ResearchResponse(BaseModel):
+    openai_research_request_id: str = Field(..., description="OpenAI research request ID")
+
+class ResearchStatusRequest(BaseModel):
+    id: str = Field(..., description="Entity ID to check research status for")
+
+class ResearchStatusResponse(BaseModel):
+    status: str = Field(..., description="Status of the research request (pending, completed, failed)")
+    openai_research_request_id: Optional[str] = Field(None, description="OpenAI research request ID")
+    sources: Optional[List[Source]] = Field(None, description="Parsed sources if completed")
 
 # Basic API Response Models
 class HealthResponse(BaseModel):
