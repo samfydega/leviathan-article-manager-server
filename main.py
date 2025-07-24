@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import os
 from dotenv import load_dotenv
 from models import HealthResponse, HelloResponse
-from routers import entities, ner, notability
+from routers import entities, ner, notability, drafts
 
 # Load environment variables from .env file
 load_dotenv()
@@ -34,6 +34,7 @@ app.add_middleware(
 app.include_router(entities.router)
 app.include_router(ner.router)
 app.include_router(notability.router)
+app.include_router(drafts.router)
 
 @app.get("/", response_model=HelloResponse)
 def read_root():

@@ -68,6 +68,10 @@ load_entities_data()
 def create_notability_research_job(entity_id: str):
     """Create a new research job for an entity - given an entity ID, start background research"""
     
+    # Reload data to ensure we have the latest state
+    load_notability_data()
+    load_entities_data()
+    
     # Check if research job has already been started
     if entity_id in notability_store:
         existing_data = notability_store[entity_id]
@@ -139,11 +143,17 @@ def create_notability_research_job(entity_id: str):
 @router.get("/", response_model=List[NotabilityData])
 def get_all_notability_data():
     """Get all notability data"""
+    # Reload data to ensure we have the latest state
+    load_notability_data()
+    
     return [NotabilityData(**data) for data in notability_store.values()]
 
 @router.get("/{entity_id}", response_model=NotabilityData)
 def get_notability_data(entity_id: str):
     """Get notability data for a specific entity"""
+    # Reload data to ensure we have the latest state
+    load_notability_data()
+    
     if entity_id in notability_store:
         return NotabilityData(**notability_store[entity_id])
     else:

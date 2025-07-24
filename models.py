@@ -20,6 +20,8 @@ class EntityStatus(str, Enum):
     queue = "queue"
     researching = "researching"
     researched = "researched"
+    drafting_sections = "drafting_sections"
+    drafted_sections = "drafted_sections"
 
 class CreateEntityRequest(BaseModel):
     entity_name: str = Field(..., description="The name of the entity (e.g., 'Palm City, FL')")
@@ -34,6 +36,13 @@ class EntityResponse(BaseModel):
     name: str = Field(..., description="Original entity name")
     context: str = Field(..., description="Entity context or description")
     status: EntityStatus = Field(..., description="Current processing status")
+
+class DraftedEntityResponse(BaseModel):
+    id: str = Field(..., description="Generated ID from entity name (e.g., 'palm-city-fl')")
+    name: str = Field(..., description="Original entity name")
+    context: str = Field(..., description="Entity context or description")
+    status: EntityStatus = Field(..., description="Current processing status")
+    article_text: Optional[str] = Field(None, description="Article content as JSON string of markdown blocks")
 
 class EntitiesListResponse(BaseModel):
     entities: List[EntityResponse] = Field(default=[], description="List of all entities")

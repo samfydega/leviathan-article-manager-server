@@ -91,9 +91,19 @@ def create_entity(request: CreateEntityRequest):
     return EntityResponse(**entity_data)
 
 @router.get("/", response_model=List[EntityResponse])
-def get_all_entities():
-    """Get all entities in the store"""
-    return [EntityResponse(**entity_data) for entity_data in entities_store.values()]
+def get_all_entities(status: str = None):
+    """Get all entities in the store, optionally filtered by status"""
+    # Reload data to ensure we have the latest state
+    load_entities()
+    
+    all_entities = [EntityResponse(**entity_data) for entity_data in entities_store.values()]
+    
+    if status:
+        # Filter by status if provided
+        filtered_entities = [entity for entity in all_entities if entity.status == status]
+        return filtered_entities
+    
+    return all_entities
 
 @router.get("/status/researched", response_model=List[ResearchedEntityResponse])
 def get_researched_entities_with_notability():
