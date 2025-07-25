@@ -2,8 +2,11 @@ from fastapi import APIRouter, HTTPException
 from typing import List
 import json
 import os
+import fcntl
+from contextlib import contextmanager
 from openai import OpenAI
 from models import NotabilityData, CreateNotabilityRequest, ResearchRequest, ResearchResponse, ResearchStatusRequest, ResearchStatusResponse, NotabilityStatusRequest, NotabilityStatusResponse
+from routers.entities import entities_store, save_entities, load_entities
 
 # Create router for notability endpoints
 router = APIRouter(
@@ -12,13 +15,20 @@ router = APIRouter(
     responses={404: {"description": "Not found"}},
 )
 
+@contextmanager
+def file_lock(filename, mode='r'):
+    """Context manager for file locking to prevent concurrent writes"""
+    f = open(filename, mode)
+    try:
+        fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+        yield f
+    finally:
+        fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+        f.close()
+
 # Simple key-value store - load from file into dictionary
 notability_store = {}
 notability_file = "notability.txt"
-
-# Entity store for lookup
-entities_store = {}
-entities_file = "entities.txt"
 
 # Initialize OpenAI client
 client = OpenAI()
@@ -27,7 +37,7 @@ client = OpenAI()
 def load_notability_data():
     global notability_store
     if os.path.exists(notability_file):
-        with open(notability_file, 'r') as f:
+        with file_lock(notability_file, 'r') as f:
             for line in f:
                 line = line.strip()
                 if line and not line.startswith('#'):
@@ -40,29 +50,13 @@ def load_notability_data():
 
 # Save notability data to file
 def save_notability_data():
-    with open(notability_file, 'w') as f:
+    with file_lock(notability_file, 'w') as f:
         f.write("# Simple key-value store for notability data (JSON format)\n")
         for notability in notability_store.values():
             f.write(json.dumps(notability) + '\n')
 
-# Load entities data from file (JSON format)
-def load_entities_data():
-    global entities_store
-    if os.path.exists(entities_file):
-        with open(entities_file, 'r') as f:
-            for line in f:
-                line = line.strip()
-                if line and not line.startswith('#'):
-                    try:
-                        entity_data = json.loads(line)
-                        if 'id' in entity_data:
-                            entities_store[entity_data['id']] = entity_data
-                    except json.JSONDecodeError:
-                        continue
-
 # Load data on module import
 load_notability_data()
-load_entities_data()
 
 @router.post("/{entity_id}", response_model=NotabilityData)
 def create_notability_research_job(entity_id: str):
@@ -70,7 +64,7 @@ def create_notability_research_job(entity_id: str):
     
     # Reload data to ensure we have the latest state
     load_notability_data()
-    load_entities_data()
+    load_entities()
     
     # Check if research job has already been started
     if entity_id in notability_store:
@@ -94,9 +88,9 @@ def create_notability_research_job(entity_id: str):
         response = client.responses.create(
             prompt={
                 "id": "pmpt_687eaf8edda88194b8f2c14fa48e3a45059695391023684d",
-                "version": "8",
+                "version": "9",
                 "variables": {
-                    "canonical_name": canonical_name,
+                    "entity_name": canonical_name,
                     "context": context
                 }
             },
@@ -126,11 +120,8 @@ def create_notability_research_job(entity_id: str):
         
         # Update entity status to researching
         entities_store[entity_id]['status'] = 'researching'
-        # Save entities to file
-        with open('entities.txt', 'w') as f:
-            f.write("# Simple key-value store for entities (JSON format)\n")
-            for entity in entities_store.values():
-                f.write(json.dumps(entity) + '\n')
+        # Save entities to file using the proper function
+        save_entities()
         
         # Save to file
         save_notability_data()
@@ -179,9 +170,9 @@ def research_entity(request: ResearchRequest):
         response = client.responses.create(
             prompt={
                 "id": "pmpt_687eaf8edda88194b8f2c14fa48e3a45059695391023684d",
-                "version": "8",
+                "version": "9",
                 "variables": {
-                    "canonical_name": canonical_name,
+                    "entity_name": canonical_name,
                     "context": context
                 }
             },
@@ -288,11 +279,8 @@ def check_research_status(request: ResearchStatusRequest):
                 
                 # Update entity status to researched
                 entities_store[request.id]['status'] = 'researched'
-                # Save entities to file
-                with open('entities.txt', 'w') as f:
-                    f.write("# Simple key-value store for entities (JSON format)\n")
-                    for entity in entities_store.values():
-                        f.write(json.dumps(entity) + '\n')
+                # Save entities to file using the proper function
+                save_entities()
                 
                 # Trigger notability evaluation
                 try:
@@ -337,11 +325,8 @@ def check_research_status(request: ResearchStatusRequest):
             except json.JSONDecodeError as e:
                 # If we can't parse the response, still return completed status and mark as researched
                 entities_store[request.id]['status'] = 'researched'
-                # Save entities to file
-                with open('entities.txt', 'w') as f:
-                    f.write("# Simple key-value store for entities (JSON format)\n")
-                    for entity in entities_store.values():
-                        f.write(json.dumps(entity) + '\n')
+                # Save entities to file using the proper function
+                save_entities()
                 
                 return ResearchStatusResponse(
                     status="completed",

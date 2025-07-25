@@ -48,36 +48,11 @@ class EntitiesListResponse(BaseModel):
     entities: List[EntityResponse] = Field(default=[], description="List of all entities")
 
 # Notability Store Models
-class SourceProximity(str, Enum):
-    primary = "primary"
-    secondary = "secondary"
-    tertiary = "tertiary"
-
-class SourceIndependence(str, Enum):
-    THIRD_PARTY = "THIRD_PARTY"
-    AFFILIATED = "AFFILIATED"
-    SELF_PUBLISHED = "SELF_PUBLISHED"
-
-class SourceReliability(str, Enum):
-    PEER_REVIEWED = "PEER_REVIEWED"
-    HIGH_QUALITY = "HIGH_QUALITY"
-    MIXED = "MIXED"
-    QUESTIONABLE = "QUESTIONABLE"
-    UNRELIABLE = "UNRELIABLE"
-
-class SourceDepth(str, Enum):
-    SUBSTANTIAL = "SUBSTANTIAL"
-    ROUTINE = "ROUTINE"
-    MINIMAL = "MINIMAL"
-
 class Source(BaseModel):
     url: str = Field(..., description="The URL of the source, as an absolute string")
     page_title: str = Field(..., min_length=1, description="The title of the page or article")
-    publish_date: str = Field(..., min_length=1, description="Publication date in ISO 8601 format (YYYY-MM-DD)")
-    proximity: SourceProximity = Field(..., description="How directly the source is tied to the subject")
-    independence: SourceIndependence = Field(..., description="Independence of the outlet from the subject")
-    reliability: SourceReliability = Field(..., description="Editorial reliability and standards")
-    depth: SourceDepth = Field(..., description="Coverage depth of the source")
+    meets_standards: bool = Field(..., description="Whether the source meets the notability standards")
+    explanation: str = Field(..., description="Explanation of why the source does or doesn't meet standards")
 
 class ResearchedEntityResponse(BaseModel):
     id: str = Field(..., description="Generated ID from entity name")

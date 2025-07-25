@@ -11,6 +11,7 @@ from contextlib import contextmanager
 from openai import OpenAI
 
 from .notability import notability_store, notability_exists
+from .entities import entities_store, save_entities, load_entities
 
 router = APIRouter(
     prefix="/drafts",
@@ -21,9 +22,7 @@ router = APIRouter(
 # Initialize OpenAI client
 client = OpenAI()
 
-# Store for entities, drafts, and articles
-entities_store: Dict[str, dict] = {}
-entities_file = "entities.txt"
+# Store for drafts and articles
 drafts_store: Dict[str, dict] = {}
 drafts_file = "drafts.txt"
 articles_store: Dict[str, dict] = {}
@@ -31,13 +30,13 @@ articles_file = "articles.txt"
 
 EntityType = Literal["venture_capitalist", "startup_founder", "startup_company", "venture_firm"]
 
-# Prompt IDs for different research sections - FINAL VERSION
+# Prompt IDs and versions for different research sections
 PROMPT_IDS = {
-    "early_life": "pmpt_6881597633e08193a2ea8b886f8aa8990e7ece07212aea25",
-    "pre_vc_career": "pmpt_68816c05988c8193856a632187c8fe4d08d13066f2175710",
-    "vc_career": "pmpt_68816c254784819792b04926ab25312c0ae69cb869929a41",
-    "notable_investments": "pmpt_68816c4c78fc8190858a214948b257940b4a7c7d059861df",
-    "personal_life": "pmpt_68816c6a82a8819687e1eeda14f1a9480ae9ac0c76914685"
+    "early_life": {"id": "pmpt_6881597633e08193a2ea8b886f8aa8990e7ece07212aea25", "version": "8"},
+    "pre_vc_career": {"id": "pmpt_68816c05988c8193856a632187c8fe4d08d13066f2175710", "version": "4"},
+    "vc_career": {"id": "pmpt_68816c254784819792b04926ab25312c0ae69cb869929a41", "version": "4"},
+    "notable_investments": {"id": "pmpt_68816c4c78fc8190858a214948b257940b4a7c7d059861df", "version": "4"},
+    "personal_life": {"id": "pmpt_68816c6a82a8819687e1eeda14f1a9480ae9ac0c76914685", "version": "4"}
 }
 
 # Article drafting prompt
@@ -90,21 +89,6 @@ def file_lock(filename, mode='r'):
         fcntl.flock(f.fileno(), fcntl.LOCK_UN)
         f.close()
 
-def load_entities_data():
-    """Load entities from file into memory"""
-    global entities_store
-    if os.path.exists(entities_file):
-        with open(entities_file, 'r') as f:
-            for line in f:
-                line = line.strip()
-                if line and not line.startswith('#'):
-                    try:
-                        entity_data = json.loads(line)
-                        if 'id' in entity_data:
-                            entities_store[entity_data['id']] = entity_data
-                    except json.JSONDecodeError:
-                        continue
-
 def load_drafts():
     """Load drafts from file into memory"""
     global drafts_store
@@ -149,18 +133,11 @@ def save_articles():
         for article in articles_store.values():
             f.write(json.dumps(article) + '\n')
 
-def save_entities_data():
-    """Save entities data to file"""
-    with open(entities_file, 'w') as f:
-        f.write("# Simple key-value store for entities (JSON format)\n")
-        for entity in entities_store.values():
-            f.write(json.dumps(entity) + '\n')
-
 def update_entity_status(entity_id: str, new_status: str):
     """Update entity status and save to file"""
     if entity_id in entities_store:
         entities_store[entity_id]['status'] = new_status
-        save_entities_data()
+        save_entities()
 
 def draft_exists(draft_id: str) -> bool:
     """Check if a draft exists"""
@@ -246,11 +223,11 @@ async def create_vc_research_jobs(entity_id: str, entity_type: str) -> tuple[Dic
     entity_context = entity_data.get('context', '')
     
     section_prompts = {
-        "early_life": (PROMPT_IDS["early_life"], "7"),
-        "pre_vc_career": (PROMPT_IDS["pre_vc_career"], "3"),
-        "vc_career": (PROMPT_IDS["vc_career"], "3"),
-        "notable_investments": (PROMPT_IDS["notable_investments"], "3"),
-        "personal_life": (PROMPT_IDS["personal_life"], "3")
+        "early_life": (PROMPT_IDS["early_life"]["id"], PROMPT_IDS["early_life"]["version"]),
+        "pre_vc_career": (PROMPT_IDS["pre_vc_career"]["id"], PROMPT_IDS["pre_vc_career"]["version"]),
+        "vc_career": (PROMPT_IDS["vc_career"]["id"], PROMPT_IDS["vc_career"]["version"]),
+        "notable_investments": (PROMPT_IDS["notable_investments"]["id"], PROMPT_IDS["notable_investments"]["version"]),
+        "personal_life": (PROMPT_IDS["personal_life"]["id"], PROMPT_IDS["personal_life"]["version"])
     }
     
     job_ids = {}
@@ -403,7 +380,7 @@ async def update_draft_progress(draft_id: str) -> DraftProgressResponse:
 @router.post("/", response_model=DraftStatus)
 async def create_draft(request: CreateDraftRequest):
     """Create a new draft if entity meets notability requirements"""
-    load_entities_data()
+    load_entities()
     load_drafts()
     
     if not validate_notability(request.id):
@@ -474,14 +451,14 @@ async def list_drafts():
 @router.get("/{draft_id}/check-progress", response_model=DraftProgressResponse)
 async def check_draft_progress(draft_id: str):
     """Check progress of background tasks for a draft and update any completed results"""
-    load_entities_data()
+    load_entities()
     load_drafts()
     return await update_draft_progress(draft_id)
 
 @router.post("/{draft_id}/draft-document", response_model=ArticleStatus)
 async def draft_document(draft_id: str):
     """Draft an article document from completed research sections (overwrites existing if present)"""
-    load_entities_data()
+    load_entities()
     load_drafts()
     load_articles()
     
@@ -535,6 +512,6 @@ async def list_articles():
     return [ArticleStatus(**article) for article in articles_store.values()]
 
 # Load data on module import
-load_entities_data()
+load_entities()
 load_drafts()
 load_articles()

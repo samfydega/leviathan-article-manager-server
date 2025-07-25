@@ -3,6 +3,8 @@ from typing import List
 import json
 import os
 import re
+import fcntl
+from contextlib import contextmanager
 from models import CreateEntityRequest, EntityResponse, UpdateEntityStatusRequest, EntityStatus, ResearchedEntityResponse, Source
 
 # Create router for entity endpoints
@@ -11,6 +13,17 @@ router = APIRouter(
     tags=["entities"],
     responses={404: {"description": "Not found"}},
 )
+
+@contextmanager
+def file_lock(filename, mode='r'):
+    """Context manager for file locking to prevent concurrent writes"""
+    f = open(filename, mode)
+    try:
+        fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+        yield f
+    finally:
+        fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+        f.close()
 
 # Simple helper function to format entity names as keys
 def format_entity_key(text):
@@ -25,7 +38,7 @@ entities_file = "entities.txt"
 def load_entities():
     global entities_store
     if os.path.exists(entities_file):
-        with open(entities_file, 'r') as f:
+        with file_lock(entities_file, 'r') as f:
             for line in f:
                 line = line.strip()
                 if line and not line.startswith('#'):
@@ -38,7 +51,7 @@ def load_entities():
 
 # Save entities to file
 def save_entities():
-    with open(entities_file, 'w') as f:
+    with file_lock(entities_file, 'w') as f:
         f.write("# Simple key-value store for entities (JSON format)\n")
         for entity in entities_store.values():
             f.write(json.dumps(entity) + '\n')
