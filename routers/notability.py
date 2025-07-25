@@ -88,7 +88,7 @@ def create_notability_research_job(entity_id: str):
         response = client.responses.create(
             prompt={
                 "id": "pmpt_687eaf8edda88194b8f2c14fa48e3a45059695391023684d",
-                "version": "9",
+                "version": "10",
                 "variables": {
                     "entity_name": canonical_name,
                     "context": context
@@ -170,7 +170,7 @@ def research_entity(request: ResearchRequest):
         response = client.responses.create(
             prompt={
                 "id": "pmpt_687eaf8edda88194b8f2c14fa48e3a45059695391023684d",
-                "version": "9",
+                "version": "10",
                 "variables": {
                     "entity_name": canonical_name,
                     "context": context

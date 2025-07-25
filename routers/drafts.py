@@ -74,7 +74,7 @@ class ResearchResult(BaseModel):
 class ArticleStatus(BaseModel):
     id: str
     status: Literal["drafting", "drafted", "published"]
-    text: Optional[str]
+    sections: Optional[Dict[str, Any]]
     created_at: str
     updated_at: str
 
@@ -175,10 +175,19 @@ def extract_pages_content(results: Dict[str, Any]) -> Dict[str, str]:
         # Combine all page descriptions into a single text
         content_parts = []
         for page in pages:
-            title = page.get('page_title', '')
-            description = page.get('description', '')
-            if description:
-                content_parts.append(f"Source: {title}\n{description}")
+            # Handle new schema with exhaustive_description and mla_citation
+            if 'exhaustive_description' in page and 'mla_citation' in page:
+                description = page.get('exhaustive_description', '')
+                citation = page.get('mla_citation', {})
+                title = citation.get('page_title', '')
+                if description:
+                    content_parts.append(f"Source: {title}\n{description}")
+            # Fallback to old schema for backward compatibility
+            else:
+                title = page.get('page_title', '')
+                description = page.get('description', '')
+                if description:
+                    content_parts.append(f"Source: {title}\n{description}")
         
         section_content[var_name] = '\n\n'.join(content_parts) if content_parts else ""
     
@@ -457,7 +466,7 @@ async def check_draft_progress(draft_id: str):
 
 @router.post("/{draft_id}/draft-document", response_model=ArticleStatus)
 async def draft_document(draft_id: str):
-    """Draft an article document from completed research sections (overwrites existing if present)"""
+    """Draft encyclopedia sections from completed research data"""
     load_entities()
     load_drafts()
     load_articles()
@@ -466,18 +475,308 @@ async def draft_document(draft_id: str):
     if not draft_exists(draft_id):
         raise HTTPException(status_code=404, detail="Draft not found")
     
+    # Get entity data
+    entity_data = entities_store.get(draft_id)
+    if not entity_data:
+        raise HTTPException(status_code=404, detail="Entity not found")
+    
+    # Get draft data with completed research results
+    draft_data = drafts_store.get(draft_id)
+    if not draft_data:
+        raise HTTPException(status_code=404, detail="Draft data not found")
+    
+    results = draft_data.get('results', {})
+    if not results:
+        raise HTTPException(status_code=400, detail="No research results found")
+    
     timestamp = datetime.utcnow().isoformat()
     
     try:
-        # Create the article draft
-        article_text = await create_article_draft(draft_id)
+        # Section mapping for the API calls
+        section_mapping = {
+            "early_life": "Early Life",
+            "pre_vc_career": "Pre-VC and Non-VC Career", 
+            "vc_career": "Venture Capitalist Career",
+            "notable_investments": "Notable Investments",
+            "personal_life": "Personal Life"
+        }
+        
+        entity_name = entity_data.get('name', draft_id)
+        entity_context = entity_data.get('context', '')
+        
+        # Process each section serially
+        sections_data = {}
+        
+        for section_key, section_name in section_mapping.items():
+            section_result = results.get(section_key)
+            if not section_result or 'pages' not in section_result:
+                print(f"Warning: No data for section {section_key}")
+                continue
+            
+            # Extract sources from the pages data
+            sources = []
+            for i, page in enumerate(section_result['pages']):
+                if 'mla_citation' in page:
+                    citation = page['mla_citation']
+                    source = {
+                        "id": i,
+                        "title": citation.get('page_title', ''),
+                        "url": citation.get('hyperlink', ''),
+                        "author": citation.get('author_name', ''),
+                        "publisher": citation.get('publication_name', ''),
+                        "date": citation.get('date_of_authorship', '')
+                    }
+                    sources.append(source)
+            
+            # Create sources string for the prompt
+            sources_str = json.dumps(sources)
+            
+            # Use different endpoint for notable_investments
+            if section_key == "notable_investments":
+                # Call special notable investments endpoint
+                response = client.responses.create(
+                    prompt={
+                        "id": "pmpt_6883c4eb15f481949785358f13d37243075c7030141d46f3",
+                        "version": "5",
+                        "variables": {
+                            "entity": entity_name,
+                            "context": entity_context,
+                            "type": "Venture Capitalist",
+                            "sources": sources_str
+                        }
+                    }
+                )
+            else:
+                # Call generic encyclopedia section endpoint
+                response = client.responses.create(
+                    prompt={
+                        "id": "pmpt_6883c4dcfe5c819387acad8910d66c340a50e18e12e625a6",
+                        "version": "4",
+                        "variables": {
+                            "entity": entity_name,
+                            "context": entity_context,
+                            "type": "Venture Capitalist",
+                            "section": section_name,
+                            "sources": sources_str
+                        }
+                    },
+                    input=[],
+                    text={
+                        "format": {
+                            "type": "json_schema",
+                            "name": "encyclopedia_section_blocks",
+                            "strict": True,
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "blocks": {
+                                        "type": "array",
+                                        "description": "A list of content blocks that make up the encyclopedia section. These can be headings, subheadings, paragraphs, etc.",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "heading",
+                                                        "subheading",
+                                                        "paragraph",
+                                                        "quote",
+                                                        "list"
+                                                    ],
+                                                    "description": "The type of content block. Determines how the block is rendered."
+                                                },
+                                                "content": {
+                                                    "type": "string",
+                                                    "description": "The textual content of the block."
+                                                },
+                                                "citations": {
+                                                    "type": "array",
+                                                    "description": "Optional in-line citations within this block, referencing the reference list by ID. Each includes a text span (start and end).",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer",
+                                                                "description": "The ID of the source being cited, corresponding to the references list."
+                                                            },
+                                                            "start": {
+                                                                "type": "integer",
+                                                                "description": "Starting character index of the text span for this citation."
+                                                            },
+                                                            "end": {
+                                                                "type": "integer",
+                                                                "description": "Ending character index of the text span for this citation."
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "id",
+                                                            "start",
+                                                            "end"
+                                                        ],
+                                                        "additionalProperties": False
+                                                    }
+                                                }
+                                            },
+                                            "required": [
+                                                "type",
+                                                "content",
+                                                "citations"
+                                            ],
+                                            "additionalProperties": False
+                                        }
+                                    },
+                                    "references": {
+                                        "type": "array",
+                                        "description": "The list of sources used in citations throughout this section.",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "description": "A unique identifier for the citation, used in the citations array."
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "description": "The title of the article or source."
+                                                },
+                                                "url": {
+                                                    "type": "string",
+                                                    "description": "The full URL of the source."
+                                                },
+                                                "author": {
+                                                    "type": "string",
+                                                    "description": "The name of the author or creator of the source."
+                                                },
+                                                "publisher": {
+                                                    "type": "string",
+                                                    "description": "The publisher or platform where the source was published."
+                                                },
+                                                "date": {
+                                                    "type": "string",
+                                                    "description": "The date the source was published in YYYY-MM-DD format."
+                                                }
+                                            },
+                                            "required": [
+                                                "id",
+                                                "title",
+                                                "url",
+                                                "author",
+                                                "publisher",
+                                                "date"
+                                            ],
+                                            "additionalProperties": False
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "blocks",
+                                    "references"
+                                ],
+                                "additionalProperties": False
+                            }
+                        }
+                    },
+                    reasoning={},
+                    max_output_tokens=2048,
+                    store=True
+                )
+            
+            # Extract the response content
+            if response.output and len(response.output) > 0:
+                last_output = response.output[-1]
+                if hasattr(last_output, 'content') and last_output.content:
+                    content_text = last_output.content[0].text
+                    try:
+                        section_data = json.loads(content_text)
+                        sections_data[section_key] = section_data
+                    except json.JSONDecodeError as e:
+                        print(f"Error parsing response for section {section_key}: {e}")
+                        sections_data[section_key] = {"blocks": [], "references": []}
+                else:
+                    sections_data[section_key] = {"blocks": [], "references": []}
+            else:
+                sections_data[section_key] = {"blocks": [], "references": []}
+        
+        # Now make the 6th call for person_infobox using sources from personal_life and early_life
+        personal_life_result = results.get('personal_life', {})
+        early_life_result = results.get('early_life', {})
+        
+        # Combine sources from both sections
+        combined_sources = []
+        source_id_counter = 0
+        
+        # Add personal_life sources
+        if 'pages' in personal_life_result:
+            for page in personal_life_result['pages']:
+                if 'mla_citation' in page:
+                    citation = page['mla_citation']
+                    source = {
+                        "id": source_id_counter,
+                        "title": citation.get('page_title', ''),
+                        "url": citation.get('hyperlink', ''),
+                        "author": citation.get('author_name', ''),
+                        "publisher": citation.get('publication_name', ''),
+                        "date": citation.get('date_of_authorship', '')
+                    }
+                    combined_sources.append(source)
+                    source_id_counter += 1
+        
+        # Add early_life sources
+        if 'pages' in early_life_result:
+            for page in early_life_result['pages']:
+                if 'mla_citation' in page:
+                    citation = page['mla_citation']
+                    source = {
+                        "id": source_id_counter,
+                        "title": citation.get('page_title', ''),
+                        "url": citation.get('hyperlink', ''),
+                        "author": citation.get('author_name', ''),
+                        "publisher": citation.get('publication_name', ''),
+                        "date": citation.get('date_of_authorship', '')
+                    }
+                    combined_sources.append(source)
+                    source_id_counter += 1
+        
+        # Create combined sources string
+        combined_sources_str = json.dumps(combined_sources)
+        
+        # Call person infobox endpoint
+        person_infobox_response = client.responses.create(
+            prompt={
+                "id": "pmpt_6883c991fe888196a6ae9fc79bbd07880738447170486610",
+                "version": "3",
+                "variables": {
+                    "entity": entity_name,
+                    "context": entity_context,
+                    "type": "Venture Capitalist",
+                    "sources": combined_sources_str
+                }
+            }
+        )
+        
+        # Extract the person infobox response content
+        if person_infobox_response.output and len(person_infobox_response.output) > 0:
+            last_output = person_infobox_response.output[-1]
+            if hasattr(last_output, 'content') and last_output.content:
+                content_text = last_output.content[0].text
+                try:
+                    person_infobox_data = json.loads(content_text)
+                    sections_data['person_infobox'] = person_infobox_data
+                except json.JSONDecodeError as e:
+                    print(f"Error parsing person infobox response: {e}")
+                    sections_data['person_infobox'] = {"blocks": [], "references": []}
+            else:
+                sections_data['person_infobox'] = {"blocks": [], "references": []}
+        else:
+            sections_data['person_infobox'] = {"blocks": [], "references": []}
         
         # Create or update article entry
         existing_article = articles_store.get(draft_id)
         article_data = {
             "id": draft_id,
             "status": "drafted",
-            "text": article_text,
+            "sections": sections_data,
             "created_at": existing_article.get("created_at", timestamp) if existing_article else timestamp,
             "updated_at": timestamp
         }
@@ -492,7 +791,7 @@ async def draft_document(draft_id: str):
         return ArticleStatus(**article_data)
         
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error creating article draft: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error creating article sections: {str(e)}")
 
 @router.get("/articles/{article_id}", response_model=ArticleStatus)
 async def get_article(article_id: str):
