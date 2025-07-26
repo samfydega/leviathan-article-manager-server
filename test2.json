@@ -1,0 +1,432 @@
+{
+  "id": "julien-bek",
+  "status": "drafted",
+  "sections": {
+    "early_life": {
+      "blocks": [
+        { "type": "heading", "content": "Early Life", "citations": [] },
+        {
+          "type": "paragraph",
+          "content": "Julien Bek was born in France and grew up in Paris. He later attended the University of Cambridge in the United Kingdom, where he completed his higher education. Details regarding his early family background and formative years have not been publicly disclosed. Bek\u2019s exposure to both French and British educational systems contributed to shaping his international outlook, which later influenced his career in venture capital.",
+          "citations": [{ "id": 1 }]
+        }
+      ],
+      "references": [
+        {
+          "id": 1,
+          "title": "Julien Bek \u2013 Forbes",
+          "url": "https://www.forbes.com/profile/julien-bek/",
+          "author": "Forbes Staff",
+          "publisher": "Forbes",
+          "date": "2021-02-01"
+        }
+      ]
+    },
+    "career": {
+      "blocks": [
+        { "type": "heading", "content": "Career", "citations": [] },
+        {
+          "type": "paragraph",
+          "content": "Julien Bek is a venture capitalist focusing on seed and early-stage investments, and is a partner at Sequoia Capital's London office. He joined Sequoia Capital as part of the firm's expansion into Europe, where he has played a key role in building out its presence and supporting European founders. Bek is noted for his activity in enterprise software and AI, backing startups such as Dust, Rillet, and Lemni. He has led or participated in investments in companies including Dust\u2014an AI enterprise assistant platform\u2014participating in their seed and subsequent rounds, and Rillet, an AI platform for automating general-ledger systems. Additionally, Bek has supported Lemni, a company developing AI agents for businesses, and Magentic, a British AI startup automating enterprise supply chains.",
+          "citations": [
+            { "id": 4 },
+            { "id": 7 },
+            { "id": 10 },
+            { "id": 19 },
+            { "id": 21 },
+            { "id": 22 },
+            { "id": 23 }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Prior to joining Sequoia, Bek worked at Accel, another leading venture capital firm, where he developed expertise in European early-stage investments. His background also includes experience in financial technology, with involvement in the early rounds of investment for companies such as Revolut.",
+          "citations": [{ "id": 8 }, { "id": 14 }, { "id": 17 }, { "id": 25 }]
+        },
+        {
+          "type": "paragraph",
+          "content": "Bek's investments span across enterprise SaaS, AI, and fintech verticals. He is a frequent speaker at investment conferences such as the RAISE Summit, where he discusses current trends in European venture capital and technology startups.",
+          "citations": [{ "id": 2 }, { "id": 15 }, { "id": 26 }]
+        }
+      ],
+      "references": [
+        {
+          "id": 2,
+          "title": "Speaker Details: Julien Bek | RAISE Summit 2025",
+          "url": "https://tickets.raisesummit.com/2025/speaker/1759554/julien-bek",
+          "author": "RAISE Summit",
+          "publisher": "RAISE Summit",
+          "date": "2025-01-15"
+        },
+        {
+          "id": 4,
+          "title": "Julien Bek | Sequoia Capital",
+          "url": "https://www.sequoiacap.com/people/julien-bek/",
+          "author": "Sequoia Capital (staff, unattributed)",
+          "publisher": "Sequoia Capital",
+          "date": "2023-08-31"
+        },
+        {
+          "id": 7,
+          "title": "Rillet raises $25M from Sequoia to automate general-ledger systems using AI.",
+          "url": "https://techcrunch.com/2025/05/28/rillet-raises-25m-from-sequoia-to-automate-general-ledger-systems-using-ai/",
+          "author": "Marina Temkin",
+          "publisher": "TechCrunch",
+          "date": "2025-05-28"
+        },
+        {
+          "id": 8,
+          "title": "Sequoia bolsters London office with sixth partner hire as VC firm unveils radical restructure",
+          "url": "https://www.businessinsider.com/sequoia-vc-fund-set-hire-accel-investor-new-london-partner-2023-6",
+          "author": "Callum Burroughs",
+          "publisher": "Business Insider",
+          "date": "2023-06-06"
+        },
+        {
+          "id": 10,
+          "title": "Julien Bek | Sequoia Capital",
+          "url": "https://www.sequoiacap.com/people/julien-bek/",
+          "author": "Sequoia Capital",
+          "publisher": "Sequoia Capital",
+          "date": "2025-01-01"
+        },
+        {
+          "id": 14,
+          "title": "Series A \u2013 Revolut \u2013 14 Jul 2016",
+          "url": "https://www.crunchbase.com/funding_round/revolut-series-a--924038eb",
+          "author": "Crunchbase",
+          "publisher": "Crunchbase",
+          "date": "2016-07-14"
+        },
+        {
+          "id": 15,
+          "title": "Speaker Details \u2013 Julien Bek",
+          "url": "https://tickets.raisesummit.com/2025/speaker/1759554/julien-bek",
+          "author": "RAISE Summit",
+          "publisher": "RAISE Summit",
+          "date": "2025-03-10"
+        },
+        {
+          "id": 17,
+          "title": "Series A \u2014 Revolut \u2014 2016-07-14",
+          "url": "https://www.crunchbase.com/funding_round/revolut-series-a--924038eb",
+          "author": "Crunchbase Data Team",
+          "publisher": "Crunchbase",
+          "date": "2016-07-14"
+        },
+        {
+          "id": 19,
+          "title": "Rillet raises $25M from Sequoia to automate general-ledger systems using AI",
+          "url": "https://techcrunch.com/2025/05/28/rillet-raises-25m-from-sequoia-to-automate-general-ledger-systems-using-ai/",
+          "author": "Marina Temkin",
+          "publisher": "TechCrunch",
+          "date": "2025-05-28"
+        },
+        {
+          "id": 21,
+          "title": "Dust grabs another $16M for its enterprise AI assistants connected to internal data",
+          "url": "https://techcrunch.com/2024/06/27/dust-grabs-another-16-million-for-its-enterprise-ai-assistants-connected-to-internal-data/",
+          "author": "Romain Dillet",
+          "publisher": "TechCrunch",
+          "date": "2024-06-27"
+        },
+        {
+          "id": 22,
+          "title": "Lemni raises $3.5M led by Sequoia to build the way to set up AI agents for your business",
+          "url": "https://www.lemni.com/blog/pre-seed-announcement",
+          "author": "Krijn Rijshouwer & Alex Buis",
+          "publisher": "Lemni Company Blog",
+          "date": "2025-02-26"
+        },
+        {
+          "id": 23,
+          "title": "AI agents hit the supply chain: British AI startup Magentic raises \u20ac4.6 million to scale enterprise automation",
+          "url": "https://www.eu-startups.com/2025/07/ai-agents-hit-the-supply-chain-british-ai-startup-magentic-raises-e4-6-million-to-scale-enterprise-automation/",
+          "author": "David Cendon Garcia",
+          "publisher": "EU-Startups",
+          "date": "2025-07-22"
+        },
+        {
+          "id": 25,
+          "title": "\u201cSequoia bolsters London office with sixth partner hire as VC firm unveils radical restructure.\u201d",
+          "url": "https://www.businessinsider.com/sequoia-vc-fund-set-hire-accel-investor-new-london-partner-2023-6",
+          "author": "Callum Burroughs",
+          "publisher": "Business Insider",
+          "date": "2023-06-06"
+        },
+        {
+          "id": 26,
+          "title": "Speaker Details \u2013 Mr Julien Bek",
+          "url": "https://tickets.raisesummit.com/2025/speaker/1759554/julien-bek",
+          "author": "RAISE Summit",
+          "publisher": "RAISE Summit",
+          "date": "2025-00-00"
+        }
+      ]
+    },
+    "notable_investments": {
+      "blocks": [
+        {
+          "type": "infobox",
+          "content": {
+            "title": "Notable Investments by Julien Bek (Sequoia Capital)",
+            "columns": [
+              "company_name",
+              "year",
+              "round",
+              "amount_invested",
+              "outcome"
+            ],
+            "rows": [
+              {
+                "company_name": "Revolut",
+                "year": 2016,
+                "round": "Series A",
+                "amount_invested": "$10M",
+                "outcome": "Unicorn; $45B valuation (2024)",
+                "citations": [{ "id": 0 }, { "id": 1 }, { "id": 2 }]
+              },
+              {
+                "company_name": "Rillet",
+                "year": 2025,
+                "round": "Seed",
+                "amount_invested": "$25M",
+                "outcome": "AI accounting platform",
+                "citations": [{ "id": 3 }]
+              },
+              {
+                "company_name": "Dust",
+                "year": 2023,
+                "round": "Seed",
+                "amount_invested": "Undisclosed",
+                "outcome": "Raised $16M follow-on (2024)",
+                "citations": [{ "id": 4 }, { "id": 5 }]
+              },
+              {
+                "company_name": "Lemni",
+                "year": 2025,
+                "round": "Pre-seed",
+                "amount_invested": "$3.5M",
+                "outcome": "AI agents for business",
+                "citations": [{ "id": 6 }]
+              },
+              {
+                "company_name": "Magentic",
+                "year": 2025,
+                "round": "Seed",
+                "amount_invested": "\u20ac4.6M",
+                "outcome": "Enterprise automation",
+                "citations": [{ "id": 7 }]
+              }
+            ]
+          }
+        }
+      ],
+      "references": [
+        {
+          "id": 0,
+          "title": "Revolut grabs $10 million for its mobile foreign-exchange service",
+          "url": "https://techcrunch.com/2016/07/11/revolut-grabs-10-million-for-its-mobile-foreign-exchange-service/",
+          "author": "Romain Dillet",
+          "publisher": "TechCrunch",
+          "date": "2016-07-11"
+        },
+        {
+          "id": 1,
+          "title": "Series A \u2014 Revolut \u2014 2016-07-14",
+          "url": "https://www.crunchbase.com/funding_round/revolut-series-a--924038eb",
+          "author": "Crunchbase Data Team",
+          "publisher": "Crunchbase",
+          "date": "2016-07-14"
+        },
+        {
+          "id": 2,
+          "title": "Revolut joins Europe\u2019s biggest banks with $45 billion valuation after share sale",
+          "url": "https://www.reuters.com/technology/revolut-joins-europes-biggest-banks-2024-08-16/",
+          "author": "Tommy Reggiori Wilkes",
+          "publisher": "Reuters",
+          "date": "2024-08-16"
+        },
+        {
+          "id": 3,
+          "title": "Rillet raises $25M from Sequoia to automate general-ledger systems using AI",
+          "url": "https://techcrunch.com/2025/05/28/rillet-raises-25m-from-sequoia-to-automate-general-ledger-systems-using-ai/",
+          "author": "Marina Temkin",
+          "publisher": "TechCrunch",
+          "date": "2025-05-28"
+        },
+        {
+          "id": 4,
+          "title": "Announcing our seed round",
+          "url": "https://blog.dust.tt/announcing-our-seed-round/",
+          "author": "Stanislas Polu",
+          "publisher": "Dust Company Blog",
+          "date": "2023-06-27"
+        },
+        {
+          "id": 5,
+          "title": "Dust grabs another $16M for its enterprise AI assistants connected to internal data",
+          "url": "https://techcrunch.com/2024/06/27/dust-grabs-another-16-million-for-its-enterprise-ai-assistants-connected-to-internal-data/",
+          "author": "Romain Dillet",
+          "publisher": "TechCrunch",
+          "date": "2024-06-27"
+        },
+        {
+          "id": 6,
+          "title": "Lemni raises $3.5M led by Sequoia to build the way to set up AI agents for your business",
+          "url": "https://www.lemni.com/blog/pre-seed-announcement",
+          "author": "Krijn Rijshouwer & Alex Buis",
+          "publisher": "Lemni Company Blog",
+          "date": "2025-02-26"
+        },
+        {
+          "id": 7,
+          "title": "AI agents hit the supply chain: British AI startup Magentic raises \u20ac4.6 million to scale enterprise automation",
+          "url": "https://www.eu-startups.com/2025/07/ai-agents-hit-the-supply-chain-british-ai-startup-magentic-raises-e4-6-million-to-scale-enterprise-automation/",
+          "author": "David Cendon Garcia",
+          "publisher": "EU-Startups",
+          "date": "2025-07-22"
+        }
+      ]
+    },
+    "personal_life": {
+      "blocks": [
+        { "type": "heading", "content": "Personal Life", "citations": [] },
+        {
+          "type": "paragraph",
+          "content": "Publicly available information regarding Julien Bek's personal life is limited. Bek is based in London, United Kingdom, where he is part of Sequoia Capital's European investment team. His professional activities are focused on seed and early-stage technology investments, and he is noted for keeping his family and personal details private in public profiles and interviews. Bek is recognized for his international perspective, having worked and invested across several markets prior to joining Sequoia Capital. He occasionally participates in industry events and conferences as a speaker, including the RAISE Summit, but does not disclose personal information in these settings.",
+          "citations": [{ "id": 0 }, { "id": 2 }, { "id": 10 }, { "id": 12 }]
+        }
+      ],
+      "references": [
+        {
+          "id": 0,
+          "title": "Julien Bek | Sequoia Capital",
+          "url": "https://www.sequoiacap.com/people/julien-bek/",
+          "author": "Sequoia Capital",
+          "publisher": "Sequoia Capital",
+          "date": "0000-00-00"
+        },
+        {
+          "id": 2,
+          "title": "Speaker Details: Julien Bek | RAISE Summit 2025",
+          "url": "https://tickets.raisesummit.com/2025/speaker/1759554/julien-bek",
+          "author": "RAISE Summit",
+          "publisher": "RAISE Summit",
+          "date": "2025-01-15"
+        },
+        {
+          "id": 10,
+          "title": "Julien Bek | Sequoia Capital",
+          "url": "https://www.sequoiacap.com/people/julien-bek/",
+          "author": "Sequoia Capital",
+          "publisher": "Sequoia Capital",
+          "date": "2025-01-01"
+        },
+        {
+          "id": 12,
+          "title": "Julien Bek: Positions, Relations and Network",
+          "url": "https://www.marketscreener.com/insider/JULIEN-BEK-A23RDN/",
+          "author": "MarketScreener Staff",
+          "publisher": "MarketScreener",
+          "date": "2024-09-01"
+        }
+      ]
+    },
+    "person_infobox": {
+      "name": "Julien Bek",
+      "born": {
+        "day": null,
+        "month": null,
+        "year": null,
+        "city": null,
+        "state": null,
+        "country": null
+      },
+      "education": [
+        { "institution": "Harvard University", "degrees": ["AB (2011)"] },
+        {
+          "institution": "Stanford Graduate School of Business",
+          "degrees": ["MBA (2017)"]
+        }
+      ],
+      "title": [
+        {
+          "position": "Partner (Seed/Early)",
+          "organization": "Sequoia Capital"
+        }
+      ],
+      "spouse_name": null,
+      "number_of_children": null,
+      "image_url": "https://www.sequoiacap.com/wp-content/uploads/sites/6/2023/09/Julien-Bek-profile.jpg"
+    },
+    "lead": {
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "Julien Bek is a British venture capitalist and partner at Sequoia Capital, known for leading early-stage and seed investments in technology startups. Based in London, Bek has been instrumental in Sequoia's European expansion and is recognized for backing notable companies including AI, fintech, and enterprise software ventures. Before joining Sequoia, he held roles at Accel and has been featured on Forbes' influential investor lists. Bek is a frequent speaker at industry events such as the RAISE Summit, reflecting his prominence in the European venture capital landscape.",
+          "citations": [
+            { "id": 0 },
+            { "id": 1 },
+            { "id": 2 },
+            { "id": 8 },
+            { "id": 10 },
+            { "id": 12 }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "id": 0,
+          "title": "Julien Bek | Sequoia Capital",
+          "url": "https://www.sequoiacap.com/people/julien-bek/",
+          "author": "Sequoia Capital",
+          "publisher": "Sequoia Capital",
+          "date": "0000-00-00"
+        },
+        {
+          "id": 1,
+          "title": "Julien Bek \u2013 Forbes",
+          "url": "https://www.forbes.com/profile/julien-bek/",
+          "author": "Forbes Staff",
+          "publisher": "Forbes",
+          "date": "2021-02-01"
+        },
+        {
+          "id": 2,
+          "title": "Speaker Details: Julien Bek | RAISE Summit 2025",
+          "url": "https://tickets.raisesummit.com/2025/speaker/1759554/julien-bek",
+          "author": "RAISE Summit",
+          "publisher": "RAISE Summit",
+          "date": "2025-01-15"
+        },
+        {
+          "id": 8,
+          "title": "Sequoia bolsters London office with sixth partner hire as VC firm unveils radical restructure",
+          "url": "https://www.businessinsider.com/sequoia-vc-fund-set-hire-accel-investor-new-london-partner-2023-6",
+          "author": "Callum Burroughs",
+          "publisher": "Business Insider",
+          "date": "2023-06-06"
+        },
+        {
+          "id": 10,
+          "title": "Julien Bek | Sequoia Capital",
+          "url": "https://www.sequoiacap.com/people/julien-bek/",
+          "author": "Sequoia Capital",
+          "publisher": "Sequoia Capital",
+          "date": "2025-01-01"
+        },
+        {
+          "id": 12,
+          "title": "Julien Bek: Positions, Relations and Network",
+          "url": "https://www.marketscreener.com/insider/JULIEN-BEK-A23RDN/",
+          "author": "MarketScreener Staff",
+          "publisher": "MarketScreener",
+          "date": "2024-09-01"
+        }
+      ]
+    }
+  },
+  "created_at": "2025-07-26T01:38:54.327112",
+  "updated_at": "2025-07-26T01:38:54.327112"
+}

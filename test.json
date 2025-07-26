@@ -1,62 +1,91 @@
 {
-  "id": "sven-strohband",
+  "id": "julien-bek",
   "type": "venture_capitalist",
   "statuses": {
-    "early_life_id": "resp_6883d85a167c819b91319f57a08559670c97f08b4d0b1888",
-    "pre_vc_career_id": "resp_6883d85acc748199ab8234bda646eb8802b9e89aab0fc60f",
-    "vc_career_id": "resp_6883d85b7694819a9e88664f725f67fd04b8c848b2391348",
-    "notable_investments_id": "resp_6883d85c219481999da2ddf48ae2292906ddbe6cfaee78e2",
-    "personal_life_id": "resp_6883d85c8374819b8c55d453352dc7fd093bac171c6a6fe7"
+    "early_life_id": "resp_68842b378c50819bbafe26049919a7cd0f80949fb095522e",
+    "pre_vc_career_id": "resp_68842b38469c819a95c8f2792351e52e0d7bb8ce0a760a47",
+    "vc_career_id": "resp_68842b38ace081989e02a13f507d050701830d6928356da5",
+    "notable_investments_id": "resp_68842b39692081988003c9c0772e0fbc03be4f6918e9313a",
+    "personal_life_id": "resp_68842b39ccd48198a4c7f545dd4d1f890e2e2c16ea7aa123"
   },
   "results": {
     "early_life": {
       "pages": [
         {
-          "exhaustive_description": "Khosla Ventures\u2019 official biography page for Sven Strohband lists him as a Partner & Managing Director.  The short narrative traces his career and formative technical experiences (Volkswagen Electronics Research Lab; Stanford \u201cStanley\u201d autonomous-car project; co-founder/CEO of MetaMind).  In the final paragraph it supplies the only firm academic credentials the page gives: \u201cHe holds a bachelor\u2019s degree in mechanical engineering from Purdue University and a PhD in mechanics and computation from Stanford University.\u201d No birth-date, birthplace, or family details are provided, but the page is an authoritative primary source for his undergraduate and doctoral degrees and their fields of study. \ue200cite\ue202turn30view0\ue201",
+          "exhaustive_description": "Sequoia Capital\u2019s official biography page for partner Julien Bek provides several first-hand details about his upbringing and education.  It says he \u201clearned from my parents, a recruiter and an astrologist,\u201d indicating family professions and an entrepreneurial household.  Bek notes he \u201chad a successful startup while I was in high school\u201d and later founded \u201ca less successful one while I was in a graduate program at Cambridge,\u201d confirming early exposure to entrepreneurship and that he pursued graduate study at the University of Cambridge.  The narrative also states that while at university he spent a summer at a venture-capital firm and first saw pitches from UiPath and Revolut, describing the formative experience that led him toward VC.  The page lists personal interests (private pilot, cooking, sailing) but gives no birth date or school names beyond the reference to \u201cCambridge.\u201d",
           "mla_citation": {
-            "page_title": "Sven Strohband | Khosla Ventures",
-            "hyperlink": "https://www.khoslaventures.com/team/sven-strohband",
-            "publication_name": "Khosla Ventures",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Khosla Ventures (corporate profile \u2014 no individual author credited)",
-            "date_of_authorship": "2024-11-13",
-            "image_url": "/team/sven-strohband/portrait.jpg"
+            "page_title": "Julien Bek | Sequoia Capital",
+            "hyperlink": "https://www.sequoiacap.com/people/julien-bek/",
+            "publication_name": "Sequoia Capital",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Sequoia Capital",
+            "date_of_authorship": "2025-00-00"
           }
         },
         {
-          "exhaustive_description": "Purdue University\u2019s Mechanical Engineering \u201cOutstanding Mechanical Engineer Awards\u201d page contains a scrolling list of inductees.  Line 77 explicitly reads: \u201cSVEN STROHBAND  Partner and Managing Director, Khosla Ventures  BSME 1997,\u201d followed by the sentence: \u201cSven holds a Bachelor of Science Degree in mechanical engineering from Purdue University and a PhD in mechanics and computation from Stanford University.\u201d  These lines confirm (1) his undergraduate alma mater, (2) the exact degree (B.S. in Mechanical Engineering), and (3) the year of graduation (1997).  The page supplies no personal-life data, but it is the only publicly available university record that gives a graduation year for his bachelor\u2019s degree. \ue200cite\ue202turn28view0\ue201",
+          "exhaustive_description": "The United Kingdom Companies House officer record for \u201cJulien BEK\u201d (director of dissolved entity Movemice Ltd) supplies verified government-filed personal data.  It lists his date of birth as \u201cAugust 1993,\u201d gives nationality as \u201cFrench,\u201d and records his country of residence as the United Kingdom at the time of the 21 September 2015 appointment.  While it does not state his exact birth day or city, it is the only primary source that fixes both month and year of birth and confirms French citizenship, useful for establishing early-life facts.",
           "mla_citation": {
-            "page_title": "Outstanding Mechanical Engineer Awards \u2013 Mechanical Engineering",
-            "hyperlink": "https://engineering.purdue.edu/ME/People/OME",
-            "publication_name": "Purdue University, School of Mechanical Engineering",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Purdue University School of Mechanical Engineering",
-            "date_of_authorship": "2024-12-20",
-            "image_url": "https://engineering.purdue.edu/images/ME/OME/strohband.jpg"
+            "page_title": "Julien BEK personal appointments \u2013 Find and update company information",
+            "hyperlink": "https://find-and-update.company-information.service.gov.uk/officers/LY4sfFzOx_Urfrpl3o8ZcB_9bZY/appointments",
+            "publication_name": "Companies House / GOV.UK",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Companies House",
+            "date_of_authorship": "2025-00-00"
           }
         },
         {
-          "exhaustive_description": "Stanford University\u2019s Dauskardt Group \u201cPeople\u201d profile for Sven Strohband (originally created when he was a graduate student) lists: \u201cEducation \u2013 Ph.D. Stanford University, Mechanical Engineering, 2003.\u201d  Although the page is brief, it provides a primary-source confirmation of the year he completed his doctorate and the discipline (\u201cMechanical Engineering,\u201d within Stanford\u2019s Mechanics & Computation program).  No biographical or family information appears. \ue200cite\ue202turn23view0\ue201",
+          "exhaustive_description": "Cointime\u2019s investor profile states that Julien Bek \u201cgrew up in Geneva, Switzerland,\u201d giving the first concrete city for his childhood.  It also summarizes his education\u2014he \u201cgraduated from Warwick Business School and the University of Cambridge\u201d\u2014and re-affirms that he joined Accel in 2018 after Global Founders Capital, with early investments in Revolut and Albert.  The page therefore supplies geographic upbringing (Geneva), confirms undergraduate (Warwick Business School, Management & Finance) and postgraduate (University of Cambridge, Entrepreneurship) credentials, and situates his early career chronology.",
           "mla_citation": {
-            "page_title": "Sven Strohband \u2013 Dauskardt Group, Stanford University",
-            "hyperlink": "https://dauskardt.stanford.edu/people/sven-strohband",
-            "publication_name": "Stanford University, Dauskardt Research Group",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Stanford University",
-            "date_of_authorship": "2003-05-01",
-            "image_url": "/sites/default/files/styles/large/public/people/strohband.jpg"
+            "page_title": "Julien Bek \u2013 Person Profile",
+            "hyperlink": "https://kr.cointime.ai/person/julien-bek",
+            "publication_name": "Cointime",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Cointime Staff",
+            "date_of_authorship": "2023-00-00"
           }
         },
         {
-          "exhaustive_description": "Equilar ExecAtlas\u2019s featured profile for \u201cSven Strohband PhD\u201d provides an age figure (\u201cAge 51\u201d) along with an education section that repeats: \u201cB.S., Purdue University \u2013 Ph.D., Stanford University.\u201d  Because the profile is dated 11 February 2025 (see source note on the page), the stated age fixes his year of birth at approximately 1973-74, the only reliable public indicator of his birth year currently available.  The page contains no birthplace or family details, but it is the only verifiable source disclosing a birth-year proxy. \ue200cite\ue202turn29view0\ue201",
+          "exhaustive_description": "The RAISE Summit 2025 speaker blurb reiterates that Bek \u201cgrew up in Switzerland\u201d and \u201clater studied in the UK at the University of Cambridge and Warwick Business School.\u201d  It notes he \u201cfirst tried his hand as a founder before switching sides initially at GFC & Accel,\u201d providing further confirmation of both education path and early entrepreneurial activity preceding his venture-capital roles.",
           "mla_citation": {
-            "page_title": "Sven Strohband PhD \u2013 Executive Bio, Work History, and Contacts",
-            "hyperlink": "https://people.equilar.com/bio/person/sven-strohband-khosla-ventures/26190256",
-            "publication_name": "Equilar ExecAtlas",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Equilar, Inc.",
-            "date_of_authorship": "2025-02-11",
-            "image_url": "/images/executives/s/strohband_sven.jpg"
+            "page_title": "Speaker Details: RAISE Summit 2025 \u2013 Mr Julien Bek",
+            "hyperlink": "https://tickets.raisesummit.com/2025/speaker/1759554/julien-bek",
+            "publication_name": "RAISE Summit",
+            "retrieval_date": "2025-07-26",
+            "author_name": "RAISE Summit Editorial Team",
+            "date_of_authorship": "2025-00-00"
+          }
+        },
+        {
+          "exhaustive_description": "Forbes\u2019 30 Under 30 profile (Finance, Europe 2021) lists Bek as a \u201cPrincipal, Accel\u201d and records that the then-27-year-old \u201cholds degrees from Warwick Business School and the University of Cambridge.\u201d  Although brief, the entry independently corroborates his two academic degrees and provides an age datapoint that aligns with the August 1993 birth-month record.",
+          "mla_citation": {
+            "page_title": "Julien Bek",
+            "hyperlink": "https://www.forbes.com/profile/julien-bek/",
+            "publication_name": "Forbes",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Forbes Staff",
+            "date_of_authorship": "2021-04-08"
+          }
+        },
+        {
+          "exhaustive_description": "The Clay aggregated profile cites multiple public-source snippets.  It states Bek is \u201coriginally from Geneva, Switzerland,\u201d echoing Cointime, and specifies his undergraduate degree in Management & Finance (Warwick Business School) and postgraduate Entrepreneurship degree (University of Cambridge).  Importantly, it adds a detail about \u201cfounding E-clope, one of the first companies in the e-cigarette market,\u201d as an example of his early entrepreneurial ventures beyond the high-school startup mentioned by Sequoia.  The profile also lists personal interests (sailing, cooking, private pilot) and career chronology (Global Founders Capital \u2794 Accel \u2794 Sequoia).",
+          "mla_citation": {
+            "page_title": "Julien Bek \u2013 Clay profile",
+            "hyperlink": "https://clay.earth/profile/julien-bek",
+            "publication_name": "Clay",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Clay Data Enrichment Team",
+            "date_of_authorship": "2025-00-00"
+          }
+        },
+        {
+          "exhaustive_description": "The Org\u2019s executive card for Bek confirms the same academic background\u2014\u201cPostgraduate degree in Entrepreneurship from the University of Cambridge and an Undergraduate degree in Management & Finance from the University of Warwick \u2013 Warwick Business School.\u201d  While largely duplicative, it strengthens the chain of independent sources affirming his educational credentials and gives specific month/year (September 2023) for his move to Sequoia, supplying timing for the end of his formal education and transition fully into venture capital.",
+          "mla_citation": {
+            "page_title": "Julien Bek \u2013 Angel Investor at Albert | The Org",
+            "hyperlink": "https://theorg.com/org/albert-com/org-chart/julien-bek",
+            "publication_name": "The Org",
+            "retrieval_date": "2025-07-26",
+            "author_name": "The Org Content Team",
+            "date_of_authorship": "2025-05-00"
           }
         }
       ]
@@ -64,111 +93,47 @@
     "pre_vc_career": {
       "pages": [
         {
-          "exhaustive_description": "Biography entry for Sven Strohband on the Stanford Racing Team website. It says he was the lead engineer for \u201cStanley,\u201d the vehicle that won the 2005 DARPA Grand Challenge; directed the Volkswagen Electronics Research Laboratory (ERL) team that designed, built, and tested Stanley\u2019s mechanical and electronic systems; was primary liaison between Stanford and Volkswagen; remained a technical consultant for later challenges; and, in 2006, moved to Mohr Davidow Ventures.  It lists his degrees (B.S. Purdue; M.S. & Ph.D. Stanford). \ue200cite\ue202turn18view0\ue201",
+          "exhaustive_description": "Sequoia Capital\u2019s official biography for Julien Bek presents the only first-person account of his activities before becoming a professional investor.  In the \u201cBackstory\u201d section he explains that he \"had a successful startup while I was in high school and a less successful one while I was in a graduate program at Cambridge,\" attributing his investment instincts to that early founder experience.  Although the companies are not named, the page confirms (1) continuous entrepreneurship from his teens, (2) direct product-building experience at the University of Cambridge, and (3) that these founder stints preceded any venture-capital employment.  The page also notes that he spent \u201ca summer at a VC firm\u201d during university \u2013 establishing a chronological sequence of founder \u2192 VC intern \u2192 full-time VC, and thereby marking his pre-VC, non-investor roles.  No other corporate employment outside VC is mentioned, indicating those two startups are the entirety of his non-VC career according to Sequoia.",
           "mla_citation": {
-            "page_title": "Autonomous Vehicles Designed by the Stanford Racing Team",
-            "hyperlink": "https://cs.stanford.edu/groups/roadrunner/team.html",
-            "publication_name": "Stanford Computer Science Department",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Stanford Racing Team",
-            "date_of_authorship": "2006-01-01",
-            "image_url": "/groups/roadrunner/img/team.jpg"
+            "page_title": "\u201cJulien Bek | Sequoia Capital.\u201d",
+            "hyperlink": "https://www.sequoiacap.com/people/julien-bek/",
+            "publication_name": "Sequoia Capital",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Sequoia Capital",
+            "date_of_authorship": "2025-00-00"
           }
         },
         {
-          "exhaustive_description": "Smithsonian Magazine feature on Stanley\u2019s historical impact.  Identifies Sven Strohband as \u201ca lead engineer on the Stanford Racing Team\u201d and quotes him describing Stanley\u2019s lidar, GPS, and learned vision system.  Notes that he and teammates recognized the race was \u201ca software race,\u201d and details the tech architecture he helped create.  Provides 2024 context for Stanley\u2019s museum display and the vehicle\u2019s role in jump-starting autonomous-vehicle research. \ue200cite\ue202turn13view0\ue201",
+          "exhaustive_description": "Clay.earth\u2019s automatically aggregated public profile for Julien Bek adds specific detail to the sketch on Sequoia\u2019s site.  Under \u201cBackground and Education\u201d it states that Bek \u201clater launched E-clope, one of the first companies in the e-cigarette market,\u201d explicitly naming the startup he founded while still a student.  The same sentence groups E-clope with \u201cearly entrepreneurial ventures\u201d that began in high school, corroborating Sequoia\u2019s claim that he was already a founder before any venture-capital work.  Because Clay surfaces only publicly indexed facts (it cites Sequoia.com and LinkedIn as sources) it is a secondary confirmation that (a) Bek personally launched E-clope and (b) that venture belonged to the emerging European e-cigarette sector, qualifying as a non-VC operating role.",
           "mla_citation": {
-            "page_title": "How a Blue SUV Named Stanley Revolutionized Driverless Car Technology",
-            "hyperlink": "https://www.smithsonianmag.com/innovation/how-a-blue-suv-named-stanley-revolutionized-driverless-car-technology-180983728/",
-            "publication_name": "Smithsonian Magazine",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Kelyn Soong",
-            "date_of_authorship": "2024-08-13",
-            "image_url": "https://.../images/stanley-on-road.jpg"
+            "page_title": "\u201cJulien Bek.\u201d",
+            "hyperlink": "https://clay.earth/profile/julien-bek",
+            "publication_name": "Clay",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Clay Earth, Inc.",
+            "date_of_authorship": "2025-00-00"
           }
         },
         {
-          "exhaustive_description": "Official Khosla Ventures biography.  Summarizes Strohband\u2019s pre-VC career: six years doing technical diligence at Mohr Davidow Ventures; earlier project-management at Volkswagen ERL on LED lighting, electrochromic glass, driver-assistance systems, and robotics; lead engineer and project lead for Stanley (DARPA Grand Challenge 2005); co-founder and CEO of AI startup MetaMind (now core to Salesforce Einstein).  Also lists his Purdue B.S. and Stanford Ph.D. degrees. \ue200cite\ue202turn17view0\ue201",
+          "exhaustive_description": "MarketScreener\u2019s people dossier on Julien Bek supplies another pre-VC company: it lists him as \u201cFounder (01/04/2015) \u2013 Smart Outsourcing SL,\u201d an e-commerce/digital-marketing business headquartered in Salamanca, Spain.  The file characterises Smart Outsourcing SL as providing \u201cdigital marketing services and products online [and] internet advertising for businesses and startups,\u201d establishing the firm as a services operator rather than an investment vehicle.  The timeline confirms that the founding (April 2015) predates Bek\u2019s first full-time VC job at Global Founders Capital later in 2015, making Smart Outsourcing his second documented operating role outside venture capital.",
           "mla_citation": {
-            "page_title": "Sven Strohband | Khosla",
-            "hyperlink": "https://www.khoslaventures.com/team/sven-strohband",
-            "publication_name": "Khosla Ventures",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Khosla Ventures",
-            "date_of_authorship": "2023-01-01",
-            "image_url": "https://www.khoslaventures.com/images/team/sven.jpg"
+            "page_title": "\u201cJulien Bek: Positions, Relations and Network \u2013 MarketScreener.\u201d",
+            "hyperlink": "https://www.marketscreener.com/insider/JULIEN-BEK-A23RDN/",
+            "publication_name": "MarketScreener",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Surperformance SAS",
+            "date_of_authorship": "2025-02-21"
           }
         },
         {
-          "exhaustive_description": "Speaker biography for the 2022 Satellite Innovation conference.  Reiterates that before venture capital, Strohband led technical projects at Volkswagen ERL, was lead engineer for Stanford\u2019s Stanley, and co-founded/served as CEO of MetaMind (now part of Salesforce Einstein).  Confirms technical-project scope (LED lighting, electrochromic glass, driver-assistance, robotics) and lists his academic credentials. \ue200cite\ue202turn16view0\ue201",
+          "exhaustive_description": "Moneyhouse reproduces the Swiss Official Gazette of Commerce (FOSC) filings for E-clope SARL, the e-cigarette company attributed to Bek on other sites.  The record shows: (1) registration date 23 Mar 2011 in Geneva; (2) stated purpose \u201cpurchase, sale and trade of high-technology products\u2026 notably the marketing of nicotine-free electronic cigarettes\u201d; (3) liquidation completed and company struck off on 18 May 2018; (4) the creditor-contact address during liquidation listed as \u201cMadame Astrid Bek,\u201d indicating family involvement and strengthening the link to Julien Bek.  These registry facts confirm E-clope\u2019s existence, its industry (electronic cigarettes), its lifespan (2011-2018) and its status as a genuine operating business \u2013 independently verifying the non-VC venture named in the Clay profile.",
           "mla_citation": {
-            "page_title": "Dr. Sven Strohband \u2013 2022 Satellite Innovation",
-            "hyperlink": "https://2022.satelliteinnovation.com/speakers/sven-strohband/",
-            "publication_name": "SatNews",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Satellite Innovation Conference",
-            "date_of_authorship": "2022-10-11",
-            "image_url": "https://2022.satelliteinnovation.com/wp-content/uploads/2022/08/Sven-Strohband.jpg"
-          }
-        },
-        {
-          "exhaustive_description": "Press-release announcing MetaMind\u2019s launch and $8 million seed round.  Names Sven Strohband as MetaMind\u2019s CEO (and CTO at Khosla Ventures); includes his quote on scaling deep-learning solutions for text and image data; details MetaMind\u2019s platform capabilities and initial customer traction.  Establishes him as co-founder and operational leader of the startup before its later exit to Salesforce. \ue200cite\ue202turn6view0\ue201",
-          "mla_citation": {
-            "page_title": "MetaMind Launches State-of-the-Art AI Platform Bringing Automated Predictions and Smarter Decision-Making to Businesses",
-            "hyperlink": "https://www.prnewswire.com/news-releases/metamind-launches-state-of-the-art-ai-platform-bringing-automated-predictions-and-smarter-decision-making-to-businesses-300005387.html",
-            "publication_name": "PR Newswire",
-            "retrieval_date": "2025-07-25",
-            "author_name": "MetaMind (press release)",
-            "date_of_authorship": "2014-12-05",
-            "image_url": "https://photos.prnewswire.com/prn/20141205/162562LOGO"
-          }
-        },
-        {
-          "exhaustive_description": "VentureBeat launch story.  Reports that Strohband \u201chas joined MetaMind as its chief executive,\u201d describes his collaboration with Richard Socher, shows photograph of both co-founders, notes the 10-employee headcount, and quotes Strohband on democratizing deep learning.  Provides concrete evidence of his CEO/operator role outside VC. \ue200cite\ue202turn15view0\ue201",
-          "mla_citation": {
-            "page_title": "Deep-learning Startup MetaMind Launches With $8 M From Benioff & Khosla Ventures",
-            "hyperlink": "https://venturebeat.com/entrepreneur/metamind-launch/",
-            "publication_name": "VentureBeat",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Jordan Novet",
-            "date_of_authorship": "2014-12-05",
-            "image_url": "https://venturebeat.com/wp-content/uploads/2014/12/metamind-founders.jpg"
-          }
-        },
-        {
-          "exhaustive_description": "Recode/Vox article on MetaMind\u2019s seed round.  Quotes Strohband (identified as MetaMind CEO) explaining the \u201cdrag, drop and learn\u201d interface and his move from Khosla Ventures into an operating role.  Confirms $8 million backing from Khosla Ventures and Marc Benioff and that the company had 10 employees four months after founding. \ue200cite\ue202turn14view0\ue201",
-          "mla_citation": {
-            "page_title": "MetaMind Sets Out to Bring Deep Learning to the Rest of Us",
-            "hyperlink": "https://www.vox.com/2014/12/5/11633550/metamind-sets-out-to-bring-deep-learning-to-the-rest-of-us",
-            "publication_name": "Vox (originally Recode)",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Liz Gannes",
-            "date_of_authorship": "2014-12-05",
-            "image_url": "https://cdn.vox-cdn.com/thumbor/.../metamind.jpg"
-          }
-        },
-        {
-          "exhaustive_description": "TechCrunch author-bio page for Sven Strohband.  Summarizes his Volkswagen ERL projects, role as lead engineer on Stanley, co-founder/CEO of MetaMind (now part of Salesforce Einstein), and board seats.  Serves as a concise compilation of his non-VC operating history. \ue200cite\ue202turn21view0\ue201",
-          "mla_citation": {
-            "page_title": "Sven Strohband \u2013 Author at TechCrunch",
-            "hyperlink": "https://techcrunch.com/author/sven-strohband/",
-            "publication_name": "TechCrunch",
-            "retrieval_date": "2025-07-25",
-            "author_name": "TechCrunch Staff",
-            "date_of_authorship": "2025-01-01",
-            "image_url": "https://techcrunch.com/wp-content/uploads/2025/02/Sven-Strohband-headshot.jpg"
-          }
-        },
-        {
-          "exhaustive_description": "FinSMEs funding note.  States that MetaMind was \u201cfounded in 2014 by CEO Sven Strohband and CTO Richard Socher,\u201d confirms the $8 million round from Khosla Ventures and Marc Benioff, and lists examples of MetaMind\u2019s product modules and early industry use-cases.  Reinforces Strohband\u2019s founder/CEO role. \ue200cite\ue202turn20search2\ue201",
-          "mla_citation": {
-            "page_title": "MetaMind Raises $8 M in Funding",
-            "hyperlink": "https://www.finsmes.com/2014/12/metamind-raises-8m-in-funding.html",
-            "publication_name": "FinSMEs",
-            "retrieval_date": "2025-07-25",
-            "author_name": "FinSMEs Staff",
-            "date_of_authorship": "2014-12-07",
-            "image_url": "/logos/finsmes.png"
+            "page_title": "\u201cE-clope SARL, en liquidation \u00e0 Gen\u00e8ve | Moneyhouse.\u201d",
+            "hyperlink": "https://www.moneyhouse.ch/fr/company/e-clope-sarl-en-liquidation-12954331381",
+            "publication_name": "Moneyhouse / Neue Z\u00fcrcher Zeitung AG",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Moneyhouse Editorial Team",
+            "date_of_authorship": "2018-05-18"
           }
         }
       ]
@@ -176,63 +141,69 @@
     "vc_career": {
       "pages": [
         {
-          "exhaustive_description": "Official biography on the Khosla Ventures website.  The page states that Sven Strohband is \u201cPartner and Managing Director at Khosla Ventures,\u201d and that he \u201cled the firm\u2019s early investments in Berkshire Grey, GitLab, Hermeus and Rocket Lab, among others.\u201d  It summarizes the venture-capital portion of his career as follows:  (1) current role \u2013 Partner & Managing Director at Khosla Ventures; (2) prior VC role \u2013 six years at Mohr Davidow Ventures, where he \u201cled technical diligence for the infrastructure IT and sustainability practices\u201d and helped portfolio companies with talent, product-market-fit experiments and fundraising strategy.  The biography also lists representative sectors and themes he backs\u2014robotics, AI, novel user-experience technologies\u2014and names numerous board seats (Berkshire Grey, Rocket Lab, Velo3D, Waabi, ThoughtSpot, etc.), illustrating both his sector focus (frontier tech/AI/robotics/space) and hands-on board involvement.  Non-VC portions (Volkswagen, Stanford \u201cStanley,\u201d MetaMind) are included for chronology/context but the page\u2019s only venture-capital dates are implicit (no explicit years).",
+          "exhaustive_description": "Official Sequoia Capital profile for Julien Bek. Identifies him as a Seed/Early-stage partner based in London. Narrative \u201cBackstory\u201d explains his entrepreneurial upbringing, a summer job at a VC firm where he first saw UiPath and Revolut pitches, and how that experience honed his ability to spot exceptional founders. The \u201cOn the lookout for\u201d section sets out his investment philosophy: enthusiasm for product-centric companies solving everyday problems, excitement about Europe\u2019s AI talent, and desire to help founders compete globally. Gives concrete examples of past or current investments\u2014including Revolut and Melio\u2014and lists present portfolio companies Lemni (2024), Magentic (2024) and Rillet (2025). Demonstrates thematic focus on AI agents, supply-chain tech and AI-native ERP, confirming current role, sector focus and companies backed.",
           "mla_citation": {
-            "page_title": "Sven Strohband | Khosla",
-            "hyperlink": "https://www.khoslaventures.com/team/sven-strohband",
-            "publication_name": "Khosla Ventures",
-            "retrieval_date": "2025-07-25",
-            "author_name": "\u2014",
-            "date_of_authorship": "2024-05-21",
-            "image_url": "/team/sven-strohband/portrait.jpg"
+            "page_title": "Julien Bek | Sequoia Capital",
+            "hyperlink": "https://www.sequoiacap.com/people/julien-bek/",
+            "publication_name": "Sequoia Capital",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Sequoia Capital",
+            "date_of_authorship": "0000-00-00"
           }
         },
         {
-          "exhaustive_description": "Excerpt from Rocket Lab USA, Inc.\u2019s definitive proxy statement (DEF 14A) filed with the U.S. SEC.  Under the Board-biographies section, it provides a detailed, date-specific timeline of Strohband\u2019s venture-capital career:  \u2022 \u201cSince May 2018\u201d \u2013 Managing Director, Khosla Ventures \u2022 \u201csince November 2012\u201d \u2013 Partner and CTO, Khosla Ventures \u2022 \u201c2006 to 2012\u201d \u2013 Partner and later CTO, Mohr Davidow Ventures.  It also confirms that he has served on Rocket Lab\u2019s board since 2013 and adds that he joined Berkshire Grey\u2019s board in 2021.  The filing therefore establishes exact entry points, promotions and titles across two venture firms and corroborates his deep-tech investment focus (Berkshire Grey: robotics/AI; Rocket Lab: space).",
+          "exhaustive_description": "News report on Sequoia\u2019s hiring of Accel principal Julien Bek as the sixth partner in its London office. Gives the hiring date (article published 6 June 2023) and explains that Bek will join later in 2023. Summarises his career trajectory: five years at Accel (associate \u2192 principal) leading the firm\u2019s deal for German startup Slay; earlier experience at Global Founders Capital where he helped back Revolut; board-observer roles at Hopin, BeReal and Primer. Provides context about Sequoia\u2019s European expansion and quotes Luciana Lixandru and Sonali De Rycker praising Bek\u2019s talent. Confirms his move from Accel to Sequoia and highlights his fintech focus.",
           "mla_citation": {
-            "page_title": "Rocket Lab USA, Inc. Notice of 2023 Annual Meeting and Proxy Statement (DEF 14A)",
-            "hyperlink": "https://www.sec.gov/Archives/edgar/data/1819994/000119312523127526/d472790ddef14a.htm",
-            "publication_name": "U.S. Securities and Exchange Commission",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Rocket Lab USA, Inc.",
-            "date_of_authorship": "2023-04-28",
-            "image_url": "/Archives/edgar/data/1819994/logo.jpg"
+            "page_title": "Sequoia bolsters London office with sixth partner hire as VC firm unveils radical restructure",
+            "hyperlink": "https://www.businessinsider.com/sequoia-vc-fund-set-hire-accel-investor-new-london-partner-2023-6",
+            "publication_name": "Business Insider",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Callum Burroughs",
+            "date_of_authorship": "2023-06-06"
           }
         },
         {
-          "exhaustive_description": "FinSMEs funding brief announcing Idibon\u2019s $1.4 million seed round (16 Apr 2013).  It notes that \u201cSven Strohband, Partner and CTO at Khosla Ventures, will join Idibon\u2019s board of directors.\u201d  Although terse, the item is important because it provides a near-contemporaneous, third-party confirmation that as of April 2013 Strohband already held the dual title of Partner & CTO at Khosla Ventures and that he actively represented the firm on portfolio company boards\u2014evidence of his functional role inside the partnership shortly after joining (late 2012) and of his thematic focus on natural-language AI startups.",
+          "exhaustive_description": "Forbes 30 Under 30 Europe \u2013 Finance profile of Julien Bek. Describes him (age 27 in 2021) as a Principal at Accel focusing on fintech, productivity and collaboration. Notes prior role at Global Founders Capital where he invested in Revolut and Albert. Lists educational credentials (B.A./B.Sc. Warwick Business School; M.A./M.Sc. University of Cambridge). Establishes early-career entry into venture capital (GFC, 2015) and thematic interest in fintech/productivity tools while at Accel.",
           "mla_citation": {
-            "page_title": "\u201cIdibon Raises $1.4M from Khosla Ventures.\u201d",
-            "hyperlink": "https://www.finsmes.com/2013/04/idibon-raises-1-4m-khosla-ventures.html",
-            "publication_name": "FinSMEs",
-            "retrieval_date": "2025-07-25",
-            "author_name": "FinSMEs Staff",
-            "date_of_authorship": "2013-04-16",
-            "image_url": "/wp-content/uploads/finsmes-logo.png"
+            "page_title": "Julien Bek",
+            "hyperlink": "https://www.forbes.com/profile/julien-bek/",
+            "publication_name": "Forbes",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Forbes Staff",
+            "date_of_authorship": "2021-01-00"
           }
         },
         {
-          "exhaustive_description": "TechCrunch Live event recap (12 May 2022) covering mobility startup Waabi.  The article identifies Raquel Urtasun\u2019s Waabi Series A and states that the \u201cSeries A lead investor Sven Strohband from Khosla Ventures\u201d joined the livestream.  This demonstrates (a) that Strohband personally leads large (\u2018monster\u2019) rounds, (b) that autonomous-vehicle / deep-AI mobility is a current investment theme for him, and (c) that he represents Khosla Ventures publicly as the lead partner on such deals\u2014useful for illustrating his present-day sector focus and investment philosophy of backing AI-first, deep-tech companies at significant scale.",
+          "exhaustive_description": "TechCrunch article covering Rillet\u2019s $25 million Series A (28 May 2025) led by Sequoia. Quotes partner Julien Bek extensively: he calls the general ledger \u201cthe beating heart of the finance function,\u201d explains why VCs once avoided the space and why Rillet changed his mind, and cites metrics he watched (NetSuite replacements) to validate the opportunity. Demonstrates Bek\u2019s current role leading Sequoia\u2019s investment, his interest in AI-driven enterprise software and his analytical approach to fintech/ERP opportunities. Confirms he led the deal and articulates his investment reasoning.",
           "mla_citation": {
-            "page_title": "\u201cWatch the Latest TechCrunch Live Here: Raising Monster Rounds for Self-Driving Mobility Startups.\u201d",
-            "hyperlink": "https://techcrunch.com/2022/05/12/watch-the-latest-techcrunch-live-here-raising-monster-rounds-for-self-driving-mobility-startups/",
+            "page_title": "Rillet raises $25M from Sequoia to automate general ledger systems using AI",
+            "hyperlink": "https://techcrunch.com/2025/05/28/rillet-raises-25m-from-sequoia-to-automate-general-ledger-systems-using-ai/",
             "publication_name": "TechCrunch",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Matt Burns",
-            "date_of_authorship": "2022-05-12",
-            "image_url": "/image/techcrunch-live-waabi.jpg"
+            "retrieval_date": "2025-07-26",
+            "author_name": "Marina Temkin",
+            "date_of_authorship": "2025-05-28"
           }
         },
         {
-          "exhaustive_description": "Speaker biography on the 2022 Satellite Innovation conference website.  Repeats that Strohband is \u201cPartner and Managing Director at Khosla Ventures\u201d and credits him with leading early investments in Berkshire Grey, GitLab, Hermeus and Rocket Lab\u2014reinforcing his deep-tech/space/AI investment themes.  It also reiterates his six-year tenure at Mohr Davidow Ventures conducting technical diligence and portfolio support, underscoring the skill set he brought when entering venture capital.  The page\u2019s emphasis on space and robotics (context of a satellite conference) further illustrates his thematic focus on frontier hardware and aerospace.  No years are given, but the information independently corroborates the positions detailed in other sources.",
+          "exhaustive_description": "Rillet press-release blog announcing its $25 million Series A (28 May 2025). Includes a quotation from Julien Bek, identified as \u201cthe Sequoia partner who led the firm\u2019s partnership with Rillet,\u201d saying ERP is \u201cone of the largest software categories\u201d yet \u201cvirtually untouched,\u201d and praising the founders\u2019 domain expertise and AI-native approach. Confirms Bek\u2019s lead-partner role, shows his thematic focus on AI in finance software, and documents portfolio involvement alongside Sequoia colleagues Roelof Botha and Cornelius Menke.",
           "mla_citation": {
-            "page_title": "\u201cDr. Sven Strohband \u2013 2022 Satellite Innovation.\u201d",
-            "hyperlink": "https://2022.satelliteinnovation.com/speakers/sven-strohband/",
-            "publication_name": "Satellite Innovation Conference",
-            "retrieval_date": "2025-07-25",
-            "author_name": "\u2014",
-            "date_of_authorship": "2022-10-11",
-            "image_url": "/speakers/sven-strohband.jpg"
+            "page_title": "Rillet raises $25M Series A from Sequoia Capital to bring AI to mid-market accounting",
+            "hyperlink": "https://www.rillet.com/blog/rillet-raises-25m-from-sequoia-capital",
+            "publication_name": "Rillet",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Rillet (press release)",
+            "date_of_authorship": "2025-05-28"
+          }
+        },
+        {
+          "exhaustive_description": "Speaker biography on the RAISE Summit 2025 website. Summarises Julien Bek\u2019s venture-capital career: current Partner at Sequoia Capital in London; works with Dust, Rillet, Tacto and Lemni; earlier experience \u201cswitching sides\u201d at Global Founders Capital and Accel, partnering with Revolut, Miro, Attio and BeReal. Provides concise timeline and highlights geographic roots (Switzerland) and education (University of Cambridge and Warwick Business School). Reinforces sequence of firms (GFC \u2192 Accel \u2192 Sequoia) and breadth of investment focus (AI, consumer, enterprise).",
+          "mla_citation": {
+            "page_title": "Speaker Details: RAISE Summit 2025 \u2013 Julien Bek",
+            "hyperlink": "https://tickets.raisesummit.com/2025/speaker/1759554/julien-bek",
+            "publication_name": "RAISE Summit",
+            "retrieval_date": "2025-07-26",
+            "author_name": "RAISE Summit",
+            "date_of_authorship": "2025-00-00"
           }
         }
       ]
@@ -240,183 +211,168 @@
     "notable_investments": {
       "pages": [
         {
-          "exhaustive_description": "GitLab\u2019s corporate blog post (published September 17 2015) formally announces that GitLab has closed a $4 million Series A round led by Khosla Ventures.  The post confirms that the money follows a July 2015 seed round, states that the capital will be used to \u201caccelerate growth and scale global operations,\u201d and quotes Vinod Khosla praising GitLab\u2019s open-source model.  No other investors nor valuation are disclosed, but the entry establishes Sven Strohband/Khosla Ventures as the lead for GitLab\u2019s Series A.",
+          "exhaustive_description": "Crunchbase\u2019s funding\u2010round profile for Revolut\u2019s Series A (announced 14 July 2016) lists round details and the full investor roster. Revolut raised a $10 million Series A and, under \u201cInvestors,\u201d Julien Bek is named among the 14 participants\u2014direct confirmation that he invested personally at this stage.",
           "mla_citation": {
-            "page_title": "GitLab announces $4M Series A funding from Khosla Ventures",
-            "hyperlink": "https://about.gitlab.com/blog/gitlab-announces-4m-series-a-funding-from-khosla-ventures/",
-            "publication_name": "GitLab Blog",
-            "retrieval_date": "2025-07-25",
-            "author_name": "GitLab Staff",
-            "date_of_authorship": "2015-09-17",
-            "image_url": "/"
-          }
-        },
-        {
-          "exhaustive_description": "GitLab\u2019s press-release (dated October 13 2021) details pricing and launch of the company\u2019s Nasdaq IPO.  It sets the offer at $77 per share for 10.4 million shares and notes trading will begin 14 Oct 2021 under ticker GTLB.  This source provides the exit outcome (public listing) for the earlier Khosla-backed investment.",
-          "mla_citation": {
-            "page_title": "GitLab Announces Pricing of Initial Public Offering",
-            "hyperlink": "https://about.gitlab.com/press/releases/2021-10-13-gitlab-announces-pricing-of-initial-public-offering/",
-            "publication_name": "GitLab Press Center",
-            "retrieval_date": "2025-07-25",
-            "author_name": "GitLab Inc.",
-            "date_of_authorship": "2021-10-13",
-            "image_url": "/"
-          }
-        },
-        {
-          "exhaustive_description": "Rocket Lab newsroom item announcing it \u201cSecures A-Round Funding from Khosla Ventures.\u201d  Though the exact dollar figure is not disclosed, the post confirms Khosla Ventures (partner: Sven Strohband) as sole investor for the Series A (dated October 1 2013 in accompanying Crunchbase data) and states funds will launch the company\u2019s orbital-launch-vehicle program aimed at small-satellite markets.",
-          "mla_citation": {
-            "page_title": "Rocket Lab Secures A-Round Funding from Khosla Ventures",
-            "hyperlink": "https://www.rocketlabusa.com/updates/rocket-lab-secures-a-round-funding-from-khosla-ventures/",
-            "publication_name": "Rocket Lab Newsroom",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Rocket Lab",
-            "date_of_authorship": "2013-10-01",
-            "image_url": "/"
-          }
-        },
-        {
-          "exhaustive_description": "Rocket Lab press release (August 25 2021) announcing completion of its SPAC merger with Vector Acquisition Corp.  It states common stock will trade on Nasdaq under RKLB beginning August 25 2021 and lists $777 million in gross proceeds\u2014defining the public-company outcome of Khosla\u2019s early investment.",
-          "mla_citation": {
-            "page_title": "Rocket Lab Completes Merger with Vector Acquisition Corporation to Become Publicly Traded End-to-End Space Company",
-            "hyperlink": "https://www.rocketlabusa.com/updates/rocket-lab-completes-merger-with-vector-acquisition-corporation-to-become-publicly-traded-end-to-end-space-company",
-            "publication_name": "Rocket Lab Newsroom",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Rocket Lab USA Inc.",
-            "date_of_authorship": "2021-08-25",
-            "image_url": "/"
-          }
-        },
-        {
-          "exhaustive_description": "Berkshire Grey press release (January 21 2020) discloses a $263 million Series B.  It lists SoftBank, Khosla Ventures (partner Sven Strohband), NEA and Canaan as participants, providing the round size, date and investor roster.",
-          "mla_citation": {
-            "page_title": "Berkshire Grey Raises $263 Million Series B Financing",
-            "hyperlink": "https://www.berkshiregrey.com/resources/press-release/berkshire-grey-raises-263-million-series-b-financing/",
-            "publication_name": "Berkshire Grey Press Center",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Berkshire Grey",
-            "date_of_authorship": "2020-01-21",
-            "image_url": "/"
-          }
-        },
-        {
-          "exhaustive_description": "Business Wire release (July 21 2021) announces Berkshire Grey\u2019s completed business combination with Revolution Acceleration Acquisition Corp.  It confirms trading of Class A shares on Nasdaq under ticker BGRY starting July 22 2021, documenting the exit (de-SPAC IPO) of the Khosla-backed company.",
-          "mla_citation": {
-            "page_title": "Berkshire Grey Completes Business Combination with Revolution Acceleration Acquisition Corp and Will Begin Trading on Nasdaq Under the Symbol \u201cBGRY\u201d",
-            "hyperlink": "https://www.businesswire.com/news/home/20210721005901/en/Berkshire-Grey-Completes-Business-Combination-with-Revolution-Acceleration-Acquisition-Corp-and-Will-Begin-Trading-on-Nasdaq-Under-the-Symbol-%E2%80%9CBGRY%E2%80%9D",
-            "publication_name": "Business Wire",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Business Wire Staff",
-            "date_of_authorship": "2021-07-21",
-            "image_url": "/"
-          }
-        },
-        {
-          "exhaustive_description": "Crunchbase funding-round profile (announced June 3 2015) lists Velo3D\u2019s Series A: $22.1 million, led solely by Khosla Ventures with partner Sven Strohband noted.  It provides the exact amount, date and lead-investor attribution.",
-          "mla_citation": {
-            "page_title": "Series A \u2013 Velo3D",
-            "hyperlink": "https://www.crunchbase.com/funding_round/velo3d-series-a--4c36c7f3",
+            "page_title": "Series A \u2013 Revolut \u2013 2016-07-14 \u2013 Crunchbase Funding Round Profile",
+            "hyperlink": "https://www.crunchbase.com/funding_round/revolut-series-a--924038eb",
             "publication_name": "Crunchbase",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Crunchbase Data",
-            "date_of_authorship": "2015-06-03",
-            "image_url": "/"
+            "retrieval_date": "2025-07-26",
+            "author_name": "Crunchbase Staff",
+            "date_of_authorship": "2016-07-14"
           }
         },
         {
-          "exhaustive_description": "Velo3D press release (September 29 2021) reports completion of its merger with JAWS Spitfire SPAC.  It states common stock will begin NYSE trading under ticker VLD on Sept 30 2021 and that the deal delivers $274 million in net proceeds, confirming the public-company exit.",
+          "exhaustive_description": "TechCrunch\u2019s report announces Revolut\u2019s $10 million Series A led by Balderton on 11 July 2016. It describes the product and confirms the size and timing of the round in which Bek invested.",
           "mla_citation": {
-            "page_title": "Velo3D Completes Merger with JAWS Spitfire Acquisition Corporation to Become a Publicly-Traded, Additive Manufacturing Technology Company",
-            "hyperlink": "https://ir.velo3d.com/news-events/press-releases/detail/51/velo3d-completes-merger-with-jaws-spitfire-acquisition",
-            "publication_name": "Business Wire / Velo3D IR",
-            "retrieval_date": "2025-07-25",
+            "page_title": "\u201cRevolut Grabs $10 Million for Its Mobile Foreign Exchange Service.\u201d",
+            "hyperlink": "https://techcrunch.com/2016/07/11/revolut-grabs-10-million-for-its-mobile-foreign-exchange-service/",
+            "publication_name": "TechCrunch",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Romain Dillet",
+            "date_of_authorship": "2016-07-11"
+          }
+        },
+        {
+          "exhaustive_description": "This follow-on TechCrunch piece details Revolut\u2019s Series E of $800 million (15 July 2021) led by SoftBank and Tiger Global, valuing the company at $33 billion\u2014evidence of the later-stage outcome of Bek\u2019s early bet.",
+          "mla_citation": {
+            "page_title": "\u201cRevolut Confirms a Fresh $800M in Funding at a $33B Valuation to Supercharge Its Financial Services Super App.\u201d",
+            "hyperlink": "https://techcrunch.com/2021/07/15/revolut-confirms-a-fresh-800m-in-funding-at-a-33b-valuation-to-supercharge-its-financial-services-superapp/",
+            "publication_name": "TechCrunch",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Ingrid Lunden",
+            "date_of_authorship": "2021-07-15"
+          }
+        },
+        {
+          "exhaustive_description": "Eric Newcomer\u2019s Substack scoop (3 June 2021) reveals that Andreessen Horowitz and Accel agreed to co-lead BeReal\u2019s $30 million Series A, valuing the French social app at about $150 million and citing Accel partner involvement\u2014establishing Bek\u2019s investment while at Accel and the year/size of the round.",
+          "mla_citation": {
+            "page_title": "\u201cSCOOP: a16z, Accel Back French Founder\u2019s Photo-Sharing App BeReal.\u201d",
+            "hyperlink": "https://www.newcomer.co/p/scoop-a16z-accel-back-french-founders",
+            "publication_name": "Newcomer (Substack)",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Eric Newcomer",
+            "date_of_authorship": "2021-06-03"
+          }
+        },
+        {
+          "exhaustive_description": "TechCrunch confirms BeReal\u2019s exit: on 11 June 2024 French publisher Voodoo acquired the company for \u20ac500 million. The article gives purchase price, buyer, leadership changes, and user metrics\u2014providing the outcome of Bek\u2019s investment.",
+          "mla_citation": {
+            "page_title": "\u201cBeReal Is Being Acquired by Mobile Apps and Games Company Voodoo for \u20ac500M.\u201d",
+            "hyperlink": "https://techcrunch.com/2024/06/11/bereal-is-being-acquired-by-mobile-apps-and-games-company-voodoo-for-e500m/",
+            "publication_name": "TechCrunch",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Aisha Malik",
+            "date_of_authorship": "2024-06-11"
+          }
+        },
+        {
+          "exhaustive_description": "Steve O\u2019Hear\u2019s TechCrunch story (8 Nov 2018) announces RealtimeBoard (now Miro) raising a $25 million Series A led by Accel. It gives round size, lead investor, company metrics, and product description\u2014evidence for Bek\u2019s 2018 investment while at Accel.",
+          "mla_citation": {
+            "page_title": "\u201cRealtimeBoard, a Visual Collaboration Platform for Companies, Raises $25M Led by Accel.\u201d",
+            "hyperlink": "https://techcrunch.com/2018/11/08/realtimeboard/",
+            "publication_name": "TechCrunch",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Steve O\u2019Hear",
+            "date_of_authorship": "2018-11-08"
+          }
+        },
+        {
+          "exhaustive_description": "Business Wire press release (5 Jan 2022) describes Miro\u2019s $400 million Series C at a $17.5 billion valuation, lists investors (including Accel) and cumulative funding\u2014showing the significant follow-on outcome of Bek\u2019s earlier Series A.",
+          "mla_citation": {
+            "page_title": "\u201cMiro Raises $400M in Series C Funding Round to Accelerate Innovation Through Visual Collaboration in the New Hybrid Workplace.\u201d",
+            "hyperlink": "https://www.businesswire.com/news/home/20220105005395/en/Miro-Raises-400M-in-Series-C-Funding-Round-to-Accelerate-Innovation-Through-Visual-Collaboration-in-the-New-Hybrid-Workplace",
+            "publication_name": "Business Wire",
+            "retrieval_date": "2025-07-26",
             "author_name": "Business Wire Staff",
-            "date_of_authorship": "2021-09-29",
-            "image_url": "/"
+            "date_of_authorship": "2022-01-05"
           }
         },
         {
-          "exhaustive_description": "TechCrunch article (October 29 2020) reports Hermeus\u2019 $16 million Series A.  It notes the round was led by Canaan Partners and included continued participation from Khosla Ventures, Bling Capital and Revolution\u2019s Rise of the Rest.  The story details planned use of funds to build and ground-test a full-scale Mach-5 engine.",
+          "exhaustive_description": "Business Insider article (8 Sept 2020) reports Melio\u2019s $80 million Series C and notes an earlier $48 million Series B led by Accel in April 2020\u2014pinpointing Bek\u2019s entry round and year.",
           "mla_citation": {
-            "page_title": "Supersonic aircraft startup Hermeus raises $16 million Series A",
-            "hyperlink": "https://techcrunch.com/2020/10/29/supersonic-aircraft-startup-hermeus-raises-16-million-series-a/",
-            "publication_name": "TechCrunch",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Darrell Etherington",
-            "date_of_authorship": "2020-10-29",
-            "image_url": "/"
+            "page_title": "\u201cUS Fintech Melio Has Raised $80 Million and Says Its Payments Volume Surged 700% During the Pandemic.\u201d",
+            "hyperlink": "https://www.businessinsider.com/payments-startup-melio-raises-80-million-2020-9",
+            "publication_name": "Business Insider",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Amy Borrett",
+            "date_of_authorship": "2020-09-08"
           }
         },
         {
-          "exhaustive_description": "CNBC report (March 10 2022) covers Hermeus\u2019 $100 million Series B, led by Sam Altman with participation from Founders Fund, In-Q-Tel and existing investors Khosla Ventures, Canaan Partners and Bling Capital.  The piece explains that the capital will fund completion of the Quarterhorse prototype and subsequent aircraft development, evidencing the follow-on round outcome.",
+          "exhaustive_description": "PR Newswire release (14 Sept 2021) announces Melio\u2019s $250 million Series D at a $4 billion valuation, listing Accel among existing investors\u2014documenting major follow-on funding.",
           "mla_citation": {
-            "page_title": "Hypersonic aircraft start-up Hermeus raises $100 million",
-            "hyperlink": "https://www.cnbc.com/2022/03/10/hypersonic-aircraft-startup-hermeus-raises-100-million.html",
-            "publication_name": "CNBC",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Michael Sheetz",
-            "date_of_authorship": "2022-03-10",
-            "image_url": "/"
-          }
-        },
-        {
-          "exhaustive_description": "The Verge feature (June 8 2021) announces Waabi\u2019s emergence from stealth with an $83.5 million Series A led by Khosla Ventures and joined by Uber and Aurora.  It confirms the amount, round type, lead investor and date, and describes Waabi\u2019s focus on autonomous trucking.",
-          "mla_citation": {
-            "page_title": "Waabi, the rare autonomous vehicle startup with a woman CEO, raises $83.5 million",
-            "hyperlink": "https://www.theverge.com/2021/6/8/22522824/waabi-raquel-urtasun-autonomous-vehicle-startup-stealth-funding",
-            "publication_name": "The Verge",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Andrew J. Hawkins",
-            "date_of_authorship": "2021-06-08",
-            "image_url": "/"
-          }
-        },
-        {
-          "exhaustive_description": "Waabi corporate blog / Globe Newswire release (June 18 2024) announces an oversubscribed $200 million Series B led by Uber and Khosla Ventures with strategic investors NVIDIA, Volvo, Porsche SE, Scania and others.  It states the funding lifts total capital to $280 million and will finance deployment of fully driverless trucks in 2025.",
-          "mla_citation": {
-            "page_title": "Waabi Raises $200M USD to Launch Fully Driverless Trucks in 2025",
-            "hyperlink": "https://waabi.ai/waabi-series-b-announcement/",
-            "publication_name": "Waabi Blog / Globe Newswire",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Waabi",
-            "date_of_authorship": "2024-06-18",
-            "image_url": "/"
-          }
-        },
-        {
-          "exhaustive_description": "ThoughtSpot press release (June 18 2014) announces a $30 million Series B round led by Khosla Ventures.  It highlights search-driven analytics technology, adds that Khosla partner Keith Rabois will join the board, and states proceeds will expand engineering and go-to-market teams.",
-          "mla_citation": {
-            "page_title": "ThoughtSpot Raises $30 Million in an Oversubscribed Series B Round",
-            "hyperlink": "https://www.thoughtspot.com/press-releases/thoughtspot-raises-30-million-oversubscribed-series-b-round",
-            "publication_name": "ThoughtSpot Press Releases",
-            "retrieval_date": "2025-07-25",
-            "author_name": "ThoughtSpot",
-            "date_of_authorship": "2014-06-18",
-            "image_url": "/"
-          }
-        },
-        {
-          "exhaustive_description": "PR Newswire release (December 5 2014) announces MetaMind\u2019s public launch and its $8 million seed round funded by Khosla Ventures and Salesforce CEO Marc Benioff.  It describes MetaMind\u2019s deep-learning platform and early benchmark performance, and identifies Sven Strohband as co-founder.",
-          "mla_citation": {
-            "page_title": "MetaMind Launches State-of-the-Art AI Platform Bringing Automated Predictions and Smarter Decision-Making to Businesses",
-            "hyperlink": "https://www.prnewswire.com/news-releases/metamind-launches-state-of-the-art-ai-platform-bringing-automated-predictions-and-smarter-decision-making-to-businesses-300005387.html",
+            "page_title": "\u201cMelio Raises $250M to Fuel Expansion of Its B2B Payments Platform and Forge New Partnerships, Tripling Valuation to $4B.\u201d",
+            "hyperlink": "https://www.prnewswire.com/news-releases/melio-raises-250m-to-fuel-expansion-of-its-b2b-payments-platform-and-forge-new-partnerships-tripling-valuation-to-4b-301376128.html",
             "publication_name": "PR Newswire",
-            "retrieval_date": "2025-07-25",
-            "author_name": "MetaMind",
-            "date_of_authorship": "2014-12-05",
-            "image_url": "/"
+            "retrieval_date": "2025-07-26",
+            "author_name": "PR Newswire Staff",
+            "date_of_authorship": "2021-09-14"
           }
         },
         {
-          "exhaustive_description": "TechCrunch news brief (April 4 2016) reports Salesforce\u2019s acquisition of MetaMind.  It confirms the deal, quotes CEO Richard Socher on integrating deep-learning into Salesforce products, and marks the exit outcome for the Khosla-backed company.",
+          "exhaustive_description": "Business Wire release (31 Oct 2024) details Melio\u2019s $150 million Series E (valuation $2 billion) led by Fiserv with Accel also participating\u2014evidence that the company remained private and continued to raise capital.",
           "mla_citation": {
-            "page_title": "Salesforce acquires MetaMind",
-            "hyperlink": "https://techcrunch.com/2016/04/04/saleforce-acquires-metamind/",
+            "page_title": "\u201cMelio Raises $150 Million to Expand B2B Payments Partnerships.\u201d",
+            "hyperlink": "https://www.businesswire.com/news/home/20241031916261/en/Melio-Raises-150-Million-To-Expand-B2B-Payments-Partnerships",
+            "publication_name": "Business Wire",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Business Wire Staff",
+            "date_of_authorship": "2024-10-31"
+          }
+        },
+        {
+          "exhaustive_description": "TechCrunch\u2019s 29 Nov 2020 article covers Primer\u2019s \u00a314 million ($18.7 million) Series A led by Accel, describing the low-code payments platform and early traction\u2014establishing Bek\u2019s entry round and year.",
+          "mla_citation": {
+            "page_title": "\u201cPrimer, the Fintech Helping Merchants Consolidate the Payments Stack, Raises \u00a314M Series A.\u201d",
+            "hyperlink": "https://techcrunch.com/2020/11/29/primed-for-accel/",
             "publication_name": "TechCrunch",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Connie Loizos",
-            "date_of_authorship": "2016-04-04",
-            "image_url": "/"
+            "retrieval_date": "2025-07-26",
+            "author_name": "Steve O\u2019Hear",
+            "date_of_authorship": "2020-11-29"
+          }
+        },
+        {
+          "exhaustive_description": "The follow-up TechCrunch piece (18 Oct 2021) announces Primer\u2019s $50 million Series B at a $425 million valuation, with Accel participating\u2014showing subsequent growth.",
+          "mla_citation": {
+            "page_title": "\u201cPrimer Raises $50M at a $425M Valuation for a Framework Designed to Help Merchants Build More Powerful Payment Flows.\u201d",
+            "hyperlink": "https://techcrunch.com/2021/10/18/primer-raises-50m-at-a-425m-valuation-for-a-framework-designed-to-help-merchants-build-more-powerful-payment-flows/",
+            "publication_name": "TechCrunch",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Ingrid Lunden",
+            "date_of_authorship": "2021-10-18"
+          }
+        },
+        {
+          "exhaustive_description": "Business Insider\u2019s 6 June 2023 profile on Bek\u2019s move to Sequoia confirms his prior deal roles: it states he \u201cwas involved in the fund\u2019s deal for Revolut\u201d and is \u201ca board observer at\u2026 BeReal and fintech Primer,\u201d directly linking him to those investments.",
+          "mla_citation": {
+            "page_title": "\u201cSequoia Bolsters London Office with Sixth Partner Hire as VC Firm Unveils Radical Restructure.\u201d",
+            "hyperlink": "https://www.businessinsider.com/sequoia-vc-fund-set-hire-accel-investor-new-london-partner-2023-6",
+            "publication_name": "Business Insider",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Callum Burroughs",
+            "date_of_authorship": "2023-06-06"
+          }
+        },
+        {
+          "exhaustive_description": "Sequoia\u2019s official blog post (11 Dec 2023) announcing its Series A investment in Tacto is co-authored by Luciana Lixandru, Julien Bek, and Cornelius Menke. It highlights why Sequoia led the \u20ac50 million round, confirming Bek\u2019s personal involvement and the 2023 investment year.",
+          "mla_citation": {
+            "page_title": "\u201cPartnering with Tacto: Future-Proof Supply Chains.\u201d",
+            "hyperlink": "https://www.sequoiacap.com/article/partnering-with-tacto-future-proof-supply-chains/",
+            "publication_name": "Sequoia Capital",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Luciana Lixandru, Julien Bek, and Cornelius Menke",
+            "date_of_authorship": "2023-12-11"
+          }
+        },
+        {
+          "exhaustive_description": "Tech.eu news article (12 Dec 2023) reports the \u20ac50 million Series A for Tacto led by Sequoia and Index Ventures, giving round size, use of funds, and investor list\u2014complementing Sequoia\u2019s blog with independent confirmation of the amount.",
+          "mla_citation": {
+            "page_title": "\u201cTacto Raises \u20ac50M for AI Supply Chain Solutions.\u201d",
+            "hyperlink": "https://tech.eu/2023/12/12/tacto-raises-eur50-million-for-ai-based-supply-chain-solutions",
+            "publication_name": "Tech.eu",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Cate Lawrence",
+            "date_of_authorship": "2023-12-12"
           }
         }
       ]
@@ -424,44 +380,52 @@
     "personal_life": {
       "pages": [
         {
-          "exhaustive_description": "The BestStartup US list article (published May 12 2022) contains a short biographical entry for Sven Strohband (scroll lines 126-131).  In addition to summarizing his career, it states:  \u201cIn his spare time, Sven enjoys teaching his kids to code, flying autonomous drones and cycling.\u201d  From this we learn (1) he is a parent with more than one child (\u201ckids\u201d) and (2) three leisure-time hobbies\u2014coding with his children, autonomous-drone flying and cycling.  No spouse or philanthropic details appear on the page.",
+          "exhaustive_description": "Official biography page for venture-capitalist Julien Bek on Sequoia Capital\u2019s website. Personal-life details include: 1) Parents\u2019 occupations \u2013 his mother was an astrologist and his father a recruiter \u2013 and the influence they had on his ability to \u201cread people.\u201d 2) He \u201ccomes from a family of entrepreneurs,\u201d helping to explain his own early interest in founding companies (a successful high-school startup and a less-successful venture while in graduate school at Cambridge are mentioned). 3) A short \u2018Personal Side\u2019 section lists his leisure interests and hobbies verbatim: \u201cPrivate Pilot; Weekend Cooking; Sailing; Pink Floyd.\u201d These lines confirm he is licensed to fly small aircraft, enjoys cooking on weekends, sails recreationally, and is a fan of the rock band Pink Floyd. No spouse, children, or philanthropic activities are referenced. Copyright notice at bottom shows 2025, but no individual author or publication date is supplied.",
           "mla_citation": {
-            "page_title": "Meet United States\u2019s 101 Top Managing Directors in the Finance Space",
-            "hyperlink": "https://beststartup.us/meet-united-statess-101-top-managing-directors-in-the-finance-space/",
-            "publication_name": "BestStartup US",
-            "retrieval_date": "2025-07-25",
-            "author_name": "BestStartup US staff",
-            "date_of_authorship": "2022-05-12",
-            "image_url": "/static/images/beststartup_logo.png"
+            "page_title": "\u201cJulien Bek | Sequoia Capital.\u201d",
+            "hyperlink": "https://www.sequoiacap.com/people/julien-bek/",
+            "publication_name": "Sequoia Capital",
+            "retrieval_date": "2025-07-26",
+            "author_name": "\u2014",
+            "date_of_authorship": "2025-00-00"
           }
         },
         {
-          "exhaustive_description": "The public Instalker mirror of Sven Strohband\u2019s Twitter profile (accessed July 25 2025) shows his self-written bio line: \u201cKhosla Ventures. Passionate about building things. Coding enthusiast. Dad. Biker. Welder in my spare time.\u201d  Personal-life takeaways:  \u2022 He identifies himself as a \u201cDad,\u201d confirming that he has children.  \u2022 Additional hobbies: biking (he calls himself a \u201cBiker\u201d) and welding (\u201cWelder in my spare time\u201d).  These hobbies complement those listed in the BestStartup entry; together they give a fuller picture of his leisure interests.",
+          "exhaustive_description": "Pay-walled Business Insider news story announcing Bek\u2019s move from Accel to become the sixth partner in Sequoia\u2019s London office. Personal information that can be used in a Wikipedia \u2018Personal life\u2019 section: 1) States he is \u201coriginally from Geneva, Switzerland,\u201d giving his hometown/early-life location. 2) Quotes colleagues praising his people skills and understanding of founders (useful color for personality, though not strictly \u2018personal life\u2019). The article is primarily career-focused and contains no data on family, philanthropy, or private views, but Geneva origin is unique to this source.",
           "mla_citation": {
-            "page_title": "Sven Strohband @SStrohband \u2013 Twitter Profile",
-            "hyperlink": "https://instalker.org/SStrohband",
-            "publication_name": "Instalker (Twitter profile mirror)",
-            "retrieval_date": "2025-07-25",
-            "author_name": "Sven Strohband (profile owner)",
-            "date_of_authorship": "2019-01-01",
-            "image_url": "https://pbs.twimg.com/profile_images/placeholder.jpg"
+            "page_title": "\u201cSequoia bolsters London office with sixth partner hire as VC firm unveils radical restructure.\u201d",
+            "hyperlink": "https://www.businessinsider.com/sequoia-vc-fund-set-hire-accel-investor-new-london-partner-2023-6",
+            "publication_name": "Business Insider",
+            "retrieval_date": "2025-07-26",
+            "author_name": "Callum Burroughs",
+            "date_of_authorship": "2023-06-06"
           }
         },
         {
-          "exhaustive_description": "NextBigWhat\u2019s free written summary of the podcast episode \u201cWhat AI is Making Possible | Ilya Sutskever and Sven Strohband\u201d (posted July 22 2023) records direct quotation attributed to Strohband: \u201cThese challenges are big, but if you manage to overcome them, it is so worthwhile because then we could create truly unbelievable lives for ourselves that are completely unimaginable.\u201d  The surrounding text shows he is discussing the societal upsides of safely harnessing super-intelligent AI.  This reveals a documented public stance: he is an AI optimist who believes solving AI-alignment challenges can yield dramatic quality-of-life improvements.  While primarily professional, it is a personal philosophical position on a major social issue.",
+          "exhaustive_description": "Automatically generated Clay Earth profile that aggregates public-web information on Bek. Adds several personal-life datapoints not all found elsewhere: 1) Re-affirms he is \u201coriginally from Geneva, Switzerland.\u201d 2) Gives his academic credentials (B.A. Warwick Business School; M.A./M.S. University of Cambridge). 3) Lists personal interests: \u201csailing and cooking,\u201d and notes that \u201che is also a private pilot,\u201d echoing the Sequoia page. 4) Mentions an early entrepreneurial foray: he \u201cfounded E-clope, one of the first companies in the e-cigarette market,\u201d while still in school \u2013 useful anecdote for early-life/hobbies. The page is compiled by Clay; no human by-line or date is provided.",
           "mla_citation": {
-            "page_title": "What AI is Making Possible | Ilya Sutskever and Sven Strohband | Free Podcast Summary",
-            "hyperlink": "https://nextbigwhat.com/what-ai-is-making-possible-ilya-sutskever-and-sven-strohband-free-podcast-summary/",
-            "publication_name": "NextBigWhat",
-            "retrieval_date": "2025-07-25",
-            "author_name": "NextBigWhat editorial team",
-            "date_of_authorship": "2023-07-22",
-            "image_url": "https://nextbigwhat.com/wp-content/uploads/2023/07/ai_podcast_cover.jpg"
+            "page_title": "\u201cJulien Bek.\u201d",
+            "hyperlink": "https://clay.earth/profile/julien-bek",
+            "publication_name": "Clay Earth",
+            "retrieval_date": "2025-07-26",
+            "author_name": "\u2014",
+            "date_of_authorship": "0000-00-00"
+          }
+        },
+        {
+          "exhaustive_description": "Forbes \u201830 Under 30 Europe \u2013 Finance (2021)\u2019 profile of Julien Bek. Personal-life-relevant facts: 1) Age at time of publication is given: \u201c27-year-old Bek,\u201d implying birth year circa 1993-1994. 2) Confirms current residence/work base: \u201cLondon, United Kingdom.\u201d 3) Restates his educational background (degrees from Cambridge and Warwick). The short blurb is career-heavy and contains no family or philanthropy details but does supply age and location not explicit elsewhere.",
+          "mla_citation": {
+            "page_title": "\u201cJulien Bek.\u201d",
+            "hyperlink": "https://www.forbes.com/profile/julien-bek/",
+            "publication_name": "Forbes",
+            "retrieval_date": "2025-07-26",
+            "author_name": "\u2014",
+            "date_of_authorship": "2021-00-00"
           }
         }
       ]
     }
   },
-  "created_at": "2025-07-25T19:17:45.828364",
-  "updated_at": "2025-07-25T19:24:05.902857"
+  "created_at": "2025-07-26T01:11:19.316367",
+  "updated_at": "2025-07-26T01:15:19.423400"
 }

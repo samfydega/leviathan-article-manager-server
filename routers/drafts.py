@@ -32,11 +32,11 @@ EntityType = Literal["venture_capitalist", "startup_founder", "startup_company",
 
 # Prompt IDs and versions for different research sections
 PROMPT_IDS = {
-    "early_life": {"id": "pmpt_6881597633e08193a2ea8b886f8aa8990e7ece07212aea25", "version": "8"},
-    "pre_vc_career": {"id": "pmpt_68816c05988c8193856a632187c8fe4d08d13066f2175710", "version": "4"},
-    "vc_career": {"id": "pmpt_68816c254784819792b04926ab25312c0ae69cb869929a41", "version": "4"},
-    "notable_investments": {"id": "pmpt_68816c4c78fc8190858a214948b257940b4a7c7d059861df", "version": "4"},
-    "personal_life": {"id": "pmpt_68816c6a82a8819687e1eeda14f1a9480ae9ac0c76914685", "version": "4"}
+    "early_life": {"id": "pmpt_6881597633e08193a2ea8b886f8aa8990e7ece07212aea25", "version": "10"},
+    "pre_vc_career": {"id": "pmpt_68816c05988c8193856a632187c8fe4d08d13066f2175710", "version": "6"},
+    "vc_career": {"id": "pmpt_68816c254784819792b04926ab25312c0ae69cb869929a41", "version": "6"},
+    "notable_investments": {"id": "pmpt_68816c4c78fc8190858a214948b257940b4a7c7d059861df", "version": "6"},
+    "personal_life": {"id": "pmpt_68816c6a82a8819687e1eeda14f1a9480ae9ac0c76914685", "version": "6"}
 }
 
 # Article drafting prompt
@@ -495,8 +495,7 @@ async def draft_document(draft_id: str):
         # Section mapping for the API calls
         section_mapping = {
             "early_life": "Early Life",
-            "pre_vc_career": "Pre-VC and Non-VC Career", 
-            "vc_career": "Venture Capitalist Career",
+            "career": "Career", 
             "notable_investments": "Notable Investments",
             "personal_life": "Personal Life"
         }
@@ -504,32 +503,30 @@ async def draft_document(draft_id: str):
         entity_name = entity_data.get('name', draft_id)
         entity_context = entity_data.get('context', '')
         
+        # Helper function to get all sources from all research tasks
+        def get_all_research_pages():
+            all_pages = []
+            
+            # Research sections to combine
+            research_sections = ['early_life', 'pre_vc_career', 'vc_career', 'notable_investments', 'personal_life']
+            
+            for section_key in research_sections:
+                section_result = results.get(section_key, {})
+                if 'pages' in section_result:
+                    all_pages.extend(section_result['pages'])
+            
+            return all_pages
+        
+        # Get all pages from all research tasks
+        all_research_pages = get_all_research_pages()
+        all_pages_str = json.dumps(all_research_pages)
+        
         # Process each section serially
         sections_data = {}
         
         for section_key, section_name in section_mapping.items():
-            section_result = results.get(section_key)
-            if not section_result or 'pages' not in section_result:
-                print(f"Warning: No data for section {section_key}")
-                continue
-            
-            # Extract sources from the pages data
-            sources = []
-            for i, page in enumerate(section_result['pages']):
-                if 'mla_citation' in page:
-                    citation = page['mla_citation']
-                    source = {
-                        "id": i,
-                        "title": citation.get('page_title', ''),
-                        "url": citation.get('hyperlink', ''),
-                        "author": citation.get('author_name', ''),
-                        "publisher": citation.get('publication_name', ''),
-                        "date": citation.get('date_of_authorship', '')
-                    }
-                    sources.append(source)
-            
-            # Create sources string for the prompt
-            sources_str = json.dumps(sources)
+            # ALL sections get ALL pages from ALL research tasks
+            pages_str = all_pages_str
             
             # Use different endpoint for notable_investments
             if section_key == "notable_investments":
@@ -537,12 +534,12 @@ async def draft_document(draft_id: str):
                 response = client.responses.create(
                     prompt={
                         "id": "pmpt_6883c4eb15f481949785358f13d37243075c7030141d46f3",
-                        "version": "5",
+                        "version": "7",
                         "variables": {
                             "entity": entity_name,
                             "context": entity_context,
                             "type": "Venture Capitalist",
-                            "sources": sources_str
+                            "sources": pages_str
                         }
                     }
                 )
@@ -551,13 +548,13 @@ async def draft_document(draft_id: str):
                 response = client.responses.create(
                     prompt={
                         "id": "pmpt_6883c4dcfe5c819387acad8910d66c340a50e18e12e625a6",
-                        "version": "4",
+                        "version": "6",
                         "variables": {
                             "entity": entity_name,
                             "context": entity_context,
                             "type": "Venture Capitalist",
                             "section": section_name,
-                            "sources": sources_str
+                            "sources": pages_str
                         }
                     },
                     input=[],
@@ -592,27 +589,17 @@ async def draft_document(draft_id: str):
                                                 },
                                                 "citations": {
                                                     "type": "array",
-                                                    "description": "Optional in-line citations within this block, referencing the reference list by ID. Each includes a text span (start and end).",
+                                                    "description": "Optional in-line citations within this block, referencing the reference list by ID.",
                                                     "items": {
                                                         "type": "object",
                                                         "properties": {
                                                             "id": {
                                                                 "type": "integer",
                                                                 "description": "The ID of the source being cited, corresponding to the references list."
-                                                            },
-                                                            "start": {
-                                                                "type": "integer",
-                                                                "description": "Starting character index of the text span for this citation."
-                                                            },
-                                                            "end": {
-                                                                "type": "integer",
-                                                                "description": "Ending character index of the text span for this citation."
                                                             }
                                                         },
                                                         "required": [
-                                                            "id",
-                                                            "start",
-                                                            "end"
+                                                            "id"
                                                         ],
                                                         "additionalProperties": False
                                                     }
@@ -678,7 +665,7 @@ async def draft_document(draft_id: str):
                         }
                     },
                     reasoning={},
-                    max_output_tokens=2048,
+                    max_output_tokens=5000,
                     store=True
                 )
             
@@ -698,49 +685,7 @@ async def draft_document(draft_id: str):
             else:
                 sections_data[section_key] = {"blocks": [], "references": []}
         
-        # Now make the 6th call for person_infobox using sources from personal_life and early_life
-        personal_life_result = results.get('personal_life', {})
-        early_life_result = results.get('early_life', {})
-        
-        # Combine sources from both sections
-        combined_sources = []
-        source_id_counter = 0
-        
-        # Add personal_life sources
-        if 'pages' in personal_life_result:
-            for page in personal_life_result['pages']:
-                if 'mla_citation' in page:
-                    citation = page['mla_citation']
-                    source = {
-                        "id": source_id_counter,
-                        "title": citation.get('page_title', ''),
-                        "url": citation.get('hyperlink', ''),
-                        "author": citation.get('author_name', ''),
-                        "publisher": citation.get('publication_name', ''),
-                        "date": citation.get('date_of_authorship', '')
-                    }
-                    combined_sources.append(source)
-                    source_id_counter += 1
-        
-        # Add early_life sources
-        if 'pages' in early_life_result:
-            for page in early_life_result['pages']:
-                if 'mla_citation' in page:
-                    citation = page['mla_citation']
-                    source = {
-                        "id": source_id_counter,
-                        "title": citation.get('page_title', ''),
-                        "url": citation.get('hyperlink', ''),
-                        "author": citation.get('author_name', ''),
-                        "publisher": citation.get('publication_name', ''),
-                        "date": citation.get('date_of_authorship', '')
-                    }
-                    combined_sources.append(source)
-                    source_id_counter += 1
-        
-        # Create combined sources string
-        combined_sources_str = json.dumps(combined_sources)
-        
+        # Now make the 6th call for person_infobox using ALL pages from all research tasks
         # Call person infobox endpoint
         person_infobox_response = client.responses.create(
             prompt={
@@ -750,7 +695,7 @@ async def draft_document(draft_id: str):
                     "entity": entity_name,
                     "context": entity_context,
                     "type": "Venture Capitalist",
-                    "sources": combined_sources_str
+                    "sources": all_pages_str
                 }
             }
         )
@@ -770,6 +715,37 @@ async def draft_document(draft_id: str):
                 sections_data['person_infobox'] = {"blocks": [], "references": []}
         else:
             sections_data['person_infobox'] = {"blocks": [], "references": []}
+        
+        # Now make the lead section call using ALL pages from all 5 research tasks
+        # Call lead section endpoint
+        lead_response = client.responses.create(
+            prompt={
+                "id": "pmpt_68842015293c819483d326d4693478e10e0fc773bb2e0e5d",
+                "version": "3",
+                "variables": {
+                    "entity": entity_name,
+                    "context": entity_context,
+                    "type": "Venture Capitalist",
+                    "sources": all_pages_str
+                }
+            }
+        )
+        
+        # Extract the lead response content
+        if lead_response.output and len(lead_response.output) > 0:
+            last_output = lead_response.output[-1]
+            if hasattr(last_output, 'content') and last_output.content:
+                content_text = last_output.content[0].text
+                try:
+                    lead_data = json.loads(content_text)
+                    sections_data['lead'] = lead_data
+                except json.JSONDecodeError as e:
+                    print(f"Error parsing lead response: {e}")
+                    sections_data['lead'] = {"blocks": [], "references": []}
+            else:
+                sections_data['lead'] = {"blocks": [], "references": []}
+        else:
+            sections_data['lead'] = {"blocks": [], "references": []}
         
         # Create or update article entry
         existing_article = articles_store.get(draft_id)
