@@ -3,9 +3,10 @@ from typing import List
 import json
 import os
 import fcntl
+import time
 from contextlib import contextmanager
 from openai import OpenAI
-from models import NotabilityData, CreateNotabilityRequest, ResearchRequest, ResearchResponse, ResearchStatusRequest, ResearchStatusResponse, NotabilityStatusRequest, NotabilityStatusResponse
+from models import NotabilityData, CreateNotabilityRequest, ResearchRequest, ResearchResponse, ResearchStatusRequest, ResearchStatusResponse, NotabilityStatusRequest, NotabilityStatusResponse, TIMEOUT_SECONDS, MAX_RETRIES
 from routers.entities import entities_store, save_entities, load_entities
 
 # Create router for notability endpoints
@@ -44,6 +45,13 @@ def load_notability_data():
                     try:
                         notability_data = json.loads(line)
                         if 'id' in notability_data:
+                            # Migrate old data to include new fields
+                            if 'research_request_timestamp' not in notability_data:
+                                notability_data['research_request_timestamp'] = None
+                            if 'notability_request_timestamp' not in notability_data:
+                                notability_data['notability_request_timestamp'] = None
+                            if 'retry_count' not in notability_data:
+                                notability_data['retry_count'] = 0
                             notability_store[notability_data['id']] = notability_data
                     except json.JSONDecodeError:
                         continue
@@ -57,6 +65,124 @@ def save_notability_data():
 
 # Load data on module import
 load_notability_data()
+
+def is_request_timed_out(timestamp: float) -> bool:
+    """Check if a request has timed out based on its timestamp"""
+    if timestamp is None:
+        return False
+    return time.time() - timestamp > TIMEOUT_SECONDS
+
+def cancel_and_retry_research_request(entity_id: str, entity_data: dict) -> str:
+    """Cancel a hanging research request and retry it"""
+    print(f"[DEBUG] Cancelling and retrying research request for entity {entity_id}")
+    
+    # Cancel the hanging request
+    try:
+        if entity_data.get('openai_research_request_id'):
+            client.responses.cancel(entity_data['openai_research_request_id'])
+            print(f"[DEBUG] Cancelled research request: {entity_data['openai_research_request_id']}")
+    except Exception as e:
+        print(f"[DEBUG] Error cancelling research request: {str(e)}")
+    
+    # Get entity info for retry
+    entity = entities_store[entity_id]
+    canonical_name = entity.get('name', '')
+    context = entity.get('context', '')
+    
+    # Create idempotency key based on entity ID and retry count
+    retry_count = entity_data.get('retry_count', 0) + 1
+    idempotency_key = f"research_{entity_id}_{retry_count}"
+    
+    # Retry the request
+    try:
+        response = client.responses.create(
+            prompt={
+                "id": "pmpt_687eaf8edda88194b8f2c14fa48e3a45059695391023684d",
+                "version": "10",
+                "variables": {
+                    "entity_name": canonical_name,
+                    "context": context
+                }
+            },
+            background=True,
+            idempotency_key=idempotency_key
+        )
+        
+        # Update the notability data with new request ID and timestamp
+        entity_data['openai_research_request_id'] = response.id
+        entity_data['research_request_timestamp'] = time.time()
+        entity_data['retry_count'] = retry_count
+        notability_store[entity_id] = entity_data
+        save_notability_data()
+        
+        print(f"[DEBUG] Retried research request with ID: {response.id}")
+        return response.id
+        
+    except Exception as e:
+        print(f"[DEBUG] Failed to retry research request: {str(e)}")
+        # Mark as failed if we can't retry
+        entity_data['openai_research_request_id'] = None
+        entity_data['research_request_timestamp'] = None
+        notability_store[entity_id] = entity_data
+        save_notability_data()
+        raise HTTPException(status_code=500, detail=f"Failed to retry research request: {str(e)}")
+
+def cancel_and_retry_notability_request(entity_id: str, entity_data: dict) -> str:
+    """Cancel a hanging notability request and retry it"""
+    print(f"[DEBUG] Cancelling and retrying notability request for entity {entity_id}")
+    
+    # Cancel the hanging request
+    try:
+        if entity_data.get('openai_notability_request_id'):
+            client.responses.cancel(entity_data['openai_notability_request_id'])
+            print(f"[DEBUG] Cancelled notability request: {entity_data['openai_notability_request_id']}")
+    except Exception as e:
+        print(f"[DEBUG] Error cancelling notability request: {str(e)}")
+    
+    # Get entity info for retry
+    entity = entities_store[entity_id]
+    entity_name = entity.get('name', '')
+    entity_context = entity.get('context', '')
+    sources_str = json.dumps(entity_data.get('sources', []))
+    
+    # Create idempotency key based on entity ID and retry count
+    retry_count = entity_data.get('retry_count', 0) + 1
+    idempotency_key = f"notability_{entity_id}_{retry_count}"
+    
+    # Retry the request
+    try:
+        response = client.responses.create(
+            prompt={
+                "id": "pmpt_687ec395081c81969578b916f2d6a6d609eb423f8db71c55",
+                "version": "5",
+                "variables": {
+                    "entity_name": entity_name,
+                    "context": entity_context,
+                    "sources": sources_str
+                }
+            },
+            background=True,
+            idempotency_key=idempotency_key
+        )
+        
+        # Update the notability data with new request ID and timestamp
+        entity_data['openai_notability_request_id'] = response.id
+        entity_data['notability_request_timestamp'] = time.time()
+        entity_data['retry_count'] = retry_count
+        notability_store[entity_id] = entity_data
+        save_notability_data()
+        
+        print(f"[DEBUG] Retried notability request with ID: {response.id}")
+        return response.id
+        
+    except Exception as e:
+        print(f"[DEBUG] Failed to retry notability request: {str(e)}")
+        # Mark as failed if we can't retry
+        entity_data['openai_notability_request_id'] = None
+        entity_data['notability_request_timestamp'] = None
+        notability_store[entity_id] = entity_data
+        save_notability_data()
+        raise HTTPException(status_code=500, detail=f"Failed to retry notability request: {str(e)}")
 
 @router.post("/{entity_id}", response_model=NotabilityData)
 def create_notability_research_job(entity_id: str):
@@ -104,15 +230,19 @@ def create_notability_research_job(entity_id: str):
         if entity_id in notability_store:
             notability_data = notability_store[entity_id]
             notability_data['openai_research_request_id'] = openai_research_request_id
+            notability_data['research_request_timestamp'] = time.time()
         else:
             # Create new notability entry with null values except research_request_id
             notability_data = {
                 'id': entity_id,
                 'notability_status': None,
                 'openai_research_request_id': openai_research_request_id,
+                'research_request_timestamp': time.time(),
                 'sources': [],
                 'openai_notability_request_id': None,
-                'notability_rationale': None
+                'notability_request_timestamp': None,
+                'notability_rationale': None,
+                'retry_count': 0
             }
         
         # Add/update in-memory store
@@ -185,14 +315,20 @@ def research_entity(request: ResearchRequest):
         # Store the request ID in the notability store
         if request.id in notability_store:
             notability_store[request.id]['openai_research_request_id'] = openai_research_request_id
+            notability_store[request.id]['research_request_timestamp'] = time.time()
         else:
             # Create new entry
             notability_data = {
                 'id': request.id,
                 'is_notable': None,
                 'openai_research_request_id': openai_research_request_id,
+                'research_request_timestamp': time.time(),
                 'sources': [],
-                'openai_notability_request_id': None
+                'openai_notability_request_id': None,
+                'notability_request_timestamp': None,
+                'notability_status': None,
+                'notability_rationale': None,
+                'retry_count': 0
             }
             notability_store[request.id] = notability_data
         
@@ -224,6 +360,40 @@ def check_research_status(request: ResearchStatusRequest):
     if not openai_research_request_id:
         print(f"[DEBUG] No research request ID found for entity {request.id}")
         raise HTTPException(status_code=400, detail="No research request found for this entity")
+    
+    # Check for timeout before making API call
+    research_timestamp = entity_data.get('research_request_timestamp')
+    retry_count = entity_data.get('retry_count', 0)
+    
+    if research_timestamp and is_request_timed_out(research_timestamp):
+        print(f"[DEBUG] Research request timed out for entity {request.id}")
+        
+        if retry_count >= MAX_RETRIES:
+            print(f"[DEBUG] Max retries exceeded for entity {request.id}, marking as failed")
+            # Mark as failed
+            entity_data['openai_research_request_id'] = None
+            entity_data['research_request_timestamp'] = None
+            notability_store[request.id] = entity_data
+            save_notability_data()
+            
+            # Update entity status to failed
+            entities_store[request.id]['status'] = 'failed'
+            save_entities()
+            
+            return ResearchStatusResponse(
+                status="failed",
+                openai_research_request_id=openai_research_request_id,
+                sources=None
+            )
+        else:
+            # Retry the request
+            print(f"[DEBUG] Retrying research request for entity {request.id} (attempt {retry_count + 1})")
+            new_request_id = cancel_and_retry_research_request(request.id, entity_data)
+            return ResearchStatusResponse(
+                status="pending",
+                openai_research_request_id=new_request_id,
+                sources=None
+            )
     
     try:
         print(f"[DEBUG] Calling OpenAI API to retrieve response for ID: {openai_research_request_id}")
@@ -307,6 +477,7 @@ def check_research_status(request: ResearchStatusRequest):
                     
                     # Update notability data with the notability request ID
                     entity_data['openai_notability_request_id'] = notability_response.id
+                    entity_data['notability_request_timestamp'] = time.time()
                     notability_store[request.id] = entity_data
                     save_notability_data()
                     
@@ -375,6 +546,40 @@ def check_notability_status(request: NotabilityStatusRequest):
     if not openai_notability_request_id:
         print(f"[DEBUG] No notability request ID found for entity {request.id}")
         raise HTTPException(status_code=400, detail="No notability request found for this entity")
+    
+    # Check for timeout before making API call
+    notability_timestamp = entity_data.get('notability_request_timestamp')
+    retry_count = entity_data.get('retry_count', 0)
+    
+    if notability_timestamp and is_request_timed_out(notability_timestamp):
+        print(f"[DEBUG] Notability request timed out for entity {request.id}")
+        
+        if retry_count >= MAX_RETRIES:
+            print(f"[DEBUG] Max retries exceeded for entity {request.id}, marking as failed")
+            # Mark as failed
+            entity_data['openai_notability_request_id'] = None
+            entity_data['notability_request_timestamp'] = None
+            entity_data['notability_status'] = 'failed'
+            entity_data['notability_rationale'] = 'Request timed out after multiple retries'
+            notability_store[request.id] = entity_data
+            save_notability_data()
+            
+            return NotabilityStatusResponse(
+                status="failed",
+                openai_notability_request_id=openai_notability_request_id,
+                notability_status="failed",
+                notability_rationale="Request timed out after multiple retries"
+            )
+        else:
+            # Retry the request
+            print(f"[DEBUG] Retrying notability request for entity {request.id} (attempt {retry_count + 1})")
+            new_request_id = cancel_and_retry_notability_request(request.id, entity_data)
+            return NotabilityStatusResponse(
+                status="pending",
+                openai_notability_request_id=new_request_id,
+                notability_status=None,
+                notability_rationale=None
+            )
     
     try:
         print(f"[DEBUG] Calling OpenAI API to retrieve notability response for ID: {openai_notability_request_id}")
