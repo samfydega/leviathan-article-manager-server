@@ -29,7 +29,7 @@ def file_lock(filename, mode='r'):
 
 # Simple key-value store - load from file into dictionary
 notability_store = {}
-notability_file = "notability.txt"
+notability_file = "data/notability.txt"
 
 # Initialize OpenAI client
 client = OpenAI()
@@ -454,53 +454,46 @@ def check_research_status(request: ResearchStatusRequest):
                 notability_store[request.id] = entity_data
                 save_notability_data()
                 
-                # Update entity status to researched
-                entities_store[request.id]['status'] = 'researched'
+                # Update entity status to notability
+                entities_store[request.id]['status'] = {
+                    'state': 'notability',
+                    'phase': 'processing'
+                }
                 # Save entities to file using the proper function
                 save_entities()
                 
-                # Trigger notability evaluation
+                # Automatically determine notability based on meets_standards count
                 try:
-                    entity = entities_store[request.id]
-                    entity_name = entity.get('name', '')
-                    entity_context = entity.get('context', '')
+                    # Count sources that meet standards
+                    meets_standards_count = sum(1 for source in sources if source.meets_standards)
                     
-                    print(f"[DEBUG] Entity data for notability trigger: {entity}")
-                    print(f"[DEBUG] Entity name: {entity_name}")
-                    print(f"[DEBUG] Entity context: {entity_context}")
+                    # Determine notability status based on count
+                    if meets_standards_count >= 2:
+                        if meets_standards_count > 2:
+                            notability_status = "exceeds"
+                        else:
+                            notability_status = "meets"
+                        notability_rationale = f"Entity meets Wikipedia's General Notability Guidelines with {meets_standards_count} independent, reliable, secondary sources providing substantial coverage."
+                    else:
+                        notability_status = "fails"
+                        notability_rationale = f"Entity does not meet Wikipedia's General Notability Guidelines. Only {meets_standards_count} source(s) meet the required standards (minimum 2 needed)."
                     
-                    # Convert sources to string format for the API
-                    sources_str = json.dumps([source.dict() for source in sources])
-                    print(f"[DEBUG] Sources string length: {len(sources_str)}")
-                    
-                    print(f"[DEBUG] Starting notability evaluation for {request.id}")
-                    notability_response = client.responses.create(
-                        prompt={
-                            "id": "pmpt_687ec395081c81969578b916f2d6a6d609eb423f8db71c55",
-                            "version": "5",
-                            "variables": {
-                                "entity_name": entity_name,
-                                "context": entity_context,
-                                "sources": sources_str
-                            }
-                        },
-                        background=True
-                    )
-                    
-                    # Update notability data with the notability request ID
-                    entity_data['openai_notability_request_id'] = notability_response.id
-                    entity_data['notability_request_timestamp'] = time.time()
+                    # Update notability data with the determined status
+                    entity_data['notability_status'] = notability_status
+                    entity_data['notability_rationale'] = notability_rationale
+                    entity_data['openai_notability_request_id'] = None  # No OpenAI call needed
+                    entity_data['notability_request_timestamp'] = None
                     notability_store[request.id] = entity_data
                     save_notability_data()
                     
-                    print(f"[DEBUG] Notability evaluation started with ID: {notability_response.id}")
+                    print(f"[DEBUG] Automatically determined notability: {notability_status} ({meets_standards_count} sources meet standards)")
                     
                 except Exception as e:
-                    print(f"[DEBUG] Failed to start notability evaluation: {str(e)}")
+                    print(f"[DEBUG] Failed to determine notability automatically: {str(e)}")
                     print(f"[DEBUG] Exception type: {type(e)}")
                     import traceback
                     print(f"[DEBUG] Full traceback: {traceback.format_exc()}")
-                    # Don't fail the research response if notability evaluation fails to start
+                    # Don't fail the research response if notability determination fails
                 
                 return ResearchStatusResponse(
                     status="completed",
@@ -509,8 +502,11 @@ def check_research_status(request: ResearchStatusRequest):
                 )
                 
             except json.JSONDecodeError as e:
-                # If we can't parse the response, still return completed status and mark as researched
-                entities_store[request.id]['status'] = 'researched'
+                # If we can't parse the response, still return completed status and mark as notability
+                entities_store[request.id]['status'] = {
+                    'state': 'notability',
+                    'phase': 'processing'
+                }
                 # Save entities to file using the proper function
                 save_entities()
                 
@@ -561,6 +557,10 @@ def trigger_notability_evaluation(request: NotabilityStatusRequest):
     # Check if notability evaluation is already in progress
     if entity_data.get('openai_notability_request_id'):
         raise HTTPException(status_code=400, detail="Notability evaluation already in progress.")
+    
+    # Check if notability was already determined automatically
+    if entity_data.get('notability_status') is not None:
+        raise HTTPException(status_code=400, detail="Notability has already been determined automatically. No manual evaluation needed.")
     
     # Check if entity exists in entities store
     if request.id not in entities_store:
@@ -613,6 +613,72 @@ def trigger_notability_evaluation(request: NotabilityStatusRequest):
         print(f"[DEBUG] Full traceback: {traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=f"Failed to start notability evaluation: {str(e)}")
 
+@router.post("/notability/recalculate", response_model=dict)
+def recalculate_notability(request: NotabilityStatusRequest):
+    """Manually recalculate notability based on current sources (overrides automatic determination)"""
+    
+    print(f"[DEBUG] Manually recalculating notability for entity_id: {request.id}")
+    
+    # Check if entity exists in notability store
+    if request.id not in notability_store:
+        print(f"[DEBUG] Entity {request.id} not found in notability store")
+        raise HTTPException(status_code=404, detail="Entity not found in notability store")
+    
+    entity_data = notability_store[request.id]
+    
+    # Check if research was completed
+    if not entity_data.get('sources') or len(entity_data.get('sources', [])) == 0:
+        raise HTTPException(status_code=400, detail="Research not completed. Please complete research first.")
+    
+    try:
+        # Convert sources back to Source objects for processing
+        from models import Source
+        sources = []
+        for source_data in entity_data.get('sources', []):
+            try:
+                source = Source(**source_data)
+                sources.append(source)
+            except Exception as e:
+                continue
+        
+        # Count sources that meet standards
+        meets_standards_count = sum(1 for source in sources if source.meets_standards)
+        
+        # Determine notability status based on count
+        if meets_standards_count >= 2:
+            if meets_standards_count > 2:
+                notability_status = "exceeds"
+            else:
+                notability_status = "meets"
+            notability_rationale = f"Entity meets Wikipedia's General Notability Guidelines with {meets_standards_count} independent, reliable, secondary sources providing substantial coverage."
+        else:
+            notability_status = "fails"
+            notability_rationale = f"Entity does not meet Wikipedia's General Notability Guidelines. Only {meets_standards_count} source(s) meet the required standards (minimum 2 needed)."
+        
+        # Update notability data with the recalculated status
+        entity_data['notability_status'] = notability_status
+        entity_data['notability_rationale'] = notability_rationale
+        entity_data['openai_notability_request_id'] = None  # Clear any existing OpenAI request
+        entity_data['notability_request_timestamp'] = None
+        notability_store[request.id] = entity_data
+        save_notability_data()
+        
+        print(f"[DEBUG] Recalculated notability: {notability_status} ({meets_standards_count} sources meet standards)")
+        
+        return {
+            "message": "Notability recalculated successfully",
+            "notability_status": notability_status,
+            "notability_rationale": notability_rationale,
+            "meets_standards_count": meets_standards_count
+        }
+        
+    except Exception as e:
+        print(f"[DEBUG] Failed to recalculate notability: {str(e)}")
+        print(f"[DEBUG] Exception type: {type(e)}")
+        import traceback
+        print(f"[DEBUG] Full traceback: {traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Failed to recalculate notability: {str(e)}")
+
 @router.post("/notability/status", response_model=NotabilityStatusResponse)
 def check_notability_status(request: NotabilityStatusRequest):
     """Check the status of a notability evaluation request and parse response if completed"""
@@ -632,8 +698,17 @@ def check_notability_status(request: NotabilityStatusRequest):
     
     if not openai_notability_request_id:
         print(f"[DEBUG] No notability request ID found for entity {request.id}")
+        # Check if notability was determined automatically during research
+        if entity_data.get('notability_status') is not None:
+            print(f"[DEBUG] Notability was determined automatically: {entity_data.get('notability_status')}")
+            return NotabilityStatusResponse(
+                status="completed",
+                openai_notability_request_id=None,
+                notability_status=entity_data.get('notability_status'),
+                notability_rationale=entity_data.get('notability_rationale')
+            )
         # Check if research was completed but notability evaluation failed to start
-        if entity_data.get('sources') and len(entity_data.get('sources', [])) > 0:
+        elif entity_data.get('sources') and len(entity_data.get('sources', [])) > 0:
             raise HTTPException(status_code=400, detail="Research completed but notability evaluation failed to start. Please retry the research status check to trigger notability evaluation.")
         else:
             raise HTTPException(status_code=400, detail="No notability request found for this entity. Please complete research first.")

@@ -1,0 +1,9 @@
+# Simple key-value store for entities (JSON format)
+{"id": "first-round-capital", "name": "First Round Capital", "context": "Liz Wessel, Partner at First Round Capital", "entity_type": "ORG", "status": {"state": "ignored", "phase": null}}
+{"id": "liz-wessel", "name": "Liz Wessel", "context": "Liz Wessel, Partner at First Round Capital", "entity_type": "PERSON", "status": {"state": "notability", "phase": "queued"}}
+{"id": "rough-draft-ventures", "name": "Rough Draft Ventures", "context": "Rough Draft Ventures is affiliated with General Catalyst", "entity_type": "ORG", "status": {"state": "backlogged", "phase": null}}
+{"id": "general-catalyst", "name": "General Catalyst", "context": "Rough Draft Ventures is affiliated with General Catalyst", "entity_type": "ORG", "status": {"state": "backlogged", "phase": null}}
+{"id": "atlantic-ventures", "name": "Atlantic Ventures", "context": "...raft Ventures, an affiliate of General Catalyst, is similar to First Round Capital, affiliated with Atlantic Ventures", "entity_type": "ORG", "status": {"state": "ignored", "phase": null}}
+{"id": "president", "name": "President", "context": "Donald Trump is the 45th President of the United States", "entity_type": "ORG", "status": {"state": "ignored", "phase": null}}
+{"id": "united-states", "name": "United States", "context": "Donald Trump is the 45th President of the United States", "entity_type": "GPE", "status": {"state": "ignored", "phase": null}}
+{"id": "donald-trump", "name": "Donald Trump", "context": "Donald Trump is the 45th President of the United States", "entity_type": "PERSON", "status": {"state": "ignored", "phase": null}}

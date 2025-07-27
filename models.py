@@ -16,34 +16,42 @@ class NERResponse(BaseModel):
 
 # Entity Store Models
 class EntityStatus(str, Enum):
-    ignore = "ignore"
-    backlog = "backlog"
-    queue = "queue"
-    researching = "researching"
-    researched = "researched"
-    drafting_sections = "drafting_sections"
-    drafted_sections = "drafted_sections"
+    ignored = "ignored"
+    backlogged = "backlogged"
+    notability = "notability"
+
+class EntityPhase(str, Enum):
+    queued = "queued"
+    processing = "processing"
+    completed = "completed"
     failed = "failed"
+
+class EntityStatusObject(BaseModel):
+    state: Optional[EntityStatus] = Field(None, description="Current state of the entity")
+    phase: Optional[EntityPhase] = Field(None, description="Current phase of processing")
 
 class CreateEntityRequest(BaseModel):
     entity_name: str = Field(..., description="The name of the entity (e.g., 'Palm City, FL')")
     entity_context: str = Field(..., description="Context or description of the entity")
-    status: EntityStatus = Field(..., description="Status of the entity processing")
+    entity_type: str = Field(..., description="Type of entity (e.g., 'PERSON', 'ORG', 'GPE')")
+    status: EntityStatusObject = Field(..., description="Status object with state and phase")
 
 class UpdateEntityStatusRequest(BaseModel):
-    status: EntityStatus = Field(..., description="New status for the entity")
+    status: EntityStatusObject = Field(..., description="New status object for the entity")
 
 class EntityResponse(BaseModel):
     id: str = Field(..., description="Generated ID from entity name (e.g., 'palm-city-fl')")
     name: str = Field(..., description="Original entity name")
     context: str = Field(..., description="Entity context or description")
-    status: EntityStatus = Field(..., description="Current processing status")
+    entity_type: str = Field(..., description="Type of entity (e.g., 'PERSON', 'ORG', 'GPE')")
+    status: Optional[EntityStatusObject] = Field(None, description="Current status with state and phase")
 
 class DraftedEntityResponse(BaseModel):
     id: str = Field(..., description="Generated ID from entity name (e.g., 'palm-city-fl')")
     name: str = Field(..., description="Original entity name")
     context: str = Field(..., description="Entity context or description")
-    status: EntityStatus = Field(..., description="Current processing status")
+    entity_type: str = Field(..., description="Type of entity (e.g., 'PERSON', 'ORG', 'GPE')")
+    status: Optional[EntityStatusObject] = Field(None, description="Current status with state and phase")
     article_text: Optional[str] = Field(None, description="Article content as JSON string of markdown blocks")
 
 class EntitiesListResponse(BaseModel):
@@ -56,17 +64,18 @@ class Source(BaseModel):
     meets_standards: bool = Field(..., description="Whether the source meets the notability standards")
     explanation: str = Field(..., description="Explanation of why the source does or doesn't meet standards")
 
-class ResearchedEntityResponse(BaseModel):
+class NotabilityEntityResponse(BaseModel):
     id: str = Field(..., description="Generated ID from entity name")
     name: str = Field(..., description="Original entity name")
     context: str = Field(..., description="Entity context or description")
-    status: EntityStatus = Field(..., description="Current processing status")
+    entity_type: str = Field(..., description="Type of entity (e.g., 'PERSON', 'ORG', 'GPE')")
+    status: Optional[EntityStatusObject] = Field(None, description="Current status with state and phase")
     notability_status: Optional[str] = Field(None, description="Notability evaluation result (exceeds, meets, fails, null)")
     notability_rationale: Optional[str] = Field(None, description="Rationale for notability evaluation")
     sources: List[Source] = Field(default=[], description="Array of evaluated sources")
 
 class NotabilityData(BaseModel):
-    id: str = Field(..., description="Entity ID (matches entities.txt)")
+    id: str = Field(..., description="Entity ID (matches data/entities.txt)")
     notability_status: Optional[str] = Field(None, description="Notability evaluation result (exceeds, meets, fails, null)")
     openai_research_request_id: Optional[str] = Field(None, description="OpenAI research request ID")
     research_request_timestamp: Optional[float] = Field(None, description="Unix timestamp when research request was made")

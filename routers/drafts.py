@@ -24,9 +24,9 @@ client = OpenAI()
 
 # Store for drafts and articles
 drafts_store: Dict[str, dict] = {}
-drafts_file = "drafts.txt"
+drafts_file = "data/drafts.txt"
 articles_store: Dict[str, dict] = {}
-articles_file = "articles.txt"
+articles_file = "data/articles.txt"
 
 EntityType = Literal["venture_capitalist", "startup_founder", "startup_company", "venture_firm"]
 
@@ -75,8 +75,18 @@ class ArticleStatus(BaseModel):
     id: str
     status: Literal["drafting", "drafted", "published"]
     sections: Optional[Dict[str, Any]]
+    job_ids: Optional[Dict[str, str]]  # Track background job IDs for each section
     created_at: str
     updated_at: str
+
+class ArticleProgressResponse(BaseModel):
+    id: str
+    total_sections: int
+    completed_sections: int
+    pending_sections: int
+    progress_percentage: float
+    updated_sections: List[str]
+    is_complete: bool
 
 class UpdateArticleRequest(BaseModel):
     status: Optional[Literal["drafting", "drafted", "published"]] = None
@@ -270,6 +280,246 @@ async def create_vc_research_jobs(entity_id: str, entity_type: str) -> tuple[Dic
     
     return job_ids, initial_results
 
+async def create_article_drafting_jobs(entity_id: str, all_pages_str: str, entity_name: str, entity_context: str) -> tuple[Dict[str, str], Dict[str, Any]]:
+    """Create article drafting jobs for all sections"""
+    
+    # Section mapping for the API calls
+    section_mapping = {
+        "early_life": "Early Life",
+        "career": "Career", 
+        "notable_investments": "Notable Investments"
+    }
+    
+    job_ids = {}
+    initial_results = {}
+    
+    # Process each section
+    for section_key, section_name in section_mapping.items():
+        try:
+            # Use different endpoint for notable_investments
+            if section_key == "notable_investments":
+                # Call special notable investments endpoint
+                response = client.responses.create(
+                    prompt={
+                        "id": "pmpt_6883c4eb15f481949785358f13d37243075c7030141d46f3",
+                        "version": "7",
+                        "variables": {
+                            "entity": entity_name,
+                            "context": entity_context,
+                            "type": "Venture Capitalist",
+                            "sources": all_pages_str
+                        }
+                    },
+                    background=True
+                )
+            else:
+                # Call generic encyclopedia section endpoint
+                response = client.responses.create(
+                    prompt={
+                        "id": "pmpt_6883c4dcfe5c819387acad8910d66c340a50e18e12e625a6",
+                        "version": "6",
+                        "variables": {
+                            "entity": entity_name,
+                            "context": entity_context,
+                            "type": "Venture Capitalist",
+                            "section": section_name,
+                            "sources": all_pages_str
+                        }
+                    },
+                    input=[],
+                    text={
+                        "format": {
+                            "type": "json_schema",
+                            "name": "encyclopedia_section_blocks",
+                            "strict": True,
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "blocks": {
+                                        "type": "array",
+                                        "description": "A list of content blocks that make up the encyclopedia section. These can be headings, subheadings, paragraphs, etc.",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "heading",
+                                                        "subheading",
+                                                        "paragraph",
+                                                        "quote",
+                                                        "list"
+                                                    ],
+                                                    "description": "The type of content block. Determines how the block is rendered."
+                                                },
+                                                "content": {
+                                                    "type": "string",
+                                                    "description": "The textual content of the block."
+                                                },
+                                                "citations": {
+                                                    "type": "array",
+                                                    "description": "Optional in-line citations within this block, referencing the reference list by ID.",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer",
+                                                                "description": "The ID of the source being cited, corresponding to the references list."
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "id"
+                                                        ],
+                                                        "additionalProperties": False
+                                                    }
+                                                }
+                                            },
+                                            "required": [
+                                                "type",
+                                                "content",
+                                                "citations"
+                                            ],
+                                            "additionalProperties": False
+                                        }
+                                    },
+                                    "references": {
+                                        "type": "array",
+                                        "description": "The list of sources used in citations throughout this section.",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "description": "A unique identifier for the citation, used in the citations array."
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "description": "The title of the article or source."
+                                                },
+                                                "url": {
+                                                    "type": "string",
+                                                    "description": "The full URL of the source."
+                                                },
+                                                "author": {
+                                                    "type": "string",
+                                                    "description": "The name of the author or creator of the source."
+                                                },
+                                                "publisher": {
+                                                    "type": "string",
+                                                    "description": "The publisher or platform where the source was published."
+                                                },
+                                                "date": {
+                                                    "type": "string",
+                                                    "description": "The date the source was published in YYYY-MM-DD format."
+                                                }
+                                            },
+                                            "required": [
+                                                "id",
+                                                "title",
+                                                "url",
+                                                "author",
+                                                "publisher",
+                                                "date"
+                                            ],
+                                            "additionalProperties": False
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "blocks",
+                                    "references"
+                                ],
+                                "additionalProperties": False
+                            }
+                        }
+                    },
+                    reasoning={},
+                    max_output_tokens=5000,
+                    store=True,
+                    background=True
+                )
+            
+            job_ids[f"{section_key}_id"] = response.id
+            initial_results[section_key] = None
+            
+        except Exception as e:
+            print(f"Error creating job for section {section_key}: {e}")
+            fallback_job_id = f"{entity_id}_{section_key}_{uuid.uuid4().hex[:8]}"
+            job_ids[f"{section_key}_id"] = fallback_job_id
+            initial_results[section_key] = None
+    
+    # Create personal life job
+    try:
+        personal_life_response = client.responses.create(
+            prompt={
+                "id": "pmpt_688555fe690c8190a80f494f1960150606270da2f1dfcb3f",
+                "version": "2",
+                "variables": {
+                    "entity": entity_name,
+                    "context": entity_context,
+                    "type": "Venture Capitalist",
+                    "sources": all_pages_str,
+                    "early_life": ""  # Will be updated when early_life completes
+                }
+            },
+            background=True
+        )
+        job_ids["personal_life_id"] = personal_life_response.id
+        initial_results["personal_life"] = None
+    except Exception as e:
+        print(f"Error creating personal life job: {e}")
+        fallback_job_id = f"{entity_id}_personal_life_{uuid.uuid4().hex[:8]}"
+        job_ids["personal_life_id"] = fallback_job_id
+        initial_results["personal_life"] = None
+    
+    # Create person infobox job
+    try:
+        person_infobox_response = client.responses.create(
+            prompt={
+                "id": "pmpt_6883c991fe888196a6ae9fc79bbd07880738447170486610",
+                "version": "3",
+                "variables": {
+                    "entity": entity_name,
+                    "context": entity_context,
+                    "type": "Venture Capitalist",
+                    "sources": all_pages_str
+                }
+            },
+            background=True
+        )
+        job_ids["person_infobox_id"] = person_infobox_response.id
+        initial_results["person_infobox"] = None
+    except Exception as e:
+        print(f"Error creating person infobox job: {e}")
+        fallback_job_id = f"{entity_id}_person_infobox_{uuid.uuid4().hex[:8]}"
+        job_ids["person_infobox_id"] = fallback_job_id
+        initial_results["person_infobox"] = None
+    
+    # Create lead section job
+    try:
+        lead_response = client.responses.create(
+            prompt={
+                "id": "pmpt_68842015293c819483d326d4693478e10e0fc773bb2e0e5d",
+                "version": "3",
+                "variables": {
+                    "entity": entity_name,
+                    "context": entity_context,
+                    "type": "Venture Capitalist",
+                    "sources": all_pages_str
+                }
+            },
+            background=True
+        )
+        job_ids["lead_id"] = lead_response.id
+        initial_results["lead"] = None
+    except Exception as e:
+        print(f"Error creating lead job: {e}")
+        fallback_job_id = f"{entity_id}_lead_{uuid.uuid4().hex[:8]}"
+        job_ids["lead_id"] = fallback_job_id
+        initial_results["lead"] = None
+    
+    return job_ids, initial_results
+
 async def create_article_draft(entity_id: str) -> str:
     """Create an article draft from completed research sections"""
     # Get entity data
@@ -390,6 +640,56 @@ async def update_draft_progress(draft_id: str) -> DraftProgressResponse:
         is_complete=is_complete
     )
 
+async def update_article_progress(article_id: str) -> ArticleProgressResponse:
+    """Check all background tasks for an article and update completed results"""
+    if article_id not in articles_store:
+        raise HTTPException(status_code=404, detail="Article not found")
+    
+    article_data = articles_store[article_id]
+    job_ids = article_data.get('job_ids', {})
+    sections = article_data.get('sections', {})
+    
+    updated_sections = []
+    total_sections = len(job_ids)
+    
+    # Check each background task
+    for job_key, job_id in job_ids.items():
+        section_name = job_key.replace('_id', '')
+        
+        if job_id and sections.get(section_name) is None:
+            task_result = await check_background_task_status(job_id)
+            if task_result is not None:
+                sections[section_name] = task_result
+                updated_sections.append(section_name)
+    
+    # Count completed sections
+    completed_sections = sum(1 for section in sections.values() if section is not None)
+    pending_sections = total_sections - completed_sections
+    progress_percentage = (completed_sections / total_sections) * 100 if total_sections > 0 else 0
+    is_complete = completed_sections == total_sections
+    
+    # Update the article if any sections were updated
+    if updated_sections:
+        article_data['sections'] = sections
+        article_data['updated_at'] = datetime.utcnow().isoformat()
+        
+        # Update status to "drafted" if all sections are complete
+        if is_complete:
+            article_data['status'] = 'drafted'
+            update_entity_status(article_id, 'drafted_article')
+        
+        save_articles()
+    
+    return ArticleProgressResponse(
+        id=article_id,
+        total_sections=total_sections,
+        completed_sections=completed_sections,
+        pending_sections=pending_sections,
+        progress_percentage=progress_percentage,
+        updated_sections=updated_sections,
+        is_complete=is_complete
+    )
+
 @router.post("/", response_model=DraftStatus)
 async def create_draft(request: CreateDraftRequest):
     """Create a new draft if entity meets notability requirements"""
@@ -438,7 +738,7 @@ async def create_draft(request: CreateDraftRequest):
     
     drafts_store[request.id] = draft_data
     save_drafts()
-    update_entity_status(request.id, 'drafting_sections')
+    update_entity_status(request.id, 'drafting_article')
     
     return DraftStatus(**draft_data)
 
@@ -470,7 +770,7 @@ async def check_draft_progress(draft_id: str):
 
 @router.post("/{draft_id}/draft-document", response_model=ArticleStatus)
 async def draft_document(draft_id: str):
-    """Draft encyclopedia sections from completed research data"""
+    """Start article drafting process with background jobs"""
     load_entities()
     load_drafts()
     load_articles()
@@ -496,13 +796,6 @@ async def draft_document(draft_id: str):
     timestamp = datetime.utcnow().isoformat()
     
     try:
-        # Section mapping for the API calls (personal_life handled separately)
-        section_mapping = {
-            "early_life": "Early Life",
-            "career": "Career", 
-            "notable_investments": "Notable Investments"
-        }
-        
         entity_name = entity_data.get('name', draft_id)
         entity_context = entity_data.get('context', '')
         
@@ -524,278 +817,16 @@ async def draft_document(draft_id: str):
         all_research_pages = get_all_research_pages()
         all_pages_str = json.dumps(all_research_pages)
         
-        # Process each section serially
-        sections_data = {}
-        
-        for section_key, section_name in section_mapping.items():
-            # ALL sections get ALL pages from ALL research tasks
-            pages_str = all_pages_str
-            
-            # Use different endpoint for notable_investments
-            if section_key == "notable_investments":
-                # Call special notable investments endpoint
-                response = client.responses.create(
-                    prompt={
-                        "id": "pmpt_6883c4eb15f481949785358f13d37243075c7030141d46f3",
-                        "version": "7",
-                        "variables": {
-                            "entity": entity_name,
-                            "context": entity_context,
-                            "type": "Venture Capitalist",
-                            "sources": pages_str
-                        }
-                    }
-                )
-            else:
-                # Call generic encyclopedia section endpoint
-                response = client.responses.create(
-                    prompt={
-                        "id": "pmpt_6883c4dcfe5c819387acad8910d66c340a50e18e12e625a6",
-                        "version": "6",
-                        "variables": {
-                            "entity": entity_name,
-                            "context": entity_context,
-                            "type": "Venture Capitalist",
-                            "section": section_name,
-                            "sources": pages_str
-                        }
-                    },
-                    input=[],
-                    text={
-                        "format": {
-                            "type": "json_schema",
-                            "name": "encyclopedia_section_blocks",
-                            "strict": True,
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "blocks": {
-                                        "type": "array",
-                                        "description": "A list of content blocks that make up the encyclopedia section. These can be headings, subheadings, paragraphs, etc.",
-                                        "items": {
-                                            "type": "object",
-                                            "properties": {
-                                                "type": {
-                                                    "type": "string",
-                                                    "enum": [
-                                                        "heading",
-                                                        "subheading",
-                                                        "paragraph",
-                                                        "quote",
-                                                        "list"
-                                                    ],
-                                                    "description": "The type of content block. Determines how the block is rendered."
-                                                },
-                                                "content": {
-                                                    "type": "string",
-                                                    "description": "The textual content of the block."
-                                                },
-                                                "citations": {
-                                                    "type": "array",
-                                                    "description": "Optional in-line citations within this block, referencing the reference list by ID.",
-                                                    "items": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "id": {
-                                                                "type": "integer",
-                                                                "description": "The ID of the source being cited, corresponding to the references list."
-                                                            }
-                                                        },
-                                                        "required": [
-                                                            "id"
-                                                        ],
-                                                        "additionalProperties": False
-                                                    }
-                                                }
-                                            },
-                                            "required": [
-                                                "type",
-                                                "content",
-                                                "citations"
-                                            ],
-                                            "additionalProperties": False
-                                        }
-                                    },
-                                    "references": {
-                                        "type": "array",
-                                        "description": "The list of sources used in citations throughout this section.",
-                                        "items": {
-                                            "type": "object",
-                                            "properties": {
-                                                "id": {
-                                                    "type": "integer",
-                                                    "description": "A unique identifier for the citation, used in the citations array."
-                                                },
-                                                "title": {
-                                                    "type": "string",
-                                                    "description": "The title of the article or source."
-                                                },
-                                                "url": {
-                                                    "type": "string",
-                                                    "description": "The full URL of the source."
-                                                },
-                                                "author": {
-                                                    "type": "string",
-                                                    "description": "The name of the author or creator of the source."
-                                                },
-                                                "publisher": {
-                                                    "type": "string",
-                                                    "description": "The publisher or platform where the source was published."
-                                                },
-                                                "date": {
-                                                    "type": "string",
-                                                    "description": "The date the source was published in YYYY-MM-DD format."
-                                                }
-                                            },
-                                            "required": [
-                                                "id",
-                                                "title",
-                                                "url",
-                                                "author",
-                                                "publisher",
-                                                "date"
-                                            ],
-                                            "additionalProperties": False
-                                        }
-                                    }
-                                },
-                                "required": [
-                                    "blocks",
-                                    "references"
-                                ],
-                                "additionalProperties": False
-                            }
-                        }
-                    },
-                    reasoning={},
-                    max_output_tokens=5000,
-                    store=True
-                )
-            
-            # Extract the response content
-            if response.output and len(response.output) > 0:
-                last_output = response.output[-1]
-                if hasattr(last_output, 'content') and last_output.content:
-                    content_text = last_output.content[0].text
-                    try:
-                        section_data = json.loads(content_text)
-                        sections_data[section_key] = section_data
-                    except json.JSONDecodeError as e:
-                        print(f"Error parsing response for section {section_key}: {e}")
-                        sections_data[section_key] = {"blocks": [], "references": []}
-                else:
-                    sections_data[section_key] = {"blocks": [], "references": []}
-            else:
-                sections_data[section_key] = {"blocks": [], "references": []}
-        
-        # Handle personal life section separately to avoid repetition with early life
-        # Extract early life content to pass to personal life prompt
-        early_life_content = ""
-        if "early_life" in sections_data:
-            early_life_blocks = sections_data["early_life"].get("blocks", [])
-            for block in early_life_blocks:
-                if "content" in block:
-                    early_life_content += block["content"] + "\n\n"
-        
-        # Call personal life endpoint with early life content to avoid repetition
-        personal_life_response = client.responses.create(
-            prompt={
-                "id": "pmpt_688555fe690c8190a80f494f1960150606270da2f1dfcb3f",
-                "version": "2",
-                "variables": {
-                    "entity": entity_name,
-                    "context": entity_context,
-                    "type": "Venture Capitalist",
-                    "sources": all_pages_str,
-                    "early_life": early_life_content
-                }
-            }
-        )
-        
-        # Extract the personal life response content
-        if personal_life_response.output and len(personal_life_response.output) > 0:
-            last_output = personal_life_response.output[-1]
-            if hasattr(last_output, 'content') and last_output.content:
-                content_text = last_output.content[0].text
-                try:
-                    personal_life_data = json.loads(content_text)
-                    sections_data['personal_life'] = personal_life_data
-                except json.JSONDecodeError as e:
-                    print(f"Error parsing personal life response: {e}")
-                    sections_data['personal_life'] = {"blocks": [], "references": []}
-            else:
-                sections_data['personal_life'] = {"blocks": [], "references": []}
-        else:
-            sections_data['personal_life'] = {"blocks": [], "references": []}
-        
-        # Now make the 6th call for person_infobox using ALL pages from all research tasks
-        # Call person infobox endpoint
-        person_infobox_response = client.responses.create(
-            prompt={
-                "id": "pmpt_6883c991fe888196a6ae9fc79bbd07880738447170486610",
-                "version": "3",
-                "variables": {
-                    "entity": entity_name,
-                    "context": entity_context,
-                    "type": "Venture Capitalist",
-                    "sources": all_pages_str
-                }
-            }
-        )
-        
-        # Extract the person infobox response content
-        if person_infobox_response.output and len(person_infobox_response.output) > 0:
-            last_output = person_infobox_response.output[-1]
-            if hasattr(last_output, 'content') and last_output.content:
-                content_text = last_output.content[0].text
-                try:
-                    person_infobox_data = json.loads(content_text)
-                    sections_data['person_infobox'] = person_infobox_data
-                except json.JSONDecodeError as e:
-                    print(f"Error parsing person infobox response: {e}")
-                    sections_data['person_infobox'] = {"blocks": [], "references": []}
-            else:
-                sections_data['person_infobox'] = {"blocks": [], "references": []}
-        else:
-            sections_data['person_infobox'] = {"blocks": [], "references": []}
-        
-        # Now make the lead section call using ALL pages from all 5 research tasks
-        # Call lead section endpoint
-        lead_response = client.responses.create(
-            prompt={
-                "id": "pmpt_68842015293c819483d326d4693478e10e0fc773bb2e0e5d",
-                "version": "3",
-                "variables": {
-                    "entity": entity_name,
-                    "context": entity_context,
-                    "type": "Venture Capitalist",
-                    "sources": all_pages_str
-                }
-            }
-        )
-        
-        # Extract the lead response content
-        if lead_response.output and len(lead_response.output) > 0:
-            last_output = lead_response.output[-1]
-            if hasattr(last_output, 'content') and last_output.content:
-                content_text = last_output.content[0].text
-                try:
-                    lead_data = json.loads(content_text)
-                    sections_data['lead'] = lead_data
-                except json.JSONDecodeError as e:
-                    print(f"Error parsing lead response: {e}")
-                    sections_data['lead'] = {"blocks": [], "references": []}
-            else:
-                sections_data['lead'] = {"blocks": [], "references": []}
-        else:
-            sections_data['lead'] = {"blocks": [], "references": []}
+        # Create background jobs for all article sections
+        job_ids, initial_sections = await create_article_drafting_jobs(draft_id, all_pages_str, entity_name, entity_context)
         
         # Create or update article entry
         existing_article = articles_store.get(draft_id)
         article_data = {
             "id": draft_id,
-            "status": "drafted",
-            "sections": sections_data,
+            "status": "drafting",
+            "sections": initial_sections,
+            "job_ids": job_ids,
             "created_at": existing_article.get("created_at", timestamp) if existing_article else timestamp,
             "updated_at": timestamp
         }
@@ -805,12 +836,12 @@ async def draft_document(draft_id: str):
         save_articles()
         
         # Update entity status
-        update_entity_status(draft_id, 'drafted_sections')
+        update_entity_status(draft_id, 'drafting_article')
         
         return ArticleStatus(**article_data)
         
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error creating article sections: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error creating article drafting jobs: {str(e)}")
 
 @router.get("/articles/{article_id}", response_model=ArticleStatus)
 async def get_article(article_id: str):
@@ -855,6 +886,12 @@ async def update_article(article_id: str, request: UpdateArticleRequest):
     save_articles()
     
     return ArticleStatus(**existing_article)
+
+@router.get("/articles/{article_id}/check-progress", response_model=ArticleProgressResponse)
+async def check_article_progress(article_id: str):
+    """Check progress of background tasks for an article and update any completed results"""
+    load_articles()
+    return await update_article_progress(article_id)
 
 # Load data on module import
 load_entities()

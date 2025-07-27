@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 import os
 from dotenv import load_dotenv
 from models import HealthResponse, HelloResponse
-from routers import entities, ner, notability, drafts
+from routers import entities, notability, drafts
 
 # Load environment variables from .env file
 load_dotenv()
@@ -34,7 +34,6 @@ app.add_middleware(
 
 # Include routers
 app.include_router(entities.router)
-app.include_router(ner.router)
 app.include_router(notability.router)
 app.include_router(drafts.router)
 
