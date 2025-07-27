@@ -13,6 +13,9 @@ from models import (
     NERResponse, Entity, EntityStatusObject, EntityPhase
 )
 
+# Debug flag for entities router
+DEBUG_ENTITIES = False
+
 # Load environment variables
 load_dotenv()
 
@@ -57,9 +60,38 @@ def load_entities():
                     try:
                         entity_data = json.loads(line)
                         if 'id' in entity_data:
+                            # Normalize status to ensure it's always a dictionary
+                            entity_data = normalize_entity_status(entity_data)
                             entities_store[entity_data['id']] = entity_data
                     except json.JSONDecodeError:
                         continue
+
+def normalize_entity_status(entity_data: dict) -> dict:
+    """Normalize entity status to ensure it's always a dictionary with state and phase"""
+    status = entity_data.get('status', {})
+    if isinstance(status, str):
+        # Convert string status to dictionary format
+        entity_data['status'] = {
+            'state': status,
+            'phase': None
+        }
+    elif not isinstance(status, dict):
+        # Handle None or other types
+        entity_data['status'] = {
+            'state': None,
+            'phase': None
+        }
+    return entity_data
+
+def get_entity_status_info(entity_data: dict) -> tuple:
+    """Get state and phase from entity status, handling both string and dictionary formats"""
+    status = entity_data.get('status', {})
+    if isinstance(status, str):
+        return status, None
+    elif isinstance(status, dict):
+        return status.get('state'), status.get('phase')
+    else:
+        return None, None
 
 # Save entities to file
 def save_entities():
@@ -93,16 +125,17 @@ def create_notability_entry(entity_id: str):
     if not notability_exists(entity_id):
         notability_data = {
             'id': entity_id,
-            'notability_status': None,
+            'is_notable': None,
             'openai_research_request_id': None,
+            'research_request_timestamp': None,
             'sources': [],
-            'openai_notability_request_id': None,
-            'notability_rationale': None
+            'retry_count': 0
         }
         
         notability_store[entity_id] = notability_data
         save_notability_data()
-        print(f"[DEBUG] Created notability entry for entity {entity_id}")
+        if DEBUG_ENTITIES:
+            print(f"[DEBUG] Created notability entry for entity {entity_id}")
 
 # Helper function to remove entity from file
 def remove_entity_from_file(file_path: str, entity_id: str, header: str):
@@ -185,8 +218,8 @@ def get_notability_entities():
     
     # Filter function for notability entities
     def is_notability(entity_data):
-        entity_status = entity_data.get('status', {})
-        return entity_status.get('state') == 'notability'
+        entity_state, _ = get_entity_status_info(entity_data)
+        return entity_state == 'notability'
     
     # Get notability entities using helper function
     notability_entity_data = read_entities_from_file(is_notability)
@@ -219,8 +252,7 @@ def get_notability_entities():
                 state=EntityStatus(entity_data.get('status', {}).get('state', 'notability')) if entity_data.get('status', {}).get('state') else None,
                 phase=EntityPhase(entity_data.get('status', {}).get('phase', 'processing')) if entity_data.get('status', {}).get('phase') else None
             ),
-            notability_status=notability_data.get('notability_status'),
-            notability_rationale=notability_data.get('notability_rationale'),
+            is_notable=notability_data.get('is_notable'),
             sources=sources
         )
         notability_entities.append(notability_entity)
@@ -233,9 +265,7 @@ def get_entities_by_status(state: Optional[str] = None, phase: Optional[str] = N
     
     # Filter function for specific state and/or phase
     def matches_filter(entity_data):
-        entity_status = entity_data.get('status', {})
-        entity_state = entity_status.get('state')
-        entity_phase = entity_status.get('phase')
+        entity_state, entity_phase = get_entity_status_info(entity_data)
         
         # If both state and phase are specified, both must match
         if state and phase:
@@ -261,8 +291,8 @@ def get_entities_by_status_legacy(status: str):
     
     # Filter function for specific state
     def matches_state(entity_data):
-        entity_status = entity_data.get('status', {})
-        return entity_status.get('state') == status
+        entity_state, _ = get_entity_status_info(entity_data)
+        return entity_state == status
     
     # Get entities using helper function
     filtered_entity_data = read_entities_from_file(matches_state)
@@ -275,8 +305,8 @@ def get_backlogged_entities():
     
     # Filter function for backlogged entities
     def is_backlogged(entity_data):
-        entity_status = entity_data.get('status', {})
-        return entity_status.get('state') == EntityStatus.backlogged.value
+        entity_state, _ = get_entity_status_info(entity_data)
+        return entity_state == EntityStatus.backlogged.value
     
     # Get backlogged entities using helper function
     backlogged_entity_data = read_entities_from_file(is_backlogged)
@@ -328,7 +358,8 @@ def delete_entity(entity_id: str):
         if entity_id in notability_store:
             notability_store.pop(entity_id)
             save_notability_data()
-            print(f"[DEBUG] Removed notability data for entity {entity_id}")
+            if DEBUG_ENTITIES:
+                print(f"[DEBUG] Removed notability data for entity {entity_id}")
     except Exception as e:
         print(f"[WARNING] Error removing notability data for {entity_id}: {e}")
     
@@ -338,7 +369,8 @@ def delete_entity(entity_id: str):
         if os.path.exists(drafts_file):
             remove_entity_from_file(drafts_file, entity_id, "# Article drafts KV store - ID -> {type, statuses, results}")
             
-            print(f"[DEBUG] Removed draft data for entity {entity_id}")
+            if DEBUG_ENTITIES:
+                print(f"[DEBUG] Removed draft data for entity {entity_id}")
     except Exception as e:
         print(f"[WARNING] Error removing draft data for {entity_id}: {e}")
     
@@ -348,7 +380,8 @@ def delete_entity(entity_id: str):
         if os.path.exists(articles_file):
             remove_entity_from_file(articles_file, entity_id, "# Articles KV store - ID -> {status, text}")
             
-            print(f"[DEBUG] Removed article data for entity {entity_id}")
+            if DEBUG_ENTITIES:
+                print(f"[DEBUG] Removed article data for entity {entity_id}")
     except Exception as e:
         print(f"[WARNING] Error removing article data for {entity_id}: {e}")
     

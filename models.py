@@ -1,7 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import List, Literal, Optional, Union
 from enum import Enum
-import time
 
 # NER Models
 class Entity(BaseModel):
@@ -19,6 +18,11 @@ class EntityStatus(str, Enum):
     ignored = "ignored"
     backlogged = "backlogged"
     notability = "notability"
+    researching = "researching"
+    failed = "failed"
+    archived = "archived"
+    draft_research = "draft_research"
+    draft_writing = "draft_writing"
 
 class EntityPhase(str, Enum):
     queued = "queued"
@@ -70,24 +74,16 @@ class NotabilityEntityResponse(BaseModel):
     context: str = Field(..., description="Entity context or description")
     entity_type: str = Field(..., description="Type of entity (e.g., 'PERSON', 'ORG', 'GPE')")
     status: Optional[EntityStatusObject] = Field(None, description="Current status with state and phase")
-    notability_status: Optional[str] = Field(None, description="Notability evaluation result (exceeds, meets, fails, null)")
-    notability_rationale: Optional[str] = Field(None, description="Rationale for notability evaluation")
+    is_notable: Optional[bool] = Field(None, description="Whether the entity meets notability standards")
     sources: List[Source] = Field(default=[], description="Array of evaluated sources")
 
 class NotabilityData(BaseModel):
     id: str = Field(..., description="Entity ID (matches data/entities.txt)")
-    notability_status: Optional[str] = Field(None, description="Notability evaluation result (exceeds, meets, fails, null)")
+    is_notable: Optional[bool] = Field(None, description="Whether the entity meets notability standards")
     openai_research_request_id: Optional[str] = Field(None, description="OpenAI research request ID")
     research_request_timestamp: Optional[float] = Field(None, description="Unix timestamp when research request was made")
     sources: List[Source] = Field(default=[], description="Array of evaluated sources")
-    openai_notability_request_id: Optional[str] = Field(None, description="OpenAI notability request ID")
-    notability_request_timestamp: Optional[float] = Field(None, description="Unix timestamp when notability request was made")
-    notability_rationale: Optional[str] = Field(None, description="Rationale for notability evaluation")
     retry_count: int = Field(default=0, description="Number of times this request has been retried due to timeout")
-
-class CreateNotabilityRequest(BaseModel):
-    # No fields needed - the entity ID will come from the URL path parameter
-    pass
 
 class ResearchRequest(BaseModel):
     id: str = Field(..., description="Entity ID to research")
@@ -105,12 +101,6 @@ class ResearchStatusResponse(BaseModel):
 
 class NotabilityStatusRequest(BaseModel):
     id: str = Field(..., description="Entity ID to check notability status for")
-
-class NotabilityStatusResponse(BaseModel):
-    status: str = Field(..., description="Status of the notability request (pending, completed, failed)")
-    openai_notability_request_id: Optional[str] = Field(None, description="OpenAI notability request ID")
-    notability_status: Optional[str] = Field(None, description="Notability evaluation result (exceeds, meets, fails)")
-    notability_rationale: Optional[str] = Field(None, description="Rationale for the notability evaluation")
 
 # Basic API Response Models
 class HealthResponse(BaseModel):
