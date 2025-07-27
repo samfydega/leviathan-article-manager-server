@@ -1,5 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 import os
 from dotenv import load_dotenv
 from models import HealthResponse, HelloResponse
@@ -35,6 +37,31 @@ app.include_router(entities.router)
 app.include_router(ner.router)
 app.include_router(notability.router)
 app.include_router(drafts.router)
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    """Handle validation errors and log the details"""
+    print(f"[DEBUG] Validation error occurred!")
+    print(f"[DEBUG] Request URL: {request.url}")
+    print(f"[DEBUG] Request method: {request.method}")
+    print(f"[DEBUG] Validation errors: {exc.errors()}")
+    
+    # Try to read the request body
+    try:
+        body = await request.body()
+        print(f"[DEBUG] Request body: {body}")
+        if body:
+            print(f"[DEBUG] Request body (decoded): {body.decode('utf-8')}")
+    except Exception as e:
+        print(f"[DEBUG] Could not read request body: {e}")
+    
+    # Also log headers to see if Content-Type is correct
+    print(f"[DEBUG] Content-Type header: {request.headers.get('content-type')}")
+    
+    return JSONResponse(
+        status_code=400,
+        content={"detail": "Validation error", "errors": exc.errors()}
+    )
 
 @app.get("/", response_model=HelloResponse)
 def read_root():

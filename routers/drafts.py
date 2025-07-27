@@ -78,6 +78,10 @@ class ArticleStatus(BaseModel):
     created_at: str
     updated_at: str
 
+class UpdateArticleRequest(BaseModel):
+    status: Optional[Literal["drafting", "drafted", "published"]] = None
+    sections: Optional[Dict[str, Any]] = None
+
 @contextmanager
 def file_lock(filename, mode='r'):
     """Context manager for file locking to prevent concurrent writes"""
@@ -492,12 +496,11 @@ async def draft_document(draft_id: str):
     timestamp = datetime.utcnow().isoformat()
     
     try:
-        # Section mapping for the API calls
+        # Section mapping for the API calls (personal_life handled separately)
         section_mapping = {
             "early_life": "Early Life",
             "career": "Career", 
-            "notable_investments": "Notable Investments",
-            "personal_life": "Personal Life"
+            "notable_investments": "Notable Investments"
         }
         
         entity_name = entity_data.get('name', draft_id)
@@ -685,6 +688,46 @@ async def draft_document(draft_id: str):
             else:
                 sections_data[section_key] = {"blocks": [], "references": []}
         
+        # Handle personal life section separately to avoid repetition with early life
+        # Extract early life content to pass to personal life prompt
+        early_life_content = ""
+        if "early_life" in sections_data:
+            early_life_blocks = sections_data["early_life"].get("blocks", [])
+            for block in early_life_blocks:
+                if "content" in block:
+                    early_life_content += block["content"] + "\n\n"
+        
+        # Call personal life endpoint with early life content to avoid repetition
+        personal_life_response = client.responses.create(
+            prompt={
+                "id": "pmpt_688555fe690c8190a80f494f1960150606270da2f1dfcb3f",
+                "version": "2",
+                "variables": {
+                    "entity": entity_name,
+                    "context": entity_context,
+                    "type": "Venture Capitalist",
+                    "sources": all_pages_str,
+                    "early_life": early_life_content
+                }
+            }
+        )
+        
+        # Extract the personal life response content
+        if personal_life_response.output and len(personal_life_response.output) > 0:
+            last_output = personal_life_response.output[-1]
+            if hasattr(last_output, 'content') and last_output.content:
+                content_text = last_output.content[0].text
+                try:
+                    personal_life_data = json.loads(content_text)
+                    sections_data['personal_life'] = personal_life_data
+                except json.JSONDecodeError as e:
+                    print(f"Error parsing personal life response: {e}")
+                    sections_data['personal_life'] = {"blocks": [], "references": []}
+            else:
+                sections_data['personal_life'] = {"blocks": [], "references": []}
+        else:
+            sections_data['personal_life'] = {"blocks": [], "references": []}
+        
         # Now make the 6th call for person_infobox using ALL pages from all research tasks
         # Call person infobox endpoint
         person_infobox_response = client.responses.create(
@@ -785,6 +828,33 @@ async def list_articles():
     load_articles()
     
     return [ArticleStatus(**article) for article in articles_store.values()]
+
+@router.put("/articles/{article_id}", response_model=ArticleStatus)
+async def update_article(article_id: str, request: UpdateArticleRequest):
+    """Update a specific article by ID"""
+    load_articles()
+    
+    if article_id not in articles_store:
+        raise HTTPException(status_code=404, detail="Article not found")
+    
+    # Get existing article data
+    existing_article = articles_store[article_id]
+    
+    # Update only the fields that are provided
+    if request.status is not None:
+        existing_article["status"] = request.status
+    
+    if request.sections is not None:
+        existing_article["sections"] = request.sections
+    
+    # Update the timestamp
+    existing_article["updated_at"] = datetime.utcnow().isoformat()
+    
+    # Save the updated article
+    articles_store[article_id] = existing_article
+    save_articles()
+    
+    return ArticleStatus(**existing_article)
 
 # Load data on module import
 load_entities()

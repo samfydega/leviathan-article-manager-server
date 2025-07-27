@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from typing import List
 import json
 import os
@@ -345,6 +345,9 @@ def check_research_status(request: ResearchStatusRequest):
     """Check the status of a research request and parse response if completed"""
     
     print(f"[DEBUG] Checking research status for entity_id: {request.id}")
+    print(f"[DEBUG] Request object: {request}")
+    print(f"[DEBUG] Request type: {type(request)}")
+    print(f"[DEBUG] Request dict: {request.dict()}")
     
     # Check if entity exists in notability store
     if request.id not in notability_store:
@@ -359,7 +362,11 @@ def check_research_status(request: ResearchStatusRequest):
     
     if not openai_research_request_id:
         print(f"[DEBUG] No research request ID found for entity {request.id}")
-        raise HTTPException(status_code=400, detail="No research request found for this entity")
+        # Check if entity exists in entities store to provide better error message
+        if request.id in entities_store:
+            raise HTTPException(status_code=400, detail="No research request found for this entity. Please start research first using POST /notability/{entity_id}")
+        else:
+            raise HTTPException(status_code=404, detail="Entity not found. Please create entity first.")
     
     # Check for timeout before making API call
     research_timestamp = entity_data.get('research_request_timestamp')
@@ -458,8 +465,13 @@ def check_research_status(request: ResearchStatusRequest):
                     entity_name = entity.get('name', '')
                     entity_context = entity.get('context', '')
                     
+                    print(f"[DEBUG] Entity data for notability trigger: {entity}")
+                    print(f"[DEBUG] Entity name: {entity_name}")
+                    print(f"[DEBUG] Entity context: {entity_context}")
+                    
                     # Convert sources to string format for the API
                     sources_str = json.dumps([source.dict() for source in sources])
+                    print(f"[DEBUG] Sources string length: {len(sources_str)}")
                     
                     print(f"[DEBUG] Starting notability evaluation for {request.id}")
                     notability_response = client.responses.create(
@@ -485,6 +497,9 @@ def check_research_status(request: ResearchStatusRequest):
                     
                 except Exception as e:
                     print(f"[DEBUG] Failed to start notability evaluation: {str(e)}")
+                    print(f"[DEBUG] Exception type: {type(e)}")
+                    import traceback
+                    print(f"[DEBUG] Full traceback: {traceback.format_exc()}")
                     # Don't fail the research response if notability evaluation fails to start
                 
                 return ResearchStatusResponse(
@@ -526,6 +541,78 @@ def check_research_status(request: ResearchStatusRequest):
         print(f"[DEBUG] Traceback: {traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=f"Error checking research status: {str(e)}")
 
+@router.post("/notability/trigger", response_model=dict)
+def trigger_notability_evaluation(request: NotabilityStatusRequest):
+    """Manually trigger notability evaluation for an entity that has completed research"""
+    
+    print(f"[DEBUG] Manually triggering notability evaluation for entity_id: {request.id}")
+    
+    # Check if entity exists in notability store
+    if request.id not in notability_store:
+        print(f"[DEBUG] Entity {request.id} not found in notability store")
+        raise HTTPException(status_code=404, detail="Entity not found in notability store")
+    
+    entity_data = notability_store[request.id]
+    
+    # Check if research was completed
+    if not entity_data.get('sources') or len(entity_data.get('sources', [])) == 0:
+        raise HTTPException(status_code=400, detail="Research not completed. Please complete research first.")
+    
+    # Check if notability evaluation is already in progress
+    if entity_data.get('openai_notability_request_id'):
+        raise HTTPException(status_code=400, detail="Notability evaluation already in progress.")
+    
+    # Check if entity exists in entities store
+    if request.id not in entities_store:
+        raise HTTPException(status_code=404, detail="Entity not found in entities store")
+    
+    try:
+        entity = entities_store[request.id]
+        entity_name = entity.get('name', '')
+        entity_context = entity.get('context', '')
+        
+        print(f"[DEBUG] Entity data for manual notability trigger: {entity}")
+        print(f"[DEBUG] Entity name: {entity_name}")
+        print(f"[DEBUG] Entity context: {entity_context}")
+        
+        # Convert sources to string format for the API
+        sources_str = json.dumps([source for source in entity_data.get('sources', [])])
+        print(f"[DEBUG] Sources string length: {len(sources_str)}")
+        
+        print(f"[DEBUG] Starting manual notability evaluation for {request.id}")
+        notability_response = client.responses.create(
+            prompt={
+                "id": "pmpt_687ec395081c81969578b916f2d6a6d609eb423f8db71c55",
+                "version": "5",
+                "variables": {
+                    "entity_name": entity_name,
+                    "context": entity_context,
+                    "sources": sources_str
+                }
+            },
+            background=True
+        )
+        
+        # Update notability data with the notability request ID
+        entity_data['openai_notability_request_id'] = notability_response.id
+        entity_data['notability_request_timestamp'] = time.time()
+        notability_store[request.id] = entity_data
+        save_notability_data()
+        
+        print(f"[DEBUG] Manual notability evaluation started with ID: {notability_response.id}")
+        
+        return {
+            "message": "Notability evaluation started successfully",
+            "notability_request_id": notability_response.id
+        }
+        
+    except Exception as e:
+        print(f"[DEBUG] Failed to start manual notability evaluation: {str(e)}")
+        print(f"[DEBUG] Exception type: {type(e)}")
+        import traceback
+        print(f"[DEBUG] Full traceback: {traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Failed to start notability evaluation: {str(e)}")
+
 @router.post("/notability/status", response_model=NotabilityStatusResponse)
 def check_notability_status(request: NotabilityStatusRequest):
     """Check the status of a notability evaluation request and parse response if completed"""
@@ -545,7 +632,11 @@ def check_notability_status(request: NotabilityStatusRequest):
     
     if not openai_notability_request_id:
         print(f"[DEBUG] No notability request ID found for entity {request.id}")
-        raise HTTPException(status_code=400, detail="No notability request found for this entity")
+        # Check if research was completed but notability evaluation failed to start
+        if entity_data.get('sources') and len(entity_data.get('sources', [])) > 0:
+            raise HTTPException(status_code=400, detail="Research completed but notability evaluation failed to start. Please retry the research status check to trigger notability evaluation.")
+        else:
+            raise HTTPException(status_code=400, detail="No notability request found for this entity. Please complete research first.")
     
     # Check for timeout before making API call
     notability_timestamp = entity_data.get('notability_request_timestamp')
