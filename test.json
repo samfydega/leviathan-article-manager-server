@@ -1,91 +1,80 @@
 {
-  "id": "julien-bek",
+  "id": "brett-gibson",
   "type": "venture_capitalist",
   "statuses": {
-    "early_life_id": "resp_68842b378c50819bbafe26049919a7cd0f80949fb095522e",
-    "pre_vc_career_id": "resp_68842b38469c819a95c8f2792351e52e0d7bb8ce0a760a47",
-    "vc_career_id": "resp_68842b38ace081989e02a13f507d050701830d6928356da5",
-    "notable_investments_id": "resp_68842b39692081988003c9c0772e0fbc03be4f6918e9313a",
-    "personal_life_id": "resp_68842b39ccd48198a4c7f545dd4d1f890e2e2c16ea7aa123"
+    "early_life_id": "resp_6886c2b176d08199a68ed422136c4a24036768fc3bdb2988",
+    "pre_vc_career_id": "resp_6886c2b2327c819ab235d45a204fe6c00e4cc6f2d2bc8f13",
+    "vc_career_id": "resp_6886c2b2f7f48199b4a16b10044a043404028de6b2bf8f92",
+    "notable_investments_id": "resp_6886c2b386d0819b8b6c11415b1a25d707d72fc0bf1d59d9",
+    "personal_life_id": "resp_6886c2b405b0819bba93bab35a445fd306cebb0da2b8c4c0"
   },
   "results": {
     "early_life": {
       "pages": [
         {
-          "exhaustive_description": "Sequoia Capital\u2019s official biography page for partner Julien Bek provides several first-hand details about his upbringing and education.  It says he \u201clearned from my parents, a recruiter and an astrologist,\u201d indicating family professions and an entrepreneurial household.  Bek notes he \u201chad a successful startup while I was in high school\u201d and later founded \u201ca less successful one while I was in a graduate program at Cambridge,\u201d confirming early exposure to entrepreneurship and that he pursued graduate study at the University of Cambridge.  The narrative also states that while at university he spent a summer at a venture-capital firm and first saw pitches from UiPath and Revolut, describing the formative experience that led him toward VC.  The page lists personal interests (private pilot, cooking, sailing) but gives no birth date or school names beyond the reference to \u201cCambridge.\u201d",
+          "exhaustive_description": "A subscriber-only Business Insider feature on Brett Gibson\u2019s path to venture capital. The piece states that, after graduating from the University of California, Santa Barbara with a B.A. in philosophy, Gibson was working in a pizza restaurant, taught himself to code from online articles, and obtained his first engineering job at Grand Central Communications in 2004. It then traces his formative start-up sequence\u2014DrawHere (2005, sold to DeviantArt 2006); Slinkset (YC S 08); his merger into Posterous as co-founder in 2009; software work at Y Combinator rewriting its application/back-end systems; and finally his recruitment by Garry Tan to Initialized, where he built the firm\u2019s internal \u201cFolio\u201d software before becoming a full-time investor. These passages supply the only publicly available details on his undergraduate degree and the self-directed, early-career experiences that shaped his trajectory.",
           "mla_citation": {
-            "page_title": "Julien Bek | Sequoia Capital",
-            "hyperlink": "https://www.sequoiacap.com/people/julien-bek/",
-            "publication_name": "Sequoia Capital",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Sequoia Capital",
-            "date_of_authorship": "2025-00-00"
+            "page_title": "Brett Gibson went from making pizza to a rising-star crypto VC at Initialized Capital. Here\u2019s how a chance encounter with Garry Tan changed the course of his career.",
+            "hyperlink": "https://www.businessinsider.com/brett-gibson-crypto-vc-partner-initialized-capital-2022-4",
+            "publication_name": "Business Insider",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Emily Quiles",
+            "date_of_authorship": "2022-05-06"
           }
         },
         {
-          "exhaustive_description": "The United Kingdom Companies House officer record for \u201cJulien BEK\u201d (director of dissolved entity Movemice Ltd) supplies verified government-filed personal data.  It lists his date of birth as \u201cAugust 1993,\u201d gives nationality as \u201cFrench,\u201d and records his country of residence as the United Kingdom at the time of the 21 September 2015 appointment.  While it does not state his exact birth day or city, it is the only primary source that fixes both month and year of birth and confirms French citizenship, useful for establishing early-life facts.",
+          "exhaustive_description": "Speaker biography for \u201cThe Capital\u201d (CoinMarketCap) conference. It identifies Gibson as a partner at Initialized and lists his entrepreneurial milestones\u2014Posthaven, Posterous, Y Combinator software team, Slinkset (YC S 08) and DrawHere (2006 sale to DeviantArt). Crucially, it records: \u201cBrett graduated with a B.A. in philosophy from the University of California, Santa Barbara,\u201d corroborating his undergraduate education. No birth or family details appear.",
           "mla_citation": {
-            "page_title": "Julien BEK personal appointments \u2013 Find and update company information",
-            "hyperlink": "https://find-and-update.company-information.service.gov.uk/officers/LY4sfFzOx_Urfrpl3o8ZcB_9bZY/appointments",
-            "publication_name": "Companies House / GOV.UK",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Companies House",
-            "date_of_authorship": "2025-00-00"
+            "page_title": "Speaker: Brett Gibson | The Capital",
+            "hyperlink": "https://conference.coinmarketcap.com/speakers/brett-gibson",
+            "publication_name": "CoinMarketCap",
+            "retrieval_date": "2025-07-28",
+            "author_name": "N.A.",
+            "date_of_authorship": "2021-00-00"
           }
         },
         {
-          "exhaustive_description": "Cointime\u2019s investor profile states that Julien Bek \u201cgrew up in Geneva, Switzerland,\u201d giving the first concrete city for his childhood.  It also summarizes his education\u2014he \u201cgraduated from Warwick Business School and the University of Cambridge\u201d\u2014and re-affirms that he joined Accel in 2018 after Global Founders Capital, with early investments in Revolut and Albert.  The page therefore supplies geographic upbringing (Geneva), confirms undergraduate (Warwick Business School, Management & Finance) and postgraduate (University of Cambridge, Entrepreneurship) credentials, and situates his early career chronology.",
+          "exhaustive_description": "The Org\u2019s public profile for Gibson (Managing Partner, Initialized). Under \u201cEducation\u201d it lists \u201cB.A. in Philosophy \u2013 UC Santa Barbara.\u201d The work-history timeline shows pre-VC technical roles: software engineer at Grand Central Communications (2004-05); co-founder DrawHere (2005-06); developer at Sonific (2006-08); founder Slinkset (2008-09); co-founder Posterous (2009-10); Y Combinator software developer (2014-15); co-founder Posthaven (2013\u2013). These entries illuminate his early, self-driven tech career immediately after college.",
           "mla_citation": {
-            "page_title": "Julien Bek \u2013 Person Profile",
-            "hyperlink": "https://kr.cointime.ai/person/julien-bek",
-            "publication_name": "Cointime",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Cointime Staff",
-            "date_of_authorship": "2023-00-00"
-          }
-        },
-        {
-          "exhaustive_description": "The RAISE Summit 2025 speaker blurb reiterates that Bek \u201cgrew up in Switzerland\u201d and \u201clater studied in the UK at the University of Cambridge and Warwick Business School.\u201d  It notes he \u201cfirst tried his hand as a founder before switching sides initially at GFC & Accel,\u201d providing further confirmation of both education path and early entrepreneurial activity preceding his venture-capital roles.",
-          "mla_citation": {
-            "page_title": "Speaker Details: RAISE Summit 2025 \u2013 Mr Julien Bek",
-            "hyperlink": "https://tickets.raisesummit.com/2025/speaker/1759554/julien-bek",
-            "publication_name": "RAISE Summit",
-            "retrieval_date": "2025-07-26",
-            "author_name": "RAISE Summit Editorial Team",
-            "date_of_authorship": "2025-00-00"
-          }
-        },
-        {
-          "exhaustive_description": "Forbes\u2019 30 Under 30 profile (Finance, Europe 2021) lists Bek as a \u201cPrincipal, Accel\u201d and records that the then-27-year-old \u201cholds degrees from Warwick Business School and the University of Cambridge.\u201d  Although brief, the entry independently corroborates his two academic degrees and provides an age datapoint that aligns with the August 1993 birth-month record.",
-          "mla_citation": {
-            "page_title": "Julien Bek",
-            "hyperlink": "https://www.forbes.com/profile/julien-bek/",
-            "publication_name": "Forbes",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Forbes Staff",
-            "date_of_authorship": "2021-04-08"
-          }
-        },
-        {
-          "exhaustive_description": "The Clay aggregated profile cites multiple public-source snippets.  It states Bek is \u201coriginally from Geneva, Switzerland,\u201d echoing Cointime, and specifies his undergraduate degree in Management & Finance (Warwick Business School) and postgraduate Entrepreneurship degree (University of Cambridge).  Importantly, it adds a detail about \u201cfounding E-clope, one of the first companies in the e-cigarette market,\u201d as an example of his early entrepreneurial ventures beyond the high-school startup mentioned by Sequoia.  The profile also lists personal interests (sailing, cooking, private pilot) and career chronology (Global Founders Capital \u2794 Accel \u2794 Sequoia).",
-          "mla_citation": {
-            "page_title": "Julien Bek \u2013 Clay profile",
-            "hyperlink": "https://clay.earth/profile/julien-bek",
-            "publication_name": "Clay",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Clay Data Enrichment Team",
-            "date_of_authorship": "2025-00-00"
-          }
-        },
-        {
-          "exhaustive_description": "The Org\u2019s executive card for Bek confirms the same academic background\u2014\u201cPostgraduate degree in Entrepreneurship from the University of Cambridge and an Undergraduate degree in Management & Finance from the University of Warwick \u2013 Warwick Business School.\u201d  While largely duplicative, it strengthens the chain of independent sources affirming his educational credentials and gives specific month/year (September 2023) for his move to Sequoia, supplying timing for the end of his formal education and transition fully into venture capital.",
-          "mla_citation": {
-            "page_title": "Julien Bek \u2013 Angel Investor at Albert | The Org",
-            "hyperlink": "https://theorg.com/org/albert-com/org-chart/julien-bek",
+            "page_title": "Brett Gibson \u2013 Managing Partner at Initialized Capital | The Org",
+            "hyperlink": "https://theorg.com/org/initialized-capital/org-chart/brett-gibson",
             "publication_name": "The Org",
-            "retrieval_date": "2025-07-26",
-            "author_name": "The Org Content Team",
-            "date_of_authorship": "2025-05-00"
+            "retrieval_date": "2025-07-28",
+            "author_name": "N.A.",
+            "date_of_authorship": "2024-00-00"
+          }
+        },
+        {
+          "exhaustive_description": "PitchBook\u2019s investor profile preview. Education section states: \u201cGraduated with a BA in philosophy from the University of California, Santa Barbara.\u201d The bio restates his series of early companies (DrawHere, Slinkset, Posterous, Posthaven) and his software-engineering stint at Y Combinator prior to joining Initialized. These datapoints corroborate undergraduate credentials and outline formative entrepreneurial experience.",
+          "mla_citation": {
+            "page_title": "Brett Gibson Profile: Contact Information & Network | PitchBook",
+            "hyperlink": "https://pitchbook.com/profiles/person/191432-26P",
+            "publication_name": "PitchBook",
+            "retrieval_date": "2025-07-28",
+            "author_name": "PitchBook Data, Inc.",
+            "date_of_authorship": "2025-00-00"
+          }
+        },
+        {
+          "exhaustive_description": "Equilar ExecAtlas featured profile. Lists Education twice as \u201cB.A., University of California, Santa Barbara.\u201d The accompanying biography summarizes his pre-VC software career (DrawHere, Slinkset, Posterous, Posthaven, Y Combinator internal systems) and notes personal interest (\u201cfond of pinball\u201d). It confirms that his professional narrative before Initialized was entirely software-driven and that no graduate study is reported.",
+          "mla_citation": {
+            "page_title": "Brett Gibson \u2013 Executive Bio, Work History, and Contacts \u2013 Equilar ExecAtlas",
+            "hyperlink": "https://people.equilar.com/bio/person/brett-gibson-initialized-capital-management-llc/27640917",
+            "publication_name": "Equilar ExecAtlas",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Equilar",
+            "date_of_authorship": "2025-02-12"
+          }
+        },
+        {
+          "exhaustive_description": "VC Sheet investor card. While it does not add schooling information, the page gives a concise chronology of Gibson\u2019s early ventures\u2014DrawHere (acquired 2006), Slinkset (YC 2008), Posterous (acquired by Twitter 2012), Posthaven (2013-), and his role building Y Combinator\u2019s internal software\u2014framing the formative technical experiences that preceded his move into venture capital.",
+          "mla_citation": {
+            "page_title": "Brett Gibson (Initialized Capital) / VC Breakdown & Contact",
+            "hyperlink": "https://www.vcsheet.com/who/brett-gibson",
+            "publication_name": "VC Sheet",
+            "retrieval_date": "2025-07-28",
+            "author_name": "N.A.",
+            "date_of_authorship": "2025-00-00"
           }
         }
       ]
@@ -93,47 +82,102 @@
     "pre_vc_career": {
       "pages": [
         {
-          "exhaustive_description": "Sequoia Capital\u2019s official biography for Julien Bek presents the only first-person account of his activities before becoming a professional investor.  In the \u201cBackstory\u201d section he explains that he \"had a successful startup while I was in high school and a less successful one while I was in a graduate program at Cambridge,\" attributing his investment instincts to that early founder experience.  Although the companies are not named, the page confirms (1) continuous entrepreneurship from his teens, (2) direct product-building experience at the University of Cambridge, and (3) that these founder stints preceded any venture-capital employment.  The page also notes that he spent \u201ca summer at a VC firm\u201d during university \u2013 establishing a chronological sequence of founder \u2192 VC intern \u2192 full-time VC, and thereby marking his pre-VC, non-investor roles.  No other corporate employment outside VC is mentioned, indicating those two startups are the entirety of his non-VC career according to Sequoia.",
+          "exhaustive_description": "TechCrunch\u2019s news post announces the public-beta launch of Posthaven, a paid blogging platform created by Posterous co-founders Garry Tan and Brett Gibson immediately after Twitter decided to shutter Posterous. The article identifies Gibson by name as a Posterous co-founder and Posthaven co-creator, explains Posthaven\u2019s $5-per-month business model, states that Tan and Gibson \u2018promised to keep the service running as long as it has users,\u2019 and summarizes import figures (850,000 posts imported since February 15, 2013). It also quotes the founders on their long-term goal of data preservation and details road-map features they are personally building (post-by-email, multiple contributors, bookmarklet, etc.). Thus it establishes Gibson\u2019s post-Posterous role as a software-building founder and operator outside of venture capital.",
           "mla_citation": {
-            "page_title": "\u201cJulien Bek | Sequoia Capital.\u201d",
-            "hyperlink": "https://www.sequoiacap.com/people/julien-bek/",
-            "publication_name": "Sequoia Capital",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Sequoia Capital",
-            "date_of_authorship": "2025-00-00"
+            "page_title": "Posthaven Launches in Public Beta, Has Saved 850K Posts Since Posterous Announced Its Shutdown Date of April 30th",
+            "hyperlink": "https://techcrunch.com/2013/03/22/posthaven-launches-in-public-beta-has-saved-850k-posts-since-posterous-announced-its-shutdown-date-of-april-30th/",
+            "publication_name": "TechCrunch",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Drew Olanoff",
+            "date_of_authorship": "2013-03-22"
           }
         },
         {
-          "exhaustive_description": "Clay.earth\u2019s automatically aggregated public profile for Julien Bek adds specific detail to the sketch on Sequoia\u2019s site.  Under \u201cBackground and Education\u201d it states that Bek \u201clater launched E-clope, one of the first companies in the e-cigarette market,\u201d explicitly naming the startup he founded while still a student.  The same sentence groups E-clope with \u201cearly entrepreneurial ventures\u201d that began in high school, corroborating Sequoia\u2019s claim that he was already a founder before any venture-capital work.  Because Clay surfaces only publicly indexed facts (it cites Sequoia.com and LinkedIn as sources) it is a secondary confirmation that (a) Bek personally launched E-clope and (b) that venture belonged to the emerging European e-cigarette sector, qualifying as a non-VC operating role.",
+          "exhaustive_description": "The Verge\u2019s feature about alternatives for users after Posterous\u2019 closure devotes a large section to Posthaven. It notes that \u2018Posterous co-founder Garry Tan \u2026 and another Posterous co-founder, Brett Gibson, decided to recreate the blogging platform when they heard Twitter planned to shut it down.\u2019 The story calls Posthaven \u2018Posterous redux,\u2019 describes its \u2018perfect importer,\u2019 and quotes Tan saying \u2018Both Brett and I have pledged to do this because we really believe that something like this should exist.\u2019 The piece therefore documents Gibson\u2019s status as a technical co-founder/operator of Posthaven and links him to Posterous\u2019 earlier founding.",
           "mla_citation": {
-            "page_title": "\u201cJulien Bek.\u201d",
-            "hyperlink": "https://clay.earth/profile/julien-bek",
-            "publication_name": "Clay",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Clay Earth, Inc.",
-            "date_of_authorship": "2025-00-00"
+            "page_title": "Posterous Is Shutting Down: Here Are the Best Alternatives",
+            "hyperlink": "https://www.theverge.com/2013/4/30/4281780/posterous-is-shutting-down-tomorrow-here-are-the-best-alternatives",
+            "publication_name": "The Verge",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Adrianne Jeffries",
+            "date_of_authorship": "2013-04-30"
           }
         },
         {
-          "exhaustive_description": "MarketScreener\u2019s people dossier on Julien Bek supplies another pre-VC company: it lists him as \u201cFounder (01/04/2015) \u2013 Smart Outsourcing SL,\u201d an e-commerce/digital-marketing business headquartered in Salamanca, Spain.  The file characterises Smart Outsourcing SL as providing \u201cdigital marketing services and products online [and] internet advertising for businesses and startups,\u201d establishing the firm as a services operator rather than an investment vehicle.  The timeline confirms that the founding (April 2015) predates Bek\u2019s first full-time VC job at Global Founders Capital later in 2015, making Smart Outsourcing his second documented operating role outside venture capital.",
+          "exhaustive_description": "TechCrunch reports Posterous\u2019 acquisition of fellow YC startup Slinkset. It states: \u2018Slinkset.com will continue to operate, with Slinkset co-founder Brett Gibson joining Posterous full-time.\u2019 The piece confirms that Gibson originally founded Slinkset (a white-label social-news platform) and that he transitioned into a senior engineering role at Posterous upon acquisition, illustrating his entrepreneurial and operator history before entering VC.",
           "mla_citation": {
-            "page_title": "\u201cJulien Bek: Positions, Relations and Network \u2013 MarketScreener.\u201d",
-            "hyperlink": "https://www.marketscreener.com/insider/JULIEN-BEK-A23RDN/",
-            "publication_name": "MarketScreener",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Surperformance SAS",
-            "date_of_authorship": "2025-02-21"
+            "page_title": "Posterous Acquires Fellow Y Combinator Alum Slinkset",
+            "hyperlink": "https://techcrunch.com/2009/06/23/posterous-acquires-fellow-y-combinator-alum-slinkset/",
+            "publication_name": "TechCrunch",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Jason Kincaid",
+            "date_of_authorship": "2009-06-23"
           }
         },
         {
-          "exhaustive_description": "Moneyhouse reproduces the Swiss Official Gazette of Commerce (FOSC) filings for E-clope SARL, the e-cigarette company attributed to Bek on other sites.  The record shows: (1) registration date 23 Mar 2011 in Geneva; (2) stated purpose \u201cpurchase, sale and trade of high-technology products\u2026 notably the marketing of nicotine-free electronic cigarettes\u201d; (3) liquidation completed and company struck off on 18 May 2018; (4) the creditor-contact address during liquidation listed as \u201cMadame Astrid Bek,\u201d indicating family involvement and strengthening the link to Julien Bek.  These registry facts confirm E-clope\u2019s existence, its industry (electronic cigarettes), its lifespan (2011-2018) and its status as a genuine operating business \u2013 independently verifying the non-VC venture named in the Clay profile.",
+          "exhaustive_description": "The Next Web covers the same acquisition one day later, emphasizing that \u2018Slinkset founder Brett Gibson will also join the fellow YC startup as part of the acquisition.\u2019 Additional background on Posterous\u2019 growth provides third-party corroboration of Gibson\u2019s founder status at Slinkset and his technical/operator move to Posterous.",
           "mla_citation": {
-            "page_title": "\u201cE-clope SARL, en liquidation \u00e0 Gen\u00e8ve | Moneyhouse.\u201d",
-            "hyperlink": "https://www.moneyhouse.ch/fr/company/e-clope-sarl-en-liquidation-12954331381",
-            "publication_name": "Moneyhouse / Neue Z\u00fcrcher Zeitung AG",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Moneyhouse Editorial Team",
-            "date_of_authorship": "2018-05-18"
+            "page_title": "Posterous Acquires Social News Site Creation Tool Slinkset",
+            "hyperlink": "https://thenextweb.com/news/posterous-acquires-social-news-site-creation-tool-slinkset",
+            "publication_name": "The Next Web",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Zee",
+            "date_of_authorship": "2009-06-24"
+          }
+        },
+        {
+          "exhaustive_description": "Y Combinator\u2019s official company profile for Posterous lists Brett Gibson as one of three founders (alongside Sachin Agarwal and Garry Tan). The page confirms the founding date (Summer 2008 YC batch), company description (\u2018Dead simple blogs by email\u2019), status (acquired), location, and Gibson\u2019s later bio line (\u201cManaging Partner at Initialized Capital. Previously wrote software at YC, and founded YC cos Posterous, Posthaven, Slinkset\u201d). This source authoritatively records Gibson\u2019s co-founder role at Posterous, predating his VC career.",
+          "mla_citation": {
+            "page_title": "Posterous \u2013 Dead Simple Blogs by Email",
+            "hyperlink": "https://www.ycombinator.com/companies/posterous",
+            "publication_name": "Y Combinator",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Y Combinator staff",
+            "date_of_authorship": "2025-07-28"
+          }
+        },
+        {
+          "exhaustive_description": "Y Combinator\u2019s profile for Slinkset identifies Brett Gibson as a founder of the Summer 2008 startup and describes the product (\u2018white-label social news platform\u2019) with status \u2018Inactive.\u2019 The entry independently substantiates Gibson\u2019s founding of Slinkset and places it chronologically before his Posterous and Posthaven ventures.",
+          "mla_citation": {
+            "page_title": "Slinkset \u2013 Votable Lists",
+            "hyperlink": "https://www.ycombinator.com/companies/slinkset",
+            "publication_name": "Y Combinator",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Y Combinator staff",
+            "date_of_authorship": "2025-07-28"
+          }
+        },
+        {
+          "exhaustive_description": "Garry Tan\u2019s Medium announcement of new hires at Initialized introduces \u2018Brett Gibson \u2026 Operating Partner for Engineering.\u2019 Tan recounts Gibson\u2019s entire pre-VC r\u00e9sum\u00e9: co-founder of Posthaven and Posterous (acquired by Twitter); collaborator on Y Combinator\u2019s internal software (interview, application, event, and alumni-network systems); founder of Slinkset; and co-founder of DrawHere, \u2018a browser drawing startup acquired by DeviantArt in 2006.\u2019 This firsthand narrative ties Gibson to each of his engineering/operator roles and explicitly confirms the DeviantArt exit, providing a consolidated, reliable timeline of his non-VC career.",
+          "mla_citation": {
+            "page_title": "Welcome Alda and Brett",
+            "hyperlink": "https://medium.com/initialized-capital/welcome-alda-and-brett-a32b878901df",
+            "publication_name": "Medium / Initialized Capital",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Garry Tan",
+            "date_of_authorship": "2017-06-15"
+          }
+        },
+        {
+          "exhaustive_description": "WebUrbanist\u2019s art-tech roundup \u2018Doing Graffiti Online\u2019 includes a section headed \u2018Draw Here\u2019 with an in-line screenshot and link to DrawHere.com. It describes Draw Here as a browser bookmarklet that \u2018lets you tag online while you\u2019re visiting a web page\u2019 and allows users to save and share their drawings. Although it does not name founders, the article documents the product\u2019s existence, functionality, and timeframe (published 2009) and thereby supports Gibson\u2019s claim\u2014via other sources\u2014of founding a browser-drawing startup that was later acquired by DeviantArt.",
+          "mla_citation": {
+            "page_title": "Doing Graffiti Online: 8 Generator & Creator Applications",
+            "hyperlink": "https://weburbanist.com/2009/10/15/doing-graffiti-online-8-generator-creator-applications/",
+            "publication_name": "WebUrbanist",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Delana",
+            "date_of_authorship": "2009-10-15"
+          }
+        },
+        {
+          "exhaustive_description": "Spanish tech site Genbeta\u2019s 2006 post \u2018Drawhere, graffitea cualquier direcci\u00f3n web\u2019 introduces DrawHere as a bookmarklet that lets users spray-paint graffiti over any webpage, adjust spray size and color, and save finished drawings with tags and RSS tracking. The publication date (13 Oct 2006) places DrawHere in the correct historical window for Gibson\u2019s early startup, corroborating Medium\u2019s later note that the company was acquired by DeviantArt the same year.",
+          "mla_citation": {
+            "page_title": "DrawHere, graffitea cualquier direcci\u00f3n web",
+            "hyperlink": "https://www.genbeta.com/web/drawhere-graffitis-en-la-web",
+            "publication_name": "Genbeta",
+            "retrieval_date": "2025-07-28",
+            "author_name": "cyberfrancis",
+            "date_of_authorship": "2006-10-13"
           }
         }
       ]
@@ -141,69 +185,80 @@
     "vc_career": {
       "pages": [
         {
-          "exhaustive_description": "Official Sequoia Capital profile for Julien Bek. Identifies him as a Seed/Early-stage partner based in London. Narrative \u201cBackstory\u201d explains his entrepreneurial upbringing, a summer job at a VC firm where he first saw UiPath and Revolut pitches, and how that experience honed his ability to spot exceptional founders. The \u201cOn the lookout for\u201d section sets out his investment philosophy: enthusiasm for product-centric companies solving everyday problems, excitement about Europe\u2019s AI talent, and desire to help founders compete globally. Gives concrete examples of past or current investments\u2014including Revolut and Melio\u2014and lists present portfolio companies Lemni (2024), Magentic (2024) and Rillet (2025). Demonstrates thematic focus on AI agents, supply-chain tech and AI-native ERP, confirming current role, sector focus and companies backed.",
+          "exhaustive_description": "Business Insider\u2019s profile traces Gibson\u2019s entire road into venture capital.  It recounts his early engineering and founder years (Grand Central Communications 2004, DrawHere 2005-06, Slinkset 2008, Posterous 2009-12) and shows how Garry Tan persuaded him to join Initialized Capital in 2017 as its first Operating Partner for Engineering.  The story explains Gibson\u2019s initial mandate to write \u201cFolio,\u201d the internal deal-flow and blind-voting software that the firm still uses daily, and how that role evolved into investing.  It records his promotion \u201clast August\u201d (August 2021) to General Partner and lists crypto-infrastructure deals he has led\u2014Bison Trails, TRM Labs, Talos Trading\u2014illustrating his thematic focus on crypto, dev-tools and infra.  The article provides first-person quotes on Initialized\u2019s blind-voting philosophy and describes how Folio shapes the firm\u2019s investment process, giving insight into Gibson\u2019s product-driven, data-centric investment style.",
           "mla_citation": {
-            "page_title": "Julien Bek | Sequoia Capital",
-            "hyperlink": "https://www.sequoiacap.com/people/julien-bek/",
-            "publication_name": "Sequoia Capital",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Sequoia Capital",
-            "date_of_authorship": "0000-00-00"
-          }
-        },
-        {
-          "exhaustive_description": "News report on Sequoia\u2019s hiring of Accel principal Julien Bek as the sixth partner in its London office. Gives the hiring date (article published 6 June 2023) and explains that Bek will join later in 2023. Summarises his career trajectory: five years at Accel (associate \u2192 principal) leading the firm\u2019s deal for German startup Slay; earlier experience at Global Founders Capital where he helped back Revolut; board-observer roles at Hopin, BeReal and Primer. Provides context about Sequoia\u2019s European expansion and quotes Luciana Lixandru and Sonali De Rycker praising Bek\u2019s talent. Confirms his move from Accel to Sequoia and highlights his fintech focus.",
-          "mla_citation": {
-            "page_title": "Sequoia bolsters London office with sixth partner hire as VC firm unveils radical restructure",
-            "hyperlink": "https://www.businessinsider.com/sequoia-vc-fund-set-hire-accel-investor-new-london-partner-2023-6",
+            "page_title": "\u201cBrett Gibson went from making pizza to a rising-star crypto VC at Initialized Capital. Here\u2019s how a chance encounter with Garry Tan changed the course of his career.\u201d",
+            "hyperlink": "https://www.businessinsider.com/brett-gibson-crypto-vc-partner-initialized-capital-2022-4",
             "publication_name": "Business Insider",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Callum Burroughs",
-            "date_of_authorship": "2023-06-06"
+            "retrieval_date": "2025-07-28",
+            "author_name": "Emily Quiles",
+            "date_of_authorship": "2022-05-06"
           }
         },
         {
-          "exhaustive_description": "Forbes 30 Under 30 Europe \u2013 Finance profile of Julien Bek. Describes him (age 27 in 2021) as a Principal at Accel focusing on fintech, productivity and collaboration. Notes prior role at Global Founders Capital where he invested in Revolut and Albert. Lists educational credentials (B.A./B.Sc. Warwick Business School; M.A./M.Sc. University of Cambridge). Establishes early-career entry into venture capital (GFC, 2015) and thematic interest in fintech/productivity tools while at Accel.",
+          "exhaustive_description": "This Medium post by Initialized co-founder Garry Tan formally announces Brett Gibson\u2019s entry into venture capital on 15 June 2017.  It states that Gibson is \u201cjoining us as Operating Partner for Engineering,\u201d describes his responsibilities (advising portfolio companies on building world-class software teams and \u201cbuild[ing] software that super-charges what we can do as a partnership\u201d), and summarizes his technical founder background (Posthaven, Posterous, YC software).  The piece thus documents Gibson\u2019s first VC role, its title, starting date, and the strategic context in which Initialized hired him.",
           "mla_citation": {
-            "page_title": "Julien Bek",
-            "hyperlink": "https://www.forbes.com/profile/julien-bek/",
-            "publication_name": "Forbes",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Forbes Staff",
-            "date_of_authorship": "2021-01-00"
+            "page_title": "\u201cWelcome Alda and Brett. The Initialized team is leveling up with a new Partner & COO, and Operating Partner.\u201d",
+            "hyperlink": "https://medium.com/initialized-capital/welcome-alda-and-brett-a32b878901df",
+            "publication_name": "Medium \u2013 Initialized Capital publication",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Garry Tan",
+            "date_of_authorship": "2017-06-15"
           }
         },
         {
-          "exhaustive_description": "TechCrunch article covering Rillet\u2019s $25 million Series A (28 May 2025) led by Sequoia. Quotes partner Julien Bek extensively: he calls the general ledger \u201cthe beating heart of the finance function,\u201d explains why VCs once avoided the space and why Rillet changed his mind, and cites metrics he watched (NetSuite replacements) to validate the opportunity. Demonstrates Bek\u2019s current role leading Sequoia\u2019s investment, his interest in AI-driven enterprise software and his analytical approach to fintech/ERP opportunities. Confirms he led the deal and articulates his investment reasoning.",
+          "exhaustive_description": "In the Fund V announcement (14 Aug 2020), Garry Tan names Gibson as a returning \u201cGeneral Partner\u201d and highlights his domain expertise: \u201ccloud, infrastructure, crypto, and AI/ML.\u201d  The article confirms Gibson\u2019s promotion path (Operating Partner \u2192 General Partner) and situates him on the six-person investment team overseeing a new $230 million seed fund.  It also reiterates that he joined the firm in 2017 and had grown into an all-round advisor, documenting both role and thematic focus at the General-Partner level.",
           "mla_citation": {
-            "page_title": "Rillet raises $25M from Sequoia to automate general ledger systems using AI",
-            "hyperlink": "https://techcrunch.com/2025/05/28/rillet-raises-25m-from-sequoia-to-automate-general-ledger-systems-using-ai/",
+            "page_title": "\u201cAnnouncing Initialized Fund V: Our team of honeybadgers is back with a $230M seed fund for startups pre-product market fit.\u201d",
+            "hyperlink": "https://medium.com/initialized-capital/announcing-initialized-fund-v-ab34becf68c9",
+            "publication_name": "Medium \u2013 Initialized Capital publication",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Garry Tan",
+            "date_of_authorship": "2020-08-14"
+          }
+        },
+        {
+          "exhaustive_description": "Business Insider\u2019s news report on Garry Tan becoming CEO of Y Combinator (29 Aug 2022) contains the formal statement from Initialized that \u201cJen Wolf and Brett Gibson will take over as managing partners\u2026 Wolf will continue to lead operations, and Gibson will lead the firm\u2019s investment strategy.\u201d  This establishes the date (August 2022) and context of Gibson\u2019s elevation to Managing Partner and clarifies his mandate within the partnership hierarchy.",
+          "mla_citation": {
+            "page_title": "\u201cY Combinator\u2019s all-star alum and VC Garry Tan returns to take over the accelerator as its chief executive.\u201d",
+            "hyperlink": "https://www.businessinsider.com/garry-tan-initialized-new-ceo-of-y-combinator-2022-8",
+            "publication_name": "Business Insider",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Melia Russell and Madeline Renbarger",
+            "date_of_authorship": "2022-08-29"
+          }
+        },
+        {
+          "exhaustive_description": "TechCrunch\u2019s 3 Oct 2024 article quotes and links to a memo by \u201cthe firm\u2019s managing partner Brett Gibson\u201d announcing a staff restructuring to \u201cget back to basics.\u201d  It shows Gibson acting in the top executive capacity\u2014making firm-wide strategic and personnel decisions\u2014and provides evidence of his continuing leadership as Managing Partner.  The piece also reiterates Initialized\u2019s assets under management and portfolio highlights, situating Gibson\u2019s role in the broader firm trajectory.",
+          "mla_citation": {
+            "page_title": "\u201cInitialized Capital restructures, and lets multiple partners go.\u201d",
+            "hyperlink": "https://techcrunch.com/2024/10/03/initialized-capital-restructures-and-lets-multiple-partners-go/",
             "publication_name": "TechCrunch",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Marina Temkin",
-            "date_of_authorship": "2025-05-28"
+            "retrieval_date": "2025-07-28",
+            "author_name": "Rebecca Szkutak",
+            "date_of_authorship": "2024-10-03"
           }
         },
         {
-          "exhaustive_description": "Rillet press-release blog announcing its $25 million Series A (28 May 2025). Includes a quotation from Julien Bek, identified as \u201cthe Sequoia partner who led the firm\u2019s partnership with Rillet,\u201d saying ERP is \u201cone of the largest software categories\u201d yet \u201cvirtually untouched,\u201d and praising the founders\u2019 domain expertise and AI-native approach. Confirms Bek\u2019s lead-partner role, shows his thematic focus on AI in finance software, and documents portfolio involvement alongside Sequoia colleagues Roelof Botha and Cornelius Menke.",
+          "exhaustive_description": "Equilar\u2019s ExecAtlas profile (snapshot dated 12 Feb 2025) gives an official bio supplied by Initialized Capital.  It lists Gibson\u2019s current title (Managing Partner, Initialized Capital Management, LLC); notes board seats (CoinAlpha, Shogun); and, crucially, summarizes his investment domains\u2014\u201ccrypto, dev tools, AI/ML, and cloud infrastructure.\u201d  It also records his pre-VC software-founder history (Posthaven, Posterous, Slinkset, DrawHere) and thus corroborates the thematic focus of his venture practice.",
           "mla_citation": {
-            "page_title": "Rillet raises $25M Series A from Sequoia Capital to bring AI to mid-market accounting",
-            "hyperlink": "https://www.rillet.com/blog/rillet-raises-25m-from-sequoia-capital",
-            "publication_name": "Rillet",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Rillet (press release)",
-            "date_of_authorship": "2025-05-28"
+            "page_title": "\u201cBrett Gibson \u2013 Executive Bio, Work History, and Contacts.\u201d",
+            "hyperlink": "https://people.equilar.com/bio/person/brett-gibson-initialized-capital-management-llc/27640917",
+            "publication_name": "Equilar ExecAtlas",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Equilar research staff",
+            "date_of_authorship": "2025-02-12"
           }
         },
         {
-          "exhaustive_description": "Speaker biography on the RAISE Summit 2025 website. Summarises Julien Bek\u2019s venture-capital career: current Partner at Sequoia Capital in London; works with Dust, Rillet, Tacto and Lemni; earlier experience \u201cswitching sides\u201d at Global Founders Capital and Accel, partnering with Revolut, Miro, Attio and BeReal. Provides concise timeline and highlights geographic roots (Switzerland) and education (University of Cambridge and Warwick Business School). Reinforces sequence of firms (GFC \u2192 Accel \u2192 Sequoia) and breadth of investment focus (AI, consumer, enterprise).",
+          "exhaustive_description": "In this 7 Oct 2020 Q&A for the \u2018Inquisitive VC\u2019 series, Gibson (then a General Partner) narrates his transition from engineering to investing, detailing how he moved from advising on engineering in 2017 to \u201ctaking pitches on my own and advocating for deals.\u201d  He elaborates on his investment interests\u2014crypto, developer tooling, cloud infrastructure, AI/ML, robotics\u2014and explains Initialized\u2019s blind-vote, software-driven decision process.  The interview therefore provides primary-source insight into his investment philosophy, sector focus, and internal deal methodology.",
           "mla_citation": {
-            "page_title": "Speaker Details: RAISE Summit 2025 \u2013 Julien Bek",
-            "hyperlink": "https://tickets.raisesummit.com/2025/speaker/1759554/julien-bek",
-            "publication_name": "RAISE Summit",
-            "retrieval_date": "2025-07-26",
-            "author_name": "RAISE Summit",
-            "date_of_authorship": "2025-00-00"
+            "page_title": "\u201cThe Inquisitive VC: Brett Gibson \u2014 Initialized.\u201d",
+            "hyperlink": "https://medium.com/the-inquisitive-vc/the-inquisitive-vc-brett-gibson-initialized-e3e01d67f454",
+            "publication_name": "Medium \u2013 The Inquisitive VC",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Nawaz Ahmed",
+            "date_of_authorship": "2020-10-07"
           }
         }
       ]
@@ -211,168 +266,124 @@
     "notable_investments": {
       "pages": [
         {
-          "exhaustive_description": "Crunchbase\u2019s funding\u2010round profile for Revolut\u2019s Series A (announced 14 July 2016) lists round details and the full investor roster. Revolut raised a $10 million Series A and, under \u201cInvestors,\u201d Julien Bek is named among the 14 participants\u2014direct confirmation that he invested personally at this stage.",
+          "exhaustive_description": "Forbes staff writer Alex Konrad reports on Initialized Capital\u2019s very first Coinbase investment.  The article explains that Initialized (run at the time by Garry Tan, Alexis Ohanian and Harjeet Taggar) wrote \u201ca combined seed-stage check of $300,000\u201d in September 2012, split into three tranches ($50 K at a $9 M cap, another $50 K at a $12 M cap and $200 K in January 2013).  It notes that Coinbase\u2019s direct listing on 14 Apr 2021 valued that early $300 K at roughly $680 million (a >2,200\u00d7 return) and that Initialized later re-upped in the Series C (2015) and Series E (2018).  The piece provides color on how the deal was sourced while Tan was still a YC partner and states the exact $300 K amount, round (seed) and year (2012).",
           "mla_citation": {
-            "page_title": "Series A \u2013 Revolut \u2013 2016-07-14 \u2013 Crunchbase Funding Round Profile",
-            "hyperlink": "https://www.crunchbase.com/funding_round/revolut-series-a--924038eb",
+            "page_title": "How Initialized Investor Garry Tan Turned a $300,000 Bet on Coinbase Into a $680 Million \u201cGolden Ticket\u201d",
+            "hyperlink": "https://www.forbes.com/sites/alexkonrad/2021/04/14/initialized-investor-garry-tan-turned-300k-bet-on-coinbase-into-680-million/",
+            "publication_name": "Forbes",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Alex Konrad",
+            "date_of_authorship": "2021-04-14"
+          }
+        },
+        {
+          "exhaustive_description": "The Coinbase Wikipedia entry\u2019s IPO section confirms the outcome of Initialized\u2019s seed bet.  It says Coinbase became a public company via direct listing on the Nasdaq on 14 April 2021, with a reference price of $250 a share and a first-day closing price of $328.28.  This page is used to document the investment\u2019s exit (IPO on 14 Apr 2021).",
+          "mla_citation": {
+            "page_title": "Coinbase",
+            "hyperlink": "https://en.wikipedia.org/wiki/Coinbase",
+            "publication_name": "Wikipedia Foundation",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Multiple editors",
+            "date_of_authorship": "2025-07-15"
+          }
+        },
+        {
+          "exhaustive_description": "Crunchbase\u2019s Instacart seed-round profile (announced 15 Oct 2012) lists a $2.3 million seed raise.  The investor table shows Initialized Capital (partner Garry Tan) alongside Khosla Ventures, FundersClub, Canaan, etc.  This provides year (2012), round (seed), amount ($2.3 M) and Initialized\u2019s participation.",
+          "mla_citation": {
+            "page_title": "Seed Round \u2013 Instacart \u2013 2012-10-15",
+            "hyperlink": "https://www.crunchbase.com/funding_round/instacart-seed--a6602784",
             "publication_name": "Crunchbase",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Crunchbase Staff",
-            "date_of_authorship": "2016-07-14"
+            "retrieval_date": "2025-07-28",
+            "author_name": "Crunchbase Data Team",
+            "date_of_authorship": "2012-10-15"
           }
         },
         {
-          "exhaustive_description": "TechCrunch\u2019s report announces Revolut\u2019s $10 million Series A led by Balderton on 11 July 2016. It describes the product and confirms the size and timing of the round in which Bek invested.",
+          "exhaustive_description": "Instacart\u2019s History section states: \u201cIn September 2023, the company became public through an initial public offering raising $660 million.\u201d  This verifies the exit outcome (IPO, Sept 2023) for Initialized\u2019s 2012 seed investment.",
           "mla_citation": {
-            "page_title": "\u201cRevolut Grabs $10 Million for Its Mobile Foreign Exchange Service.\u201d",
-            "hyperlink": "https://techcrunch.com/2016/07/11/revolut-grabs-10-million-for-its-mobile-foreign-exchange-service/",
-            "publication_name": "TechCrunch",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Romain Dillet",
-            "date_of_authorship": "2016-07-11"
+            "page_title": "Instacart",
+            "hyperlink": "https://en.wikipedia.org/wiki/Instacart",
+            "publication_name": "Wikipedia Foundation",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Multiple editors",
+            "date_of_authorship": "2025-07-02"
           }
         },
         {
-          "exhaustive_description": "This follow-on TechCrunch piece details Revolut\u2019s Series E of $800 million (15 July 2021) led by SoftBank and Tiger Global, valuing the company at $33 billion\u2014evidence of the later-stage outcome of Bek\u2019s early bet.",
+          "exhaustive_description": "GM\u2019s official 11 Mar 2016 press release announces that General Motors is acquiring Cruise Automation.  It confirms the exit (acquisition) and date (11 Mar 2016) of Initialized\u2019s Cruise stake.",
           "mla_citation": {
-            "page_title": "\u201cRevolut Confirms a Fresh $800M in Funding at a $33B Valuation to Supercharge Its Financial Services Super App.\u201d",
-            "hyperlink": "https://techcrunch.com/2021/07/15/revolut-confirms-a-fresh-800m-in-funding-at-a-33b-valuation-to-supercharge-its-financial-services-superapp/",
+            "page_title": "GM to Acquire Cruise Automation to Accelerate Autonomous Vehicle Development",
+            "hyperlink": "https://investor.gm.com/news-releases/news-release-details/gm-acquire-cruise-automation-accelerate-autonomous-vehicle",
+            "publication_name": "General Motors Newsroom",
+            "retrieval_date": "2025-07-28",
+            "author_name": "General Motors Co.",
+            "date_of_authorship": "2016-03-11"
+          }
+        },
+        {
+          "exhaustive_description": "Employbl\u2019s funding history page lists every Cruise round.  For the Series A on 17 Sep 2015 it shows \u201cInitialized Capital\u201d among the investors in a $12.5 million raise; for the March 2014 $4.3 million seed it again lists Initialized.  This establishes year (2014 seed, 2015 Series A), rounds, amounts and Initialized\u2019s role.",
+          "mla_citation": {
+            "page_title": "Cruise Automation Funding & Investors",
+            "hyperlink": "https://www.employbl.com/companies/Cruise-Automation/funding-rounds",
+            "publication_name": "Employbl",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Employbl Data Team",
+            "date_of_authorship": "2025-02-10"
+          }
+        },
+        {
+          "exhaustive_description": "Crunchbase records Rippling\u2019s $7 million seed round (announced 14 Mar 2017).  Initialized Capital is listed as lead investor alongside Hydrazine Capital.  This supplies year (2017), round (seed), amount ($7 M) and Initialized\u2019s role.",
+          "mla_citation": {
+            "page_title": "Seed Round \u2013 Rippling \u2013 2017-03-14",
+            "hyperlink": "https://www.crunchbase.com/funding_round/rippling-seed--67845594",
+            "publication_name": "Crunchbase",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Crunchbase Data Team",
+            "date_of_authorship": "2017-03-14"
+          }
+        },
+        {
+          "exhaustive_description": "TechCrunch\u2019s May 9 2025 article reports Rippling\u2019s $450 million Series G at a $16.8 billion valuation, bringing total funding to $1.85 billion.  It confirms that the company remains private and continues to raise large growth rounds (latest outcome as of 2025).",
+          "mla_citation": {
+            "page_title": "Rippling raises $450M at a $16.8B valuation, reveals YC is a customer",
+            "hyperlink": "https://techcrunch.com/2025/05/09/rippling-raises-450m-at-a-16-8b-valuation-reveals-yc-is-a-customer/",
             "publication_name": "TechCrunch",
-            "retrieval_date": "2025-07-26",
+            "retrieval_date": "2025-07-28",
             "author_name": "Ingrid Lunden",
-            "date_of_authorship": "2021-07-15"
+            "date_of_authorship": "2025-05-09"
           }
         },
         {
-          "exhaustive_description": "Eric Newcomer\u2019s Substack scoop (3 June 2021) reveals that Andreessen Horowitz and Accel agreed to co-lead BeReal\u2019s $30 million Series A, valuing the French social app at about $150 million and citing Accel partner involvement\u2014establishing Bek\u2019s investment while at Accel and the year/size of the round.",
+          "exhaustive_description": "Crunchbase shows Ro\u2019s (then Roman) $3.1 million seed (7 Nov 2017) with Initialized Capital (partners Alexis Ohanian & Garry Tan) among the investors.  This provides year, round, amount and participation.",
           "mla_citation": {
-            "page_title": "\u201cSCOOP: a16z, Accel Back French Founder\u2019s Photo-Sharing App BeReal.\u201d",
-            "hyperlink": "https://www.newcomer.co/p/scoop-a16z-accel-back-french-founders",
-            "publication_name": "Newcomer (Substack)",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Eric Newcomer",
-            "date_of_authorship": "2021-06-03"
+            "page_title": "Seed Round \u2013 Ro \u2013 2017-11-07",
+            "hyperlink": "https://www.crunchbase.com/funding_round/roman-2-seed--ad7e8582",
+            "publication_name": "Crunchbase",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Crunchbase Data Team",
+            "date_of_authorship": "2017-11-07"
           }
         },
         {
-          "exhaustive_description": "TechCrunch confirms BeReal\u2019s exit: on 11 June 2024 French publisher Voodoo acquired the company for \u20ac500 million. The article gives purchase price, buyer, leadership changes, and user metrics\u2014providing the outcome of Bek\u2019s investment.",
+          "exhaustive_description": "TechCrunch\u2019s 26 Sep 2019 story on Mercury details a $20 million Series A led by CRV and notes that it follows \u201can investor-heavy $6 million seed round earlier this year\u201d led by Andreessen Horowitz.  The piece discusses the bank-for-startups product, lists other investors and states post-money valuation ($100 M).  Initialized Capital is one of the nearly 40 seed investors (mentioned in the full investor list).  This gives year (2019), seed amount ($6 M), plus subsequent Series A.",
           "mla_citation": {
-            "page_title": "\u201cBeReal Is Being Acquired by Mobile Apps and Games Company Voodoo for \u20ac500M.\u201d",
-            "hyperlink": "https://techcrunch.com/2024/06/11/bereal-is-being-acquired-by-mobile-apps-and-games-company-voodoo-for-e500m/",
+            "page_title": "Mercury banks $20M for its banking service aimed at startups",
+            "hyperlink": "https://techcrunch.com/2019/09/26/mercury-banks-20m-for-its-banking-service-aimed-at-startups/",
             "publication_name": "TechCrunch",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Aisha Malik",
-            "date_of_authorship": "2024-06-11"
-          }
-        },
-        {
-          "exhaustive_description": "Steve O\u2019Hear\u2019s TechCrunch story (8 Nov 2018) announces RealtimeBoard (now Miro) raising a $25 million Series A led by Accel. It gives round size, lead investor, company metrics, and product description\u2014evidence for Bek\u2019s 2018 investment while at Accel.",
-          "mla_citation": {
-            "page_title": "\u201cRealtimeBoard, a Visual Collaboration Platform for Companies, Raises $25M Led by Accel.\u201d",
-            "hyperlink": "https://techcrunch.com/2018/11/08/realtimeboard/",
-            "publication_name": "TechCrunch",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Steve O\u2019Hear",
-            "date_of_authorship": "2018-11-08"
-          }
-        },
-        {
-          "exhaustive_description": "Business Wire press release (5 Jan 2022) describes Miro\u2019s $400 million Series C at a $17.5 billion valuation, lists investors (including Accel) and cumulative funding\u2014showing the significant follow-on outcome of Bek\u2019s earlier Series A.",
-          "mla_citation": {
-            "page_title": "\u201cMiro Raises $400M in Series C Funding Round to Accelerate Innovation Through Visual Collaboration in the New Hybrid Workplace.\u201d",
-            "hyperlink": "https://www.businesswire.com/news/home/20220105005395/en/Miro-Raises-400M-in-Series-C-Funding-Round-to-Accelerate-Innovation-Through-Visual-Collaboration-in-the-New-Hybrid-Workplace",
-            "publication_name": "Business Wire",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Business Wire Staff",
-            "date_of_authorship": "2022-01-05"
-          }
-        },
-        {
-          "exhaustive_description": "Business Insider article (8 Sept 2020) reports Melio\u2019s $80 million Series C and notes an earlier $48 million Series B led by Accel in April 2020\u2014pinpointing Bek\u2019s entry round and year.",
-          "mla_citation": {
-            "page_title": "\u201cUS Fintech Melio Has Raised $80 Million and Says Its Payments Volume Surged 700% During the Pandemic.\u201d",
-            "hyperlink": "https://www.businessinsider.com/payments-startup-melio-raises-80-million-2020-9",
-            "publication_name": "Business Insider",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Amy Borrett",
-            "date_of_authorship": "2020-09-08"
-          }
-        },
-        {
-          "exhaustive_description": "PR Newswire release (14 Sept 2021) announces Melio\u2019s $250 million Series D at a $4 billion valuation, listing Accel among existing investors\u2014documenting major follow-on funding.",
-          "mla_citation": {
-            "page_title": "\u201cMelio Raises $250M to Fuel Expansion of Its B2B Payments Platform and Forge New Partnerships, Tripling Valuation to $4B.\u201d",
-            "hyperlink": "https://www.prnewswire.com/news-releases/melio-raises-250m-to-fuel-expansion-of-its-b2b-payments-platform-and-forge-new-partnerships-tripling-valuation-to-4b-301376128.html",
-            "publication_name": "PR Newswire",
-            "retrieval_date": "2025-07-26",
-            "author_name": "PR Newswire Staff",
-            "date_of_authorship": "2021-09-14"
-          }
-        },
-        {
-          "exhaustive_description": "Business Wire release (31 Oct 2024) details Melio\u2019s $150 million Series E (valuation $2 billion) led by Fiserv with Accel also participating\u2014evidence that the company remained private and continued to raise capital.",
-          "mla_citation": {
-            "page_title": "\u201cMelio Raises $150 Million to Expand B2B Payments Partnerships.\u201d",
-            "hyperlink": "https://www.businesswire.com/news/home/20241031916261/en/Melio-Raises-150-Million-To-Expand-B2B-Payments-Partnerships",
-            "publication_name": "Business Wire",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Business Wire Staff",
-            "date_of_authorship": "2024-10-31"
-          }
-        },
-        {
-          "exhaustive_description": "TechCrunch\u2019s 29 Nov 2020 article covers Primer\u2019s \u00a314 million ($18.7 million) Series A led by Accel, describing the low-code payments platform and early traction\u2014establishing Bek\u2019s entry round and year.",
-          "mla_citation": {
-            "page_title": "\u201cPrimer, the Fintech Helping Merchants Consolidate the Payments Stack, Raises \u00a314M Series A.\u201d",
-            "hyperlink": "https://techcrunch.com/2020/11/29/primed-for-accel/",
-            "publication_name": "TechCrunch",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Steve O\u2019Hear",
-            "date_of_authorship": "2020-11-29"
-          }
-        },
-        {
-          "exhaustive_description": "The follow-up TechCrunch piece (18 Oct 2021) announces Primer\u2019s $50 million Series B at a $425 million valuation, with Accel participating\u2014showing subsequent growth.",
-          "mla_citation": {
-            "page_title": "\u201cPrimer Raises $50M at a $425M Valuation for a Framework Designed to Help Merchants Build More Powerful Payment Flows.\u201d",
-            "hyperlink": "https://techcrunch.com/2021/10/18/primer-raises-50m-at-a-425m-valuation-for-a-framework-designed-to-help-merchants-build-more-powerful-payment-flows/",
-            "publication_name": "TechCrunch",
-            "retrieval_date": "2025-07-26",
+            "retrieval_date": "2025-07-28",
             "author_name": "Ingrid Lunden",
-            "date_of_authorship": "2021-10-18"
+            "date_of_authorship": "2019-09-26"
           }
         },
         {
-          "exhaustive_description": "Business Insider\u2019s 6 June 2023 profile on Bek\u2019s move to Sequoia confirms his prior deal roles: it states he \u201cwas involved in the fund\u2019s deal for Revolut\u201d and is \u201ca board observer at\u2026 BeReal and fintech Primer,\u201d directly linking him to those investments.",
+          "exhaustive_description": "TechCrunch\u2019s 26 Mar 2025 follow-up reports Mercury\u2019s $300 million Series C led by Sequoia at a $3.5 billion valuation (more than double its 2021 valuation).  This establishes the latest outcome/fund-raise trajectory for the 2019 seed investment.",
           "mla_citation": {
-            "page_title": "\u201cSequoia Bolsters London Office with Sixth Partner Hire as VC Firm Unveils Radical Restructure.\u201d",
-            "hyperlink": "https://www.businessinsider.com/sequoia-vc-fund-set-hire-accel-investor-new-london-partner-2023-6",
-            "publication_name": "Business Insider",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Callum Burroughs",
-            "date_of_authorship": "2023-06-06"
-          }
-        },
-        {
-          "exhaustive_description": "Sequoia\u2019s official blog post (11 Dec 2023) announcing its Series A investment in Tacto is co-authored by Luciana Lixandru, Julien Bek, and Cornelius Menke. It highlights why Sequoia led the \u20ac50 million round, confirming Bek\u2019s personal involvement and the 2023 investment year.",
-          "mla_citation": {
-            "page_title": "\u201cPartnering with Tacto: Future-Proof Supply Chains.\u201d",
-            "hyperlink": "https://www.sequoiacap.com/article/partnering-with-tacto-future-proof-supply-chains/",
-            "publication_name": "Sequoia Capital",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Luciana Lixandru, Julien Bek, and Cornelius Menke",
-            "date_of_authorship": "2023-12-11"
-          }
-        },
-        {
-          "exhaustive_description": "Tech.eu news article (12 Dec 2023) reports the \u20ac50 million Series A for Tacto led by Sequoia and Index Ventures, giving round size, use of funds, and investor list\u2014complementing Sequoia\u2019s blog with independent confirmation of the amount.",
-          "mla_citation": {
-            "page_title": "\u201cTacto Raises \u20ac50M for AI Supply Chain Solutions.\u201d",
-            "hyperlink": "https://tech.eu/2023/12/12/tacto-raises-eur50-million-for-ai-based-supply-chain-solutions",
-            "publication_name": "Tech.eu",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Cate Lawrence",
-            "date_of_authorship": "2023-12-12"
+            "page_title": "Fintech Mercury lands $300M in Sequoia-led Series C, doubles valuation to $3.5B",
+            "hyperlink": "https://techcrunch.com/2025/03/26/fintech-mercury-lands-300m-in-sequoia-led-series-c-doubles-valuation-to-3-5b/",
+            "publication_name": "TechCrunch",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Mary Ann Azevedo",
+            "date_of_authorship": "2025-03-26"
           }
         }
       ]
@@ -380,52 +391,63 @@
     "personal_life": {
       "pages": [
         {
-          "exhaustive_description": "Official biography page for venture-capitalist Julien Bek on Sequoia Capital\u2019s website. Personal-life details include: 1) Parents\u2019 occupations \u2013 his mother was an astrologist and his father a recruiter \u2013 and the influence they had on his ability to \u201cread people.\u201d 2) He \u201ccomes from a family of entrepreneurs,\u201d helping to explain his own early interest in founding companies (a successful high-school startup and a less-successful venture while in graduate school at Cambridge are mentioned). 3) A short \u2018Personal Side\u2019 section lists his leisure interests and hobbies verbatim: \u201cPrivate Pilot; Weekend Cooking; Sailing; Pink Floyd.\u201d These lines confirm he is licensed to fly small aircraft, enjoys cooking on weekends, sails recreationally, and is a fan of the rock band Pink Floyd. No spouse, children, or philanthropic activities are referenced. Copyright notice at bottom shows 2025, but no individual author or publication date is supplied.",
+          "exhaustive_description": "Business Insider\u2019s career profile on Brett Gibson opens with three personal-life bullet points, the first of which states that he \u201cquit his job making pizza to teach himself how to code.\u201d A following paragraph elaborates that after earning a B.A. in philosophy from the University of California, Santa Barbara, Gibson was \u201cserving pizzas and trying to figure out what to do next,\u201d before deciding to self-educate as a programmer. These details document his post-college food-service job (pizza maker/server) and the formative hobby of self-directed coding that preceded his tech career.",
           "mla_citation": {
-            "page_title": "\u201cJulien Bek | Sequoia Capital.\u201d",
-            "hyperlink": "https://www.sequoiacap.com/people/julien-bek/",
-            "publication_name": "Sequoia Capital",
-            "retrieval_date": "2025-07-26",
-            "author_name": "\u2014",
-            "date_of_authorship": "2025-00-00"
-          }
-        },
-        {
-          "exhaustive_description": "Pay-walled Business Insider news story announcing Bek\u2019s move from Accel to become the sixth partner in Sequoia\u2019s London office. Personal information that can be used in a Wikipedia \u2018Personal life\u2019 section: 1) States he is \u201coriginally from Geneva, Switzerland,\u201d giving his hometown/early-life location. 2) Quotes colleagues praising his people skills and understanding of founders (useful color for personality, though not strictly \u2018personal life\u2019). The article is primarily career-focused and contains no data on family, philanthropy, or private views, but Geneva origin is unique to this source.",
-          "mla_citation": {
-            "page_title": "\u201cSequoia bolsters London office with sixth partner hire as VC firm unveils radical restructure.\u201d",
-            "hyperlink": "https://www.businessinsider.com/sequoia-vc-fund-set-hire-accel-investor-new-london-partner-2023-6",
+            "page_title": "Brett Gibson went from making pizza to a rising-star crypto VC at Initialized Capital. Here\u2019s how a chance encounter with Garry Tan changed the course of his career.",
+            "hyperlink": "https://www.businessinsider.com/brett-gibson-crypto-vc-partner-initialized-capital-2022-4",
             "publication_name": "Business Insider",
-            "retrieval_date": "2025-07-26",
-            "author_name": "Callum Burroughs",
-            "date_of_authorship": "2023-06-06"
+            "retrieval_date": "2025-07-28",
+            "author_name": "Emily Quiles",
+            "date_of_authorship": "2022-05-06"
           }
         },
         {
-          "exhaustive_description": "Automatically generated Clay Earth profile that aggregates public-web information on Bek. Adds several personal-life datapoints not all found elsewhere: 1) Re-affirms he is \u201coriginally from Geneva, Switzerland.\u201d 2) Gives his academic credentials (B.A. Warwick Business School; M.A./M.S. University of Cambridge). 3) Lists personal interests: \u201csailing and cooking,\u201d and notes that \u201che is also a private pilot,\u201d echoing the Sequoia page. 4) Mentions an early entrepreneurial foray: he \u201cfounded E-clope, one of the first companies in the e-cigarette market,\u201d while still in school \u2013 useful anecdote for early-life/hobbies. The page is compiled by Clay; no human by-line or date is provided.",
+          "exhaustive_description": "Episode #32 of the \u201cWaves in the Finoverse\u201d podcast introduces Gibson as a \u201cself-taught coder, philosopher, pizza maker, and pinball master before turning his hands to investments.\u201d During the 24-minute interview (last updated 15 Mar 2023), host Walter Jennings and Gibson discuss: 1) Gibson\u2019s earlier \u201ccareer in pizza production,\u201d which he likens to building startup \u201cbases and toppings,\u201d reaffirming pizza-making as a personal interest; 2) Jennings\u2019 description of him as a \u201cpinball master,\u201d highlighting a long-standing hobby; and 3) the closing \u201cTracks in the Finoverse\u201d segment where Gibson names Kendrick Lamar\u2019s song \u201cYou\u201d as the music that powers his personal journey\u2014revealing a favorite musical artist.",
           "mla_citation": {
-            "page_title": "\u201cJulien Bek.\u201d",
-            "hyperlink": "https://clay.earth/profile/julien-bek",
-            "publication_name": "Clay Earth",
-            "retrieval_date": "2025-07-26",
-            "author_name": "\u2014",
-            "date_of_authorship": "0000-00-00"
+            "page_title": "Episode #32: Brett Gibson \u2014 Managing Partner at Initialized Capital",
+            "hyperlink": "https://www.finoverse.com/podcasts/episode-32-brett-gibson-managing-partner-at-initialized-capital",
+            "publication_name": "Finoverse",
+            "retrieval_date": "2025-07-28",
+            "author_name": "Walter Jennings (host)",
+            "date_of_authorship": "2023-03-15"
           }
         },
         {
-          "exhaustive_description": "Forbes \u201830 Under 30 Europe \u2013 Finance (2021)\u2019 profile of Julien Bek. Personal-life-relevant facts: 1) Age at time of publication is given: \u201c27-year-old Bek,\u201d implying birth year circa 1993-1994. 2) Confirms current residence/work base: \u201cLondon, United Kingdom.\u201d 3) Restates his educational background (degrees from Cambridge and Warwick). The short blurb is career-heavy and contains no family or philanthropy details but does supply age and location not explicit elsewhere.",
+          "exhaustive_description": "The VC Sheet profile gives a concise biographical sketch and, under the main paragraph, notes a single personal-life detail: \u201cHe is fond of pinball.\u201d This confirms pinball as a stated hobby independent of interviews and podcasts.",
           "mla_citation": {
-            "page_title": "\u201cJulien Bek.\u201d",
-            "hyperlink": "https://www.forbes.com/profile/julien-bek/",
-            "publication_name": "Forbes",
-            "retrieval_date": "2025-07-26",
-            "author_name": "\u2014",
-            "date_of_authorship": "2021-00-00"
+            "page_title": "Brett Gibson (Initialized Capital) / VC Breakdown & Contact",
+            "hyperlink": "https://www.vcsheet.com/who/brett-gibson",
+            "publication_name": "VC Sheet",
+            "retrieval_date": "2025-07-28",
+            "author_name": "VC Sheet staff (no individual author listed)",
+            "date_of_authorship": "2025-01-12"
+          }
+        },
+        {
+          "exhaustive_description": "The International Flipper Pinball Association (IFPA) player profile lists Brett Gibson (Player #66664) as a registered U.S. competitor, active for six years, with an open-rank of 9,655 and detailed rating/efficiency statistics. The listing verifies that he actively competes in organized pinball, substantiating the depth of the hobby referenced elsewhere.",
+          "mla_citation": {
+            "page_title": "Brett Gibson \u2014 IFPA Player Profile",
+            "hyperlink": "https://www.ifpapinball.com/players/view.php?p=66664",
+            "publication_name": "International Flipper Pinball Association",
+            "retrieval_date": "2025-07-28",
+            "author_name": "IFPA database (no individual author)",
+            "date_of_authorship": "2025-07-28"
+          }
+        },
+        {
+          "exhaustive_description": "The Org\u2019s public directory entry for Gibson states his current role at Initialized Capital and, under the \u201cLocation\u201d heading, lists \u201cSan Francisco, United States.\u201d This supplies the only reliable, published indication of his city of residence, a standard element of Wikipedia \u201cPersonal life\u201d sections.",
+          "mla_citation": {
+            "page_title": "Brett Gibson \u2013 Managing Partner at Initialized Capital | The Org",
+            "hyperlink": "https://www.theorg.com/org/initialized-capital/org-chart/brett-gibson",
+            "publication_name": "The Org",
+            "retrieval_date": "2025-07-28",
+            "author_name": "The Org staff (no individual author)",
+            "date_of_authorship": "2024-11-02"
           }
         }
       ]
     }
   },
-  "created_at": "2025-07-26T01:11:19.316367",
-  "updated_at": "2025-07-26T01:15:19.423400"
+  "created_at": "2025-07-28T00:14:04.643494",
+  "updated_at": "2025-07-28T00:26:59.498967"
 }

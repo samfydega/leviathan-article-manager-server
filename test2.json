@@ -1,24 +1,84 @@
 {
-  "id": "julien-bek",
-  "status": "drafted",
+  "id": "brett-gibson",
+  "status": "drafting",
   "sections": {
     "early_life": {
       "blocks": [
-        { "type": "heading", "content": "Early Life", "citations": [] },
+        {
+          "type": "heading",
+          "content": "Early life and education",
+          "citations": []
+        },
         {
           "type": "paragraph",
-          "content": "Julien Bek was born in France and grew up in Paris. He later attended the University of Cambridge in the United Kingdom, where he completed his higher education. Details regarding his early family background and formative years have not been publicly disclosed. Bek\u2019s exposure to both French and British educational systems contributed to shaping his international outlook, which later influenced his career in venture capital.",
-          "citations": [{ "id": 1 }]
+          "content": "Brett Gibson grew up in California and attended the University of California, Santa Barbara, graduating with a Bachelor of Arts degree in philosophy.[1][2][3][4][5] Following his graduation, Gibson worked in a pizza restaurant while considering his career options.[1][26][28] During this period, he taught himself computer programming using online resources, which led to his first engineering position at Grand Central Communications in 2004.[1][3][28]",
+          "citations": [
+            { "id": 1 },
+            { "id": 2 },
+            { "id": 3 },
+            { "id": 4 },
+            { "id": 5 },
+            { "id": 26 },
+            { "id": 28 }
+          ]
         }
       ],
       "references": [
         {
           "id": 1,
-          "title": "Julien Bek \u2013 Forbes",
-          "url": "https://www.forbes.com/profile/julien-bek/",
-          "author": "Forbes Staff",
-          "publisher": "Forbes",
-          "date": "2021-02-01"
+          "title": "Brett Gibson went from making pizza to a rising-star crypto VC at Initialized Capital. Here\u2019s how a chance encounter with Garry Tan changed the course of his career.",
+          "url": "https://www.businessinsider.com/brett-gibson-crypto-vc-partner-initialized-capital-2022-4",
+          "author": "Emily Quiles",
+          "publisher": "Business Insider",
+          "date": "2022-05-06"
+        },
+        {
+          "id": 2,
+          "title": "Speaker: Brett Gibson | The Capital",
+          "url": "https://conference.coinmarketcap.com/speakers/brett-gibson",
+          "author": "N.A.",
+          "publisher": "CoinMarketCap",
+          "date": "2021-00-00"
+        },
+        {
+          "id": 3,
+          "title": "Brett Gibson \u2013 Managing Partner at Initialized Capital | The Org",
+          "url": "https://theorg.com/org/initialized-capital/org-chart/brett-gibson",
+          "author": "N.A.",
+          "publisher": "The Org",
+          "date": "2024-00-00"
+        },
+        {
+          "id": 4,
+          "title": "Brett Gibson Profile: Contact Information & Network | PitchBook",
+          "url": "https://pitchbook.com/profiles/person/191432-26P",
+          "author": "PitchBook Data, Inc.",
+          "publisher": "PitchBook",
+          "date": "2025-00-00"
+        },
+        {
+          "id": 5,
+          "title": "Brett Gibson \u2013 Executive Bio, Work History, and Contacts \u2013 Equilar ExecAtlas",
+          "url": "https://people.equilar.com/bio/person/brett-gibson-initialized-capital-management-llc/27640917",
+          "author": "Equilar",
+          "publisher": "Equilar ExecAtlas",
+          "date": "2025-02-12"
+        },
+        {
+          "id": 26,
+          "title": "Episode #32: Brett Gibson \u2014 Managing Partner at Initialized Capital",
+          "url": "https://www.finoverse.com/podcasts/episode-32-brett-gibson-managing-partner-at-initialized-capital",
+          "author": "Walter Jennings (host)",
+          "publisher": "Finoverse",
+          "date": "2023-03-15"
+        },
+        {
+          "id": 28,
+          "title": "Brett Gibson (Initialized Capital) / VC Breakdown & Contact",
+          "url": "https://www.vcsheet.com/who/brett-gibson",
+          "author": "VC Sheet staff (no individual author listed)",
+          "publisher": "VC Sheet",
+          "date": "2025-01-12"
         }
       ]
     },
@@ -27,140 +87,231 @@
         { "type": "heading", "content": "Career", "citations": [] },
         {
           "type": "paragraph",
-          "content": "Julien Bek is a venture capitalist focusing on seed and early-stage investments, and is a partner at Sequoia Capital's London office. He joined Sequoia Capital as part of the firm's expansion into Europe, where he has played a key role in building out its presence and supporting European founders. Bek is noted for his activity in enterprise software and AI, backing startups such as Dust, Rillet, and Lemni. He has led or participated in investments in companies including Dust\u2014an AI enterprise assistant platform\u2014participating in their seed and subsequent rounds, and Rillet, an AI platform for automating general-ledger systems. Additionally, Bek has supported Lemni, a company developing AI agents for businesses, and Magentic, a British AI startup automating enterprise supply chains.",
+          "content": "After earning a B.A. in philosophy from the University of California, Santa Barbara, Brett Gibson began his post-college career working in a pizza restaurant before teaching himself how to code using online resources.[1][2] In 2004, he secured his first software engineering role at Grand Central Communications, marking the start of a self-directed transition into technology.[1][3] Gibson\u2019s entrepreneurial career commenced the following year with the launch of DrawHere, a browser-based drawing startup acquired by DeviantArt in 2006.[1][4][5][6][7]",
           "citations": [
+            { "id": 1 },
+            { "id": 2 },
+            { "id": 3 },
             { "id": 4 },
-            { "id": 7 },
-            { "id": 10 },
-            { "id": 19 },
-            { "id": 21 },
-            { "id": 22 },
-            { "id": 23 }
+            { "id": 5 },
+            { "id": 6 },
+            { "id": 7 }
           ]
         },
         {
           "type": "paragraph",
-          "content": "Prior to joining Sequoia, Bek worked at Accel, another leading venture capital firm, where he developed expertise in European early-stage investments. His background also includes experience in financial technology, with involvement in the early rounds of investment for companies such as Revolut.",
-          "citations": [{ "id": 8 }, { "id": 14 }, { "id": 17 }, { "id": 25 }]
+          "content": "He continued to found and build internet startups, notably creating Slinkset, a white-label social news platform admitted to the Y Combinator Summer 2008 batch.[1][3][8][9][10] In 2009, Slinkset was acquired by Posterous, a blogging platform where Gibson became a co-founder and senior engineer, working alongside Sachin Agarwal and Garry Tan. Posterous itself was also a Y Combinator company and was later acquired by Twitter in 2012.[1][3][9][11] Following Posterous\u2019s shutdown, Gibson and Garry Tan co-founded Posthaven in 2013, a paid blogging platform dedicated to long-term data preservation. As technical co-founder, Gibson continued to focus on software development and platform stability for Posthaven.[1][6][12][13]",
+          "citations": [
+            { "id": 1 },
+            { "id": 3 },
+            { "id": 8 },
+            { "id": 9 },
+            { "id": 10 },
+            { "id": 11 },
+            { "id": 6 },
+            { "id": 12 },
+            { "id": 13 }
+          ]
         },
         {
           "type": "paragraph",
-          "content": "Bek's investments span across enterprise SaaS, AI, and fintech verticals. He is a frequent speaker at investment conferences such as the RAISE Summit, where he discusses current trends in European venture capital and technology startups.",
-          "citations": [{ "id": 2 }, { "id": 15 }, { "id": 26 }]
+          "content": "From 2014 to 2015, Gibson joined Y Combinator\u2019s internal software team, where he was responsible for building and improving the systems that managed applications, interviews, events, and the alumni network.[3][14] In 2017, Garry Tan recruited Gibson to Initialized Capital, initially as Operating Partner for Engineering. His initial responsibilities included advising portfolio companies on engineering practices and developing Folio, Initialized\u2019s bespoke internal deal-flow and investment-decision software, which implemented a blind-voting approach to selection.[1][15][16][17]",
+          "citations": [
+            { "id": 3 },
+            { "id": 14 },
+            { "id": 1 },
+            { "id": 15 },
+            { "id": 16 },
+            { "id": 17 }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Gibson transitioned into an investment role, taking on responsibility for sourcing and advocating investments, and was promoted to General Partner at Initialized in August 2021.[1][18] His investment focuses include sectors such as crypto infrastructure, developer tools, artificial intelligence, machine learning, and cloud infrastructure. Gibson has led deals for companies such as Bison Trails, TRM Labs, and Talos Trading.[16][19]",
+          "citations": [{ "id": 1 }, { "id": 18 }, { "id": 16 }, { "id": 19 }]
+        },
+        {
+          "type": "paragraph",
+          "content": "In August 2022, following Garry Tan\u2019s departure from Initialized Capital to become CEO of Y Combinator, Gibson was named Managing Partner of Initialized. He assumed responsibility for the firm\u2019s investment strategy, while colleague Jen Wolf was appointed Managing Partner for operations.[20] Gibson is recognized as the key executive shaping the fund\u2019s investment direction and continues to serve in this leadership role.[21] His professional background spans engineering, product, and investment leadership, with a record of early-stage technical entrepreneurship preceding his move into venture capital.[3][22]",
+          "citations": [{ "id": 20 }, { "id": 21 }, { "id": 3 }, { "id": 22 }]
         }
       ],
       "references": [
         {
+          "id": 1,
+          "title": "Brett Gibson went from making pizza to a rising-star crypto VC at Initialized Capital. Here\u2019s how a chance encounter with Garry Tan changed the course of his career.",
+          "url": "https://www.businessinsider.com/brett-gibson-crypto-vc-partner-initialized-capital-2022-4",
+          "author": "Emily Quiles",
+          "publisher": "Business Insider",
+          "date": "2022-05-06"
+        },
+        {
           "id": 2,
-          "title": "Speaker Details: Julien Bek | RAISE Summit 2025",
-          "url": "https://tickets.raisesummit.com/2025/speaker/1759554/julien-bek",
-          "author": "RAISE Summit",
-          "publisher": "RAISE Summit",
-          "date": "2025-01-15"
+          "title": "Speaker: Brett Gibson | The Capital",
+          "url": "https://conference.coinmarketcap.com/speakers/brett-gibson",
+          "author": "N.A.",
+          "publisher": "CoinMarketCap",
+          "date": "2021-00-00"
+        },
+        {
+          "id": 3,
+          "title": "Brett Gibson \u2013 Managing Partner at Initialized Capital | The Org",
+          "url": "https://theorg.com/org/initialized-capital/org-chart/brett-gibson",
+          "author": "N.A.",
+          "publisher": "The Org",
+          "date": "2024-00-00"
         },
         {
           "id": 4,
-          "title": "Julien Bek | Sequoia Capital",
-          "url": "https://www.sequoiacap.com/people/julien-bek/",
-          "author": "Sequoia Capital (staff, unattributed)",
-          "publisher": "Sequoia Capital",
-          "date": "2023-08-31"
+          "title": "Brett Gibson Profile: Contact Information & Network | PitchBook",
+          "url": "https://pitchbook.com/profiles/person/191432-26P",
+          "author": "PitchBook Data, Inc.",
+          "publisher": "PitchBook",
+          "date": "2025-00-00"
+        },
+        {
+          "id": 5,
+          "title": "Brett Gibson \u2013 Executive Bio, Work History, and Contacts \u2013 Equilar ExecAtlas",
+          "url": "https://people.equilar.com/bio/person/brett-gibson-initialized-capital-management-llc/27640917",
+          "author": "Equilar",
+          "publisher": "Equilar ExecAtlas",
+          "date": "2025-02-12"
+        },
+        {
+          "id": 6,
+          "title": "Brett Gibson (Initialized Capital) / VC Breakdown & Contact",
+          "url": "https://www.vcsheet.com/who/brett-gibson",
+          "author": "N.A.",
+          "publisher": "VC Sheet",
+          "date": "2025-00-00"
         },
         {
           "id": 7,
-          "title": "Rillet raises $25M from Sequoia to automate general-ledger systems using AI.",
-          "url": "https://techcrunch.com/2025/05/28/rillet-raises-25m-from-sequoia-to-automate-general-ledger-systems-using-ai/",
-          "author": "Marina Temkin",
-          "publisher": "TechCrunch",
-          "date": "2025-05-28"
+          "title": "Doing Graffiti Online: 8 Generator & Creator Applications",
+          "url": "https://weburbanist.com/2009/10/15/doing-graffiti-online-8-generator-creator-applications/",
+          "author": "Delana",
+          "publisher": "WebUrbanist",
+          "date": "2009-10-15"
         },
         {
           "id": 8,
-          "title": "Sequoia bolsters London office with sixth partner hire as VC firm unveils radical restructure",
-          "url": "https://www.businessinsider.com/sequoia-vc-fund-set-hire-accel-investor-new-london-partner-2023-6",
-          "author": "Callum Burroughs",
-          "publisher": "Business Insider",
-          "date": "2023-06-06"
+          "title": "DrawHere, graffitea cualquier direcci\u00f3n web",
+          "url": "https://www.genbeta.com/web/drawhere-graffitis-en-la-web",
+          "author": "cyberfrancis",
+          "publisher": "Genbeta",
+          "date": "2006-10-13"
+        },
+        {
+          "id": 9,
+          "title": "Posterous Acquires Fellow Y Combinator Alum Slinkset",
+          "url": "https://techcrunch.com/2009/06/23/posterous-acquires-fellow-y-combinator-alum-slinkset/",
+          "author": "Jason Kincaid",
+          "publisher": "TechCrunch",
+          "date": "2009-06-23"
         },
         {
           "id": 10,
-          "title": "Julien Bek | Sequoia Capital",
-          "url": "https://www.sequoiacap.com/people/julien-bek/",
-          "author": "Sequoia Capital",
-          "publisher": "Sequoia Capital",
-          "date": "2025-01-01"
+          "title": "Posterous Acquires Social News Site Creation Tool Slinkset",
+          "url": "https://thenextweb.com/news/posterous-acquires-social-news-site-creation-tool-slinkset",
+          "author": "Zee",
+          "publisher": "The Next Web",
+          "date": "2009-06-24"
+        },
+        {
+          "id": 11,
+          "title": "Posterous \u2013 Dead Simple Blogs by Email",
+          "url": "https://www.ycombinator.com/companies/posterous",
+          "author": "Y Combinator staff",
+          "publisher": "Y Combinator",
+          "date": "2025-07-28"
+        },
+        {
+          "id": 12,
+          "title": "Posthaven Launches in Public Beta, Has Saved 850K Posts Since Posterous Announced Its Shutdown Date of April 30th",
+          "url": "https://techcrunch.com/2013/03/22/posthaven-launches-in-public-beta-has-saved-850k-posts-since-posterous-announced-its-shutdown-date-of-april-30th/",
+          "author": "Drew Olanoff",
+          "publisher": "TechCrunch",
+          "date": "2013-03-22"
+        },
+        {
+          "id": 13,
+          "title": "Posterous Is Shutting Down: Here Are the Best Alternatives",
+          "url": "https://www.theverge.com/2013/4/30/4281780/posterous-is-shutting-down-tomorrow-here-are-the-best-alternatives",
+          "author": "Adrianne Jeffries",
+          "publisher": "The Verge",
+          "date": "2013-04-30"
         },
         {
           "id": 14,
-          "title": "Series A \u2013 Revolut \u2013 14 Jul 2016",
-          "url": "https://www.crunchbase.com/funding_round/revolut-series-a--924038eb",
-          "author": "Crunchbase",
-          "publisher": "Crunchbase",
-          "date": "2016-07-14"
+          "title": "Welcome Alda and Brett",
+          "url": "https://medium.com/initialized-capital/welcome-alda-and-brett-a32b878901df",
+          "author": "Garry Tan",
+          "publisher": "Medium / Initialized Capital",
+          "date": "2017-06-15"
         },
         {
           "id": 15,
-          "title": "Speaker Details \u2013 Julien Bek",
-          "url": "https://tickets.raisesummit.com/2025/speaker/1759554/julien-bek",
-          "author": "RAISE Summit",
-          "publisher": "RAISE Summit",
-          "date": "2025-03-10"
+          "title": "Welcome Alda and Brett. The Initialized team is leveling up with a new Partner & COO, and Operating Partner.",
+          "url": "https://medium.com/initialized-capital/welcome-alda-and-brett-a32b878901df",
+          "author": "Garry Tan",
+          "publisher": "Medium \u2013 Initialized Capital publication",
+          "date": "2017-06-15"
+        },
+        {
+          "id": 16,
+          "title": "The Inquisitive VC: Brett Gibson \u2014 Initialized.",
+          "url": "https://medium.com/the-inquisitive-vc/the-inquisitive-vc-brett-gibson-initialized-e3e01d67f454",
+          "author": "Nawaz Ahmed",
+          "publisher": "Medium \u2013 The Inquisitive VC",
+          "date": "2020-10-07"
         },
         {
           "id": 17,
-          "title": "Series A \u2014 Revolut \u2014 2016-07-14",
-          "url": "https://www.crunchbase.com/funding_round/revolut-series-a--924038eb",
-          "author": "Crunchbase Data Team",
-          "publisher": "Crunchbase",
-          "date": "2016-07-14"
+          "title": "Announcing Initialized Fund V: Our team of honeybadgers is back with a $230M seed fund for startups pre-product market fit.",
+          "url": "https://medium.com/initialized-capital/announcing-initialized-fund-v-ab34becf68c9",
+          "author": "Garry Tan",
+          "publisher": "Medium \u2013 Initialized Capital publication",
+          "date": "2020-08-14"
+        },
+        {
+          "id": 18,
+          "title": "Brett Gibson went from making pizza to a rising-star crypto VC at Initialized Capital. Here\u2019s how a chance encounter with Garry Tan changed the course of his career.",
+          "url": "https://www.businessinsider.com/brett-gibson-crypto-vc-partner-initialized-capital-2022-4",
+          "author": "Emily Quiles",
+          "publisher": "Business Insider",
+          "date": "2022-05-06"
         },
         {
           "id": 19,
-          "title": "Rillet raises $25M from Sequoia to automate general-ledger systems using AI",
-          "url": "https://techcrunch.com/2025/05/28/rillet-raises-25m-from-sequoia-to-automate-general-ledger-systems-using-ai/",
-          "author": "Marina Temkin",
-          "publisher": "TechCrunch",
-          "date": "2025-05-28"
+          "title": "Brett Gibson \u2013 Executive Bio, Work History, and Contacts.",
+          "url": "https://people.equilar.com/bio/person/brett-gibson-initialized-capital-management-llc/27640917",
+          "author": "Equilar research staff",
+          "publisher": "Equilar ExecAtlas",
+          "date": "2025-02-12"
+        },
+        {
+          "id": 20,
+          "title": "Y Combinator\u2019s all-star alum and VC Garry Tan returns to take over the accelerator as its chief executive.",
+          "url": "https://www.businessinsider.com/garry-tan-initialized-new-ceo-of-y-combinator-2022-8",
+          "author": "Melia Russell and Madeline Renbarger",
+          "publisher": "Business Insider",
+          "date": "2022-08-29"
         },
         {
           "id": 21,
-          "title": "Dust grabs another $16M for its enterprise AI assistants connected to internal data",
-          "url": "https://techcrunch.com/2024/06/27/dust-grabs-another-16-million-for-its-enterprise-ai-assistants-connected-to-internal-data/",
-          "author": "Romain Dillet",
+          "title": "Initialized Capital restructures, and lets multiple partners go.",
+          "url": "https://techcrunch.com/2024/10/03/initialized-capital-restructures-and-lets-multiple-partners-go/",
+          "author": "Rebecca Szkutak",
           "publisher": "TechCrunch",
-          "date": "2024-06-27"
+          "date": "2024-10-03"
         },
         {
           "id": 22,
-          "title": "Lemni raises $3.5M led by Sequoia to build the way to set up AI agents for your business",
-          "url": "https://www.lemni.com/blog/pre-seed-announcement",
-          "author": "Krijn Rijshouwer & Alex Buis",
-          "publisher": "Lemni Company Blog",
-          "date": "2025-02-26"
-        },
-        {
-          "id": 23,
-          "title": "AI agents hit the supply chain: British AI startup Magentic raises \u20ac4.6 million to scale enterprise automation",
-          "url": "https://www.eu-startups.com/2025/07/ai-agents-hit-the-supply-chain-british-ai-startup-magentic-raises-e4-6-million-to-scale-enterprise-automation/",
-          "author": "David Cendon Garcia",
-          "publisher": "EU-Startups",
-          "date": "2025-07-22"
-        },
-        {
-          "id": 25,
-          "title": "\u201cSequoia bolsters London office with sixth partner hire as VC firm unveils radical restructure.\u201d",
-          "url": "https://www.businessinsider.com/sequoia-vc-fund-set-hire-accel-investor-new-london-partner-2023-6",
-          "author": "Callum Burroughs",
-          "publisher": "Business Insider",
-          "date": "2023-06-06"
-        },
-        {
-          "id": 26,
-          "title": "Speaker Details \u2013 Mr Julien Bek",
-          "url": "https://tickets.raisesummit.com/2025/speaker/1759554/julien-bek",
-          "author": "RAISE Summit",
-          "publisher": "RAISE Summit",
-          "date": "2025-00-00"
+          "title": "Brett Gibson \u2013 Executive Bio, Work History, and Contacts.",
+          "url": "https://people.equilar.com/bio/person/brett-gibson-initialized-capital-management-llc/27640917",
+          "author": "Equilar research staff",
+          "publisher": "Equilar ExecAtlas",
+          "date": "2025-02-12"
         }
       ]
     },
@@ -169,7 +320,7 @@
         {
           "type": "infobox",
           "content": {
-            "title": "Notable Investments by Julien Bek (Sequoia Capital)",
+            "title": "Notable Investments by Brett Gibson (Initialized Capital)",
             "columns": [
               "company_name",
               "year",
@@ -179,44 +330,52 @@
             ],
             "rows": [
               {
-                "company_name": "Revolut",
-                "year": 2016,
-                "round": "Series A",
-                "amount_invested": "$10M",
-                "outcome": "Unicorn; $45B valuation (2024)",
-                "citations": [{ "id": 0 }, { "id": 1 }, { "id": 2 }]
-              },
-              {
-                "company_name": "Rillet",
-                "year": 2025,
+                "company_name": "Coinbase",
+                "year": 2012,
                 "round": "Seed",
-                "amount_invested": "$25M",
-                "outcome": "AI accounting platform",
-                "citations": [{ "id": 3 }]
+                "amount_invested": "$300,000",
+                "outcome": "Public (direct listing, 14 Apr 2021)",
+                "citations": [{ "id": 34 }, { "id": 35 }]
               },
               {
-                "company_name": "Dust",
-                "year": 2023,
+                "company_name": "Instacart",
+                "year": 2012,
                 "round": "Seed",
-                "amount_invested": "Undisclosed",
-                "outcome": "Raised $16M follow-on (2024)",
-                "citations": [{ "id": 4 }, { "id": 5 }]
+                "amount_invested": "$2.3M",
+                "outcome": "Public (IPO, Sept 2023)",
+                "citations": [{ "id": 36 }, { "id": 37 }]
               },
               {
-                "company_name": "Lemni",
-                "year": 2025,
-                "round": "Pre-seed",
-                "amount_invested": "$3.5M",
-                "outcome": "AI agents for business",
-                "citations": [{ "id": 6 }]
-              },
-              {
-                "company_name": "Magentic",
-                "year": 2025,
+                "company_name": "Cruise Automation",
+                "year": 2014,
                 "round": "Seed",
-                "amount_invested": "\u20ac4.6M",
-                "outcome": "Enterprise automation",
-                "citations": [{ "id": 7 }]
+                "amount_invested": "$4.3M (total round)",
+                "outcome": "Acquired by General Motors (Mar 2016)",
+                "citations": [{ "id": 38 }, { "id": 39 }]
+              },
+              {
+                "company_name": "Rippling",
+                "year": 2017,
+                "round": "Seed",
+                "amount_invested": "$7M",
+                "outcome": "Private; latest \u2013 Series G at $16.8B valuation (May 2025)",
+                "citations": [{ "id": 40 }, { "id": 41 }]
+              },
+              {
+                "company_name": "Ro (formerly Roman)",
+                "year": 2017,
+                "round": "Seed",
+                "amount_invested": "$3.1M",
+                "outcome": "Private",
+                "citations": [{ "id": 42 }]
+              },
+              {
+                "company_name": "Mercury",
+                "year": 2019,
+                "round": "Seed",
+                "amount_invested": "$6M (total round)",
+                "outcome": "Private; latest \u2013 Series C at $3.5B valuation (Mar 2025)",
+                "citations": [{ "id": 43 }, { "id": 44 }]
               }
             ]
           }
@@ -224,209 +383,188 @@
       ],
       "references": [
         {
-          "id": 0,
-          "title": "Revolut grabs $10 million for its mobile foreign-exchange service",
-          "url": "https://techcrunch.com/2016/07/11/revolut-grabs-10-million-for-its-mobile-foreign-exchange-service/",
-          "author": "Romain Dillet",
-          "publisher": "TechCrunch",
-          "date": "2016-07-11"
+          "id": 34,
+          "title": "How Initialized Investor Garry Tan Turned a $300,000 Bet on Coinbase Into a $680 Million \u201cGolden Ticket\u201d",
+          "url": "https://www.forbes.com/sites/alexkonrad/2021/04/14/initialized-investor-garry-tan-turned-300k-bet-on-coinbase-into-680-million/",
+          "author": "Alex Konrad",
+          "publisher": "Forbes",
+          "date": "2021-04-14"
         },
         {
-          "id": 1,
-          "title": "Series A \u2014 Revolut \u2014 2016-07-14",
-          "url": "https://www.crunchbase.com/funding_round/revolut-series-a--924038eb",
+          "id": 35,
+          "title": "Coinbase",
+          "url": "https://en.wikipedia.org/wiki/Coinbase",
+          "author": "Multiple editors",
+          "publisher": "Wikipedia Foundation",
+          "date": "2025-07-15"
+        },
+        {
+          "id": 36,
+          "title": "Seed Round \u2013 Instacart \u2013 2012-10-15",
+          "url": "https://www.crunchbase.com/funding_round/instacart-seed--a6602784",
           "author": "Crunchbase Data Team",
           "publisher": "Crunchbase",
-          "date": "2016-07-14"
+          "date": "2012-10-15"
         },
         {
-          "id": 2,
-          "title": "Revolut joins Europe\u2019s biggest banks with $45 billion valuation after share sale",
-          "url": "https://www.reuters.com/technology/revolut-joins-europes-biggest-banks-2024-08-16/",
-          "author": "Tommy Reggiori Wilkes",
-          "publisher": "Reuters",
-          "date": "2024-08-16"
+          "id": 37,
+          "title": "Instacart",
+          "url": "https://en.wikipedia.org/wiki/Instacart",
+          "author": "Multiple editors",
+          "publisher": "Wikipedia Foundation",
+          "date": "2025-07-02"
         },
         {
-          "id": 3,
-          "title": "Rillet raises $25M from Sequoia to automate general-ledger systems using AI",
-          "url": "https://techcrunch.com/2025/05/28/rillet-raises-25m-from-sequoia-to-automate-general-ledger-systems-using-ai/",
-          "author": "Marina Temkin",
+          "id": 38,
+          "title": "GM to Acquire Cruise Automation to Accelerate Autonomous Vehicle Development",
+          "url": "https://investor.gm.com/news-releases/news-release-details/gm-acquire-cruise-automation-accelerate-autonomous-vehicle",
+          "author": "General Motors Co.",
+          "publisher": "General Motors Newsroom",
+          "date": "2016-03-11"
+        },
+        {
+          "id": 39,
+          "title": "Cruise Automation Funding & Investors",
+          "url": "https://www.employbl.com/companies/Cruise-Automation/funding-rounds",
+          "author": "Employbl Data Team",
+          "publisher": "Employbl",
+          "date": "2025-02-10"
+        },
+        {
+          "id": 40,
+          "title": "Seed Round \u2013 Rippling \u2013 2017-03-14",
+          "url": "https://www.crunchbase.com/funding_round/rippling-seed--67845594",
+          "author": "Crunchbase Data Team",
+          "publisher": "Crunchbase",
+          "date": "2017-03-14"
+        },
+        {
+          "id": 41,
+          "title": "Rippling raises $450M at a $16.8B valuation, reveals YC is a customer",
+          "url": "https://techcrunch.com/2025/05/09/rippling-raises-450m-at-a-16-8b-valuation-reveals-yc-is-a-customer/",
+          "author": "Ingrid Lunden",
           "publisher": "TechCrunch",
-          "date": "2025-05-28"
+          "date": "2025-05-09"
         },
         {
-          "id": 4,
-          "title": "Announcing our seed round",
-          "url": "https://blog.dust.tt/announcing-our-seed-round/",
-          "author": "Stanislas Polu",
-          "publisher": "Dust Company Blog",
-          "date": "2023-06-27"
+          "id": 42,
+          "title": "Seed Round \u2013 Ro \u2013 2017-11-07",
+          "url": "https://www.crunchbase.com/funding_round/roman-2-seed--ad7e8582",
+          "author": "Crunchbase Data Team",
+          "publisher": "Crunchbase",
+          "date": "2017-11-07"
         },
         {
-          "id": 5,
-          "title": "Dust grabs another $16M for its enterprise AI assistants connected to internal data",
-          "url": "https://techcrunch.com/2024/06/27/dust-grabs-another-16-million-for-its-enterprise-ai-assistants-connected-to-internal-data/",
-          "author": "Romain Dillet",
+          "id": 43,
+          "title": "Mercury banks $20M for its banking service aimed at startups",
+          "url": "https://techcrunch.com/2019/09/26/mercury-banks-20m-for-its-banking-service-aimed-at-startups/",
+          "author": "Ingrid Lunden",
           "publisher": "TechCrunch",
-          "date": "2024-06-27"
+          "date": "2019-09-26"
         },
         {
-          "id": 6,
-          "title": "Lemni raises $3.5M led by Sequoia to build the way to set up AI agents for your business",
-          "url": "https://www.lemni.com/blog/pre-seed-announcement",
-          "author": "Krijn Rijshouwer & Alex Buis",
-          "publisher": "Lemni Company Blog",
-          "date": "2025-02-26"
-        },
-        {
-          "id": 7,
-          "title": "AI agents hit the supply chain: British AI startup Magentic raises \u20ac4.6 million to scale enterprise automation",
-          "url": "https://www.eu-startups.com/2025/07/ai-agents-hit-the-supply-chain-british-ai-startup-magentic-raises-e4-6-million-to-scale-enterprise-automation/",
-          "author": "David Cendon Garcia",
-          "publisher": "EU-Startups",
-          "date": "2025-07-22"
+          "id": 44,
+          "title": "Fintech Mercury lands $300M in Sequoia-led Series C, doubles valuation to $3.5B",
+          "url": "https://techcrunch.com/2025/03/26/fintech-mercury-lands-300m-in-sequoia-led-series-c-doubles-valuation-to-3-5b/",
+          "author": "Mary Ann Azevedo",
+          "publisher": "TechCrunch",
+          "date": "2025-03-26"
         }
       ]
     },
     "personal_life": {
       "blocks": [
-        { "type": "heading", "content": "Personal Life", "citations": [] },
+        { "type": "heading", "content": "Personal life", "citations": [] },
         {
           "type": "paragraph",
-          "content": "Publicly available information regarding Julien Bek's personal life is limited. Bek is based in London, United Kingdom, where he is part of Sequoia Capital's European investment team. His professional activities are focused on seed and early-stage technology investments, and he is noted for keeping his family and personal details private in public profiles and interviews. Bek is recognized for his international perspective, having worked and invested across several markets prior to joining Sequoia Capital. He occasionally participates in industry events and conferences as a speaker, including the RAISE Summit, but does not disclose personal information in these settings.",
-          "citations": [{ "id": 0 }, { "id": 2 }, { "id": 10 }, { "id": 12 }]
+          "content": "Gibson resides in San Francisco, California. He is known to have several personal interests outside his professional activities. Notably, he has described himself as fond of pinball, and is a recreational pinball player who has competed in International Flipper Pinball Association (IFPA) tournaments in the United States over several years. Additionally, Gibson has alluded to his enjoyment of pizza-making, a skill and interest that predates his technology career. Musically, he has cited Kendrick Lamar as a favorite artist, specifically mentioning the song \"You\" as meaningful to his personal journey.",
+          "citations": [
+            { "id": 27 },
+            { "id": 26 },
+            { "id": 28 },
+            { "id": 24 },
+            { "id": 29 }
+          ]
         }
       ],
       "references": [
         {
-          "id": 0,
-          "title": "Julien Bek | Sequoia Capital",
-          "url": "https://www.sequoiacap.com/people/julien-bek/",
-          "author": "Sequoia Capital",
-          "publisher": "Sequoia Capital",
-          "date": "0000-00-00"
+          "id": 24,
+          "title": "Episode #32: Brett Gibson \u2014 Managing Partner at Initialized Capital",
+          "url": "https://www.finoverse.com/podcasts/episode-32-brett-gibson-managing-partner-at-initialized-capital",
+          "author": "Walter Jennings (host)",
+          "publisher": "Finoverse",
+          "date": "2023-03-15"
         },
         {
-          "id": 2,
-          "title": "Speaker Details: Julien Bek | RAISE Summit 2025",
-          "url": "https://tickets.raisesummit.com/2025/speaker/1759554/julien-bek",
-          "author": "RAISE Summit",
-          "publisher": "RAISE Summit",
-          "date": "2025-01-15"
+          "id": 26,
+          "title": "Brett Gibson (Initialized Capital) / VC Breakdown & Contact",
+          "url": "https://www.vcsheet.com/who/brett-gibson",
+          "author": "VC Sheet staff (no individual author listed)",
+          "publisher": "VC Sheet",
+          "date": "2025-01-12"
         },
         {
-          "id": 10,
-          "title": "Julien Bek | Sequoia Capital",
-          "url": "https://www.sequoiacap.com/people/julien-bek/",
-          "author": "Sequoia Capital",
-          "publisher": "Sequoia Capital",
-          "date": "2025-01-01"
+          "id": 27,
+          "title": "Brett Gibson \u2014 IFPA Player Profile",
+          "url": "https://www.ifpapinball.com/players/view.php?p=66664",
+          "author": "IFPA database (no individual author)",
+          "publisher": "International Flipper Pinball Association",
+          "date": "2025-07-28"
         },
         {
-          "id": 12,
-          "title": "Julien Bek: Positions, Relations and Network",
-          "url": "https://www.marketscreener.com/insider/JULIEN-BEK-A23RDN/",
-          "author": "MarketScreener Staff",
-          "publisher": "MarketScreener",
-          "date": "2024-09-01"
+          "id": 28,
+          "title": "Brett Gibson \u2013 Managing Partner at Initialized Capital | The Org",
+          "url": "https://www.theorg.com/org/initialized-capital/org-chart/brett-gibson",
+          "author": "The Org staff (no individual author)",
+          "publisher": "The Org",
+          "date": "2024-11-02"
+        },
+        {
+          "id": 29,
+          "title": "Brett Gibson went from making pizza to a rising-star crypto VC at Initialized Capital. Here\u2019s how a chance encounter with Garry Tan changed the course of his career.",
+          "url": "https://www.businessinsider.com/brett-gibson-crypto-vc-partner-initialized-capital-2022-4",
+          "author": "Emily Quiles",
+          "publisher": "Business Insider",
+          "date": "2022-05-06"
         }
       ]
     },
     "person_infobox": {
-      "name": "Julien Bek",
+      "name": "Brett Gibson",
       "born": {
         "day": null,
         "month": null,
         "year": null,
         "city": null,
         "state": null,
-        "country": null
+        "country": "United States"
       },
       "education": [
-        { "institution": "Harvard University", "degrees": ["AB (2011)"] },
         {
-          "institution": "Stanford Graduate School of Business",
-          "degrees": ["MBA (2017)"]
+          "institution": "University of California, Santa Barbara",
+          "degrees": ["BA Philosophy"]
         }
       ],
       "title": [
         {
-          "position": "Partner (Seed/Early)",
-          "organization": "Sequoia Capital"
+          "position": "Managing Partner",
+          "organization": "Initialized Capital"
         }
       ],
       "spouse_name": null,
-      "number_of_children": null,
-      "image_url": "https://www.sequoiacap.com/wp-content/uploads/sites/6/2023/09/Julien-Bek-profile.jpg"
+      "number_of_children": null
     },
-    "lead": {
-      "blocks": [
-        {
-          "type": "paragraph",
-          "content": "Julien Bek is a British venture capitalist and partner at Sequoia Capital, known for leading early-stage and seed investments in technology startups. Based in London, Bek has been instrumental in Sequoia's European expansion and is recognized for backing notable companies including AI, fintech, and enterprise software ventures. Before joining Sequoia, he held roles at Accel and has been featured on Forbes' influential investor lists. Bek is a frequent speaker at industry events such as the RAISE Summit, reflecting his prominence in the European venture capital landscape.",
-          "citations": [
-            { "id": 0 },
-            { "id": 1 },
-            { "id": 2 },
-            { "id": 8 },
-            { "id": 10 },
-            { "id": 12 }
-          ]
-        }
-      ],
-      "references": [
-        {
-          "id": 0,
-          "title": "Julien Bek | Sequoia Capital",
-          "url": "https://www.sequoiacap.com/people/julien-bek/",
-          "author": "Sequoia Capital",
-          "publisher": "Sequoia Capital",
-          "date": "0000-00-00"
-        },
-        {
-          "id": 1,
-          "title": "Julien Bek \u2013 Forbes",
-          "url": "https://www.forbes.com/profile/julien-bek/",
-          "author": "Forbes Staff",
-          "publisher": "Forbes",
-          "date": "2021-02-01"
-        },
-        {
-          "id": 2,
-          "title": "Speaker Details: Julien Bek | RAISE Summit 2025",
-          "url": "https://tickets.raisesummit.com/2025/speaker/1759554/julien-bek",
-          "author": "RAISE Summit",
-          "publisher": "RAISE Summit",
-          "date": "2025-01-15"
-        },
-        {
-          "id": 8,
-          "title": "Sequoia bolsters London office with sixth partner hire as VC firm unveils radical restructure",
-          "url": "https://www.businessinsider.com/sequoia-vc-fund-set-hire-accel-investor-new-london-partner-2023-6",
-          "author": "Callum Burroughs",
-          "publisher": "Business Insider",
-          "date": "2023-06-06"
-        },
-        {
-          "id": 10,
-          "title": "Julien Bek | Sequoia Capital",
-          "url": "https://www.sequoiacap.com/people/julien-bek/",
-          "author": "Sequoia Capital",
-          "publisher": "Sequoia Capital",
-          "date": "2025-01-01"
-        },
-        {
-          "id": 12,
-          "title": "Julien Bek: Positions, Relations and Network",
-          "url": "https://www.marketscreener.com/insider/JULIEN-BEK-A23RDN/",
-          "author": "MarketScreener Staff",
-          "publisher": "MarketScreener",
-          "date": "2024-09-01"
-        }
-      ]
-    }
+    "lead": null
   },
-  "created_at": "2025-07-26T01:38:54.327112",
-  "updated_at": "2025-07-26T01:38:54.327112"
+  "job_ids": {
+    "early_life_id": "resp_6886c6b4f934819a93903d192d53cdce0d5e9786ebe21eae",
+    "career_id": "resp_6886c6b5d1a4819abd720ada439e268d047d6993068068f5",
+    "notable_investments_id": "resp_6886c6b6b4848199aa4363d8487fb2b70de6ae4ca719f9d2",
+    "personal_life_id": "resp_6886c6b78824819b9c078a0174e6c50209f096b3de34354e",
+    "person_infobox_id": "resp_6886c6b7faa08198b81a1bdf2e3b478c0c0f416b242f8147",
+    "lead_id": "resp_6886c6b8e11c819aa7d9b70a6fba1dfa0dbebdb1952f7145"
+  },
+  "created_at": "2025-07-28T00:39:16.724970",
+  "updated_at": "2025-07-28T00:39:42.573986"
 }

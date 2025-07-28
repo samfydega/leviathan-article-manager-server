@@ -14,7 +14,7 @@ from models import (
 from routers.entities import entities_store, save_entities, load_entities
 
 # Debug flag for notability router
-DEBUG_NOTABILITY = True
+DEBUG_NOTABILITY = False
 
 # Create router for notability endpoints
 router = APIRouter(

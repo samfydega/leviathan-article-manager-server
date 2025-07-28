@@ -13,9 +13,23 @@ from openai import OpenAI
 from .notability import notability_store, notability_exists
 from .entities import entities_store, save_entities, load_entities
 
-router = APIRouter(
-    prefix="/drafts",
-    tags=["drafts"],
+# Create separate routers for research and writing phases
+research_router = APIRouter(
+    prefix="/drafts/research",
+    tags=["draft-research"],
+    responses={404: {"description": "Not found"}},
+)
+
+writing_router = APIRouter(
+    prefix="/drafts/writing", 
+    tags=["draft-writing"],
+    responses={404: {"description": "Not found"}},
+)
+
+# Router for old path structure compatibility
+articles_router = APIRouter(
+    prefix="/drafts", 
+    tags=["articles"],
     responses={404: {"description": "Not found"}},
 )
 
@@ -23,8 +37,10 @@ router = APIRouter(
 client = OpenAI()
 
 # Store for drafts and articles
-drafts_store: Dict[str, dict] = {}
-drafts_file = "data/drafts.txt"
+research_drafts_store: Dict[str, dict] = {}
+research_drafts_file = "data/drafts_research.txt"
+writing_drafts_store: Dict[str, dict] = {}
+writing_drafts_file = "data/drafts_writing.txt"
 articles_store: Dict[str, dict] = {}
 articles_file = "data/articles.txt"
 
@@ -41,6 +57,9 @@ PROMPT_IDS = {
 
 # Article drafting prompt
 ARTICLE_DRAFT_PROMPT_ID = "pmpt_688182dcd80081939d8bef19645b0a4d0ed9043fd95e9430"
+
+# Debug flag for drafts router
+DEBUG_DRAFTS = False
 
 class CreateDraftRequest(BaseModel):
     id: str
@@ -73,9 +92,9 @@ class ResearchResult(BaseModel):
 
 class ArticleStatus(BaseModel):
     id: str
-    status: Literal["drafting", "drafted", "published"]
-    sections: Optional[Dict[str, Any]]
-    job_ids: Optional[Dict[str, str]]  # Track background job IDs for each section
+    type: str
+    statuses: Optional[Dict[str, str]]  # Track background job IDs for each section
+    results: Optional[Dict[str, Any]]  # Store section content
     created_at: str
     updated_at: str
 
@@ -89,8 +108,9 @@ class ArticleProgressResponse(BaseModel):
     is_complete: bool
 
 class UpdateArticleRequest(BaseModel):
-    status: Optional[Literal["drafting", "drafted", "published"]] = None
     sections: Optional[Dict[str, Any]] = None
+
+
 
 @contextmanager
 def file_lock(filename, mode='r'):
@@ -103,26 +123,48 @@ def file_lock(filename, mode='r'):
         fcntl.flock(f.fileno(), fcntl.LOCK_UN)
         f.close()
 
-def load_drafts():
-    """Load drafts from file into memory"""
-    global drafts_store
-    if os.path.exists(drafts_file):
-        with file_lock(drafts_file, 'r') as f:
+def load_research_drafts():
+    """Load research drafts from file into memory"""
+    global research_drafts_store
+    if os.path.exists(research_drafts_file):
+        with file_lock(research_drafts_file, 'r') as f:
             for line in f:
                 line = line.strip()
                 if line and not line.startswith('#'):
                     try:
                         data = json.loads(line)
                         if 'id' in data:
-                            drafts_store[data['id']] = data
+                            research_drafts_store[data['id']] = data
                     except json.JSONDecodeError:
                         continue
 
-def save_drafts():
-    """Save all drafts to file with file locking"""
-    with file_lock(drafts_file, 'w') as f:
-        f.write("# Article drafts KV store - ID -> {type, statuses, results}\n")
-        for draft in drafts_store.values():
+def save_research_drafts():
+    """Save all research drafts to file with file locking"""
+    with file_lock(research_drafts_file, 'w') as f:
+        f.write("# Research drafts KV store - ID -> {type, statuses, results}\n")
+        for draft in research_drafts_store.values():
+            f.write(json.dumps(draft) + '\n')
+
+def load_writing_drafts():
+    """Load writing drafts from file into memory"""
+    global writing_drafts_store
+    if os.path.exists(writing_drafts_file):
+        with file_lock(writing_drafts_file, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#'):
+                    try:
+                        data = json.loads(line)
+                        if 'id' in data:
+                            writing_drafts_store[data['id']] = data
+                    except json.JSONDecodeError:
+                        continue
+
+def save_writing_drafts():
+    """Save all writing drafts to file with file locking"""
+    with file_lock(writing_drafts_file, 'w') as f:
+        f.write("# Writing drafts KV store - ID -> {status, sections, job_ids}\n")
+        for draft in writing_drafts_store.values():
             f.write(json.dumps(draft) + '\n')
 
 def load_articles():
@@ -147,15 +189,33 @@ def save_articles():
         for article in articles_store.values():
             f.write(json.dumps(article) + '\n')
 
-def update_entity_status(entity_id: str, new_status: str):
+def update_entity_status(entity_id: str, new_status):
     """Update entity status and save to file"""
     if entity_id in entities_store:
-        entities_store[entity_id]['status'] = new_status
+        if isinstance(new_status, str):
+            # Convert string status to proper object structure
+            entities_store[entity_id]['status'] = {
+                'state': new_status,
+                'phase': None
+            }
+        elif isinstance(new_status, dict):
+            # Already in proper object structure
+            entities_store[entity_id]['status'] = new_status
+        else:
+            # Handle other cases
+            entities_store[entity_id]['status'] = {
+                'state': str(new_status),
+                'phase': None
+            }
         save_entities()
 
-def draft_exists(draft_id: str) -> bool:
-    """Check if a draft exists"""
-    return draft_id in drafts_store
+def research_draft_exists(draft_id: str) -> bool:
+    """Check if a research draft exists"""
+    return draft_id in research_drafts_store
+
+def writing_draft_exists(draft_id: str) -> bool:
+    """Check if a writing draft exists"""
+    return draft_id in writing_drafts_store
 
 def validate_notability(entity_id: str) -> bool:
     """Validate that entity exists in notability store with meets/exceeds status"""
@@ -166,6 +226,12 @@ def validate_notability(entity_id: str) -> bool:
     if not notability_data:
         return False
     
+    # Check for new is_notable field first
+    is_notable = notability_data.get('is_notable')
+    if is_notable is not None:
+        return is_notable
+    
+    # Fallback to old notability_status field
     status = notability_data.get('notability_status', '').lower()
     return status in ['meets', 'exceeds']
 
@@ -317,7 +383,7 @@ async def create_article_drafting_jobs(entity_id: str, all_pages_str: str, entit
                 response = client.responses.create(
                     prompt={
                         "id": "pmpt_6883c4dcfe5c819387acad8910d66c340a50e18e12e625a6",
-                        "version": "6",
+                        "version": "7",
                         "variables": {
                             "entity": entity_name,
                             "context": entity_context,
@@ -443,7 +509,8 @@ async def create_article_drafting_jobs(entity_id: str, all_pages_str: str, entit
             initial_results[section_key] = None
             
         except Exception as e:
-            print(f"Error creating job for section {section_key}: {e}")
+            if DEBUG_DRAFTS:
+                print(f"Error creating job for section {section_key}: {e}")
             fallback_job_id = f"{entity_id}_{section_key}_{uuid.uuid4().hex[:8]}"
             job_ids[f"{section_key}_id"] = fallback_job_id
             initial_results[section_key] = None
@@ -453,7 +520,7 @@ async def create_article_drafting_jobs(entity_id: str, all_pages_str: str, entit
         personal_life_response = client.responses.create(
             prompt={
                 "id": "pmpt_688555fe690c8190a80f494f1960150606270da2f1dfcb3f",
-                "version": "2",
+                "version": "3",
                 "variables": {
                     "entity": entity_name,
                     "context": entity_context,
@@ -467,7 +534,8 @@ async def create_article_drafting_jobs(entity_id: str, all_pages_str: str, entit
         job_ids["personal_life_id"] = personal_life_response.id
         initial_results["personal_life"] = None
     except Exception as e:
-        print(f"Error creating personal life job: {e}")
+        if DEBUG_DRAFTS:
+            print(f"Error creating personal life job: {e}")
         fallback_job_id = f"{entity_id}_personal_life_{uuid.uuid4().hex[:8]}"
         job_ids["personal_life_id"] = fallback_job_id
         initial_results["personal_life"] = None
@@ -490,7 +558,8 @@ async def create_article_drafting_jobs(entity_id: str, all_pages_str: str, entit
         job_ids["person_infobox_id"] = person_infobox_response.id
         initial_results["person_infobox"] = None
     except Exception as e:
-        print(f"Error creating person infobox job: {e}")
+        if DEBUG_DRAFTS:
+            print(f"Error creating person infobox job: {e}")
         fallback_job_id = f"{entity_id}_person_infobox_{uuid.uuid4().hex[:8]}"
         job_ids["person_infobox_id"] = fallback_job_id
         initial_results["person_infobox"] = None
@@ -500,7 +569,7 @@ async def create_article_drafting_jobs(entity_id: str, all_pages_str: str, entit
         lead_response = client.responses.create(
             prompt={
                 "id": "pmpt_68842015293c819483d326d4693478e10e0fc773bb2e0e5d",
-                "version": "3",
+                "version": "4",
                 "variables": {
                     "entity": entity_name,
                     "context": entity_context,
@@ -513,7 +582,8 @@ async def create_article_drafting_jobs(entity_id: str, all_pages_str: str, entit
         job_ids["lead_id"] = lead_response.id
         initial_results["lead"] = None
     except Exception as e:
-        print(f"Error creating lead job: {e}")
+        if DEBUG_DRAFTS:
+            print(f"Error creating lead job: {e}")
         fallback_job_id = f"{entity_id}_lead_{uuid.uuid4().hex[:8]}"
         job_ids["lead_id"] = fallback_job_id
         initial_results["lead"] = None
@@ -528,9 +598,9 @@ async def create_article_draft(entity_id: str) -> str:
         raise ValueError(f"Entity {entity_id} not found in entities store")
     
     # Get draft data
-    draft_data = drafts_store.get(entity_id)
+    draft_data = research_drafts_store.get(entity_id)
     if not draft_data:
-        raise ValueError(f"Draft {entity_id} not found in drafts store")
+        raise ValueError(f"Draft {entity_id} not found in research drafts store")
     
     # Extract content from research results
     results = draft_data.get('results', {})
@@ -598,10 +668,10 @@ async def check_background_task_status(job_id: str) -> Optional[Dict[str, Any]]:
 
 async def update_draft_progress(draft_id: str) -> DraftProgressResponse:
     """Check all background tasks for a draft and update completed results"""
-    if not draft_exists(draft_id):
-        raise HTTPException(status_code=404, detail="Draft not found")
+    if not research_draft_exists(draft_id):
+        raise HTTPException(status_code=404, detail="Research draft not found")
     
-    draft_data = drafts_store[draft_id]
+    draft_data = research_drafts_store[draft_id]
     statuses = draft_data.get('statuses', {})
     results = draft_data.get('results', {})
     
@@ -628,7 +698,14 @@ async def update_draft_progress(draft_id: str) -> DraftProgressResponse:
     if updated_sections:
         draft_data['results'] = results
         draft_data['updated_at'] = datetime.utcnow().isoformat()
-        save_drafts()
+        save_research_drafts()
+    
+    # Update entity status to completed if all research is done
+    if is_complete:
+        update_entity_status(draft_id, {
+            'state': 'draft_research',
+            'phase': 'completed'
+        })
     
     return DraftProgressResponse(
         id=draft_id,
@@ -690,210 +767,408 @@ async def update_article_progress(article_id: str) -> ArticleProgressResponse:
         is_complete=is_complete
     )
 
-@router.post("/", response_model=DraftStatus)
-async def create_draft(request: CreateDraftRequest):
-    """Create a new draft if entity meets notability requirements"""
+# ============================================================================
+# RESEARCH PHASE ROUTES
+# ============================================================================
+
+@research_router.post("/", response_model=DraftStatus)
+async def create_research_draft(request: CreateDraftRequest):
+    """Create a queued research draft (doesn't start research yet)"""
+    if DEBUG_DRAFTS:
+        print(f"[DEBUG] create_research_draft called with request: {request}")
+        print(f"[DEBUG] Entity ID: {request.id}")
+        print(f"[DEBUG] Entity type: {request.type}")
+    
     load_entities()
-    load_drafts()
+    load_research_drafts()
+    
+    if DEBUG_DRAFTS:
+        print(f"[DEBUG] About to validate notability for entity_id: {request.id}")
     
     if not validate_notability(request.id):
+        if DEBUG_DRAFTS:
+            print(f"[DEBUG] Notability validation failed for entity_id: {request.id}")
         raise HTTPException(
             status_code=400, 
             detail="Entity does not exist or does not meet notability requirements"
         )
     
-    if draft_exists(request.id):
+    if research_draft_exists(request.id):
         raise HTTPException(
             status_code=409,
-            detail="Draft already exists for this entity"
+            detail="Research draft already exists for this entity"
         )
     
-    if request.type != "venture_capitalist":
+    if request.type not in ["venture_capitalist", "venture_firm"]:
         raise HTTPException(
-            status_code=501,
-            detail=f"Entity type '{request.type}' not yet implemented. Only 'venture_capitalist' is currently supported."
+            status_code=400,
+            detail=f"Entity type '{request.type}' not supported. Only 'venture_capitalist' and 'venture_firm' are supported."
         )
     
     timestamp = datetime.utcnow().isoformat()
     
-    if request.type == "venture_capitalist":
-        try:
-            job_ids, initial_results = await create_vc_research_jobs(request.id, request.type)
-            statuses = job_ids
-            results = initial_results
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=f"Error creating research jobs: {str(e)}")
-    else:
-        statuses = {}
-        results = {}
-    
+    # Create queued draft with no research jobs started yet
     draft_data = {
         "id": request.id,
         "type": request.type,
-        "statuses": statuses,
-        "results": results,
+        "statuses": {},  # No job IDs yet
+        "results": {},   # No results yet
         "created_at": timestamp,
         "updated_at": timestamp
     }
     
-    drafts_store[request.id] = draft_data
-    save_drafts()
-    update_entity_status(request.id, 'drafting_article')
+    research_drafts_store[request.id] = draft_data
+    save_research_drafts()
+    update_entity_status(request.id, {
+        'state': 'draft_research',
+        'phase': 'queued'
+    })
     
     return DraftStatus(**draft_data)
 
-@router.get("/{draft_id}", response_model=DraftStatus)
-async def get_draft(draft_id: str):
-    """Get a specific draft by ID"""
-    # Reload data to ensure we have the latest state
-    load_drafts()
-    
-    if not draft_exists(draft_id):
-        raise HTTPException(status_code=404, detail="Draft not found")
-    
-    return DraftStatus(**drafts_store[draft_id])
-
-@router.get("/", response_model=list[DraftStatus])
-async def list_drafts():
-    """List all drafts"""
-    # Reload data to ensure we have the latest state
-    load_drafts()
-    
-    return [DraftStatus(**draft) for draft in drafts_store.values()]
-
-@router.get("/{draft_id}/check-progress", response_model=DraftProgressResponse)
-async def check_draft_progress(draft_id: str):
-    """Check progress of background tasks for a draft and update any completed results"""
+@research_router.post("/{draft_id}/start", response_model=DraftStatus)
+async def start_research_jobs(draft_id: str):
+    """Start the actual research jobs for a queued draft"""
     load_entities()
-    load_drafts()
+    load_research_drafts()
+    
+    if not research_draft_exists(draft_id):
+        raise HTTPException(status_code=404, detail="Research draft not found")
+    
+    draft_data = research_drafts_store[draft_id]
+    
+    # Check if research has already been started
+    if draft_data.get('statuses'):
+        raise HTTPException(
+            status_code=400,
+            detail="Research has already been started for this draft"
+        )
+    
+    entity_type = draft_data.get('type')
+    
+    if entity_type == "venture_capitalist":
+        try:
+            job_ids, initial_results = await create_vc_research_jobs(draft_id, entity_type)
+            statuses = job_ids
+            results = initial_results
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Error creating research jobs: {str(e)}")
+    elif entity_type == "venture_firm":
+        # TODO: Implement venture_firm research jobs
+        raise HTTPException(
+            status_code=501,
+            detail="Venture firm research not yet implemented"
+        )
+    else:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported entity type: {entity_type}"
+        )
+    
+    # Update draft with research job IDs and initial results
+    draft_data['statuses'] = statuses
+    draft_data['results'] = results
+    draft_data['updated_at'] = datetime.utcnow().isoformat()
+    
+    research_drafts_store[draft_id] = draft_data
+    save_research_drafts()
+    
+    # Update entity status to processing phase
+    update_entity_status(draft_id, {
+        'state': 'draft_research',
+        'phase': 'processing'
+    })
+    
+    return DraftStatus(**draft_data)
+
+@research_router.get("/{draft_id}", response_model=DraftStatus)
+async def get_research_status(draft_id: str):
+    """Get research status for a specific draft"""
+    load_research_drafts()
+    
+    if not research_draft_exists(draft_id):
+        raise HTTPException(status_code=404, detail="Research draft not found")
+    
+    return DraftStatus(**research_drafts_store[draft_id])
+
+@research_router.get("/", response_model=list[DraftStatus])
+async def list_research_drafts():
+    """List all research drafts"""
+    load_research_drafts()
+    
+    return [DraftStatus(**draft) for draft in research_drafts_store.values()]
+
+@research_router.get("/{draft_id}/progress", response_model=DraftProgressResponse)
+async def check_research_progress(draft_id: str):
+    """Check progress of research tasks for a draft and update any completed results"""
+    load_entities()
+    load_research_drafts()
     return await update_draft_progress(draft_id)
 
-@router.post("/{draft_id}/draft-document", response_model=ArticleStatus)
-async def draft_document(draft_id: str):
-    """Start article drafting process with background jobs"""
+
+
+# ============================================================================
+# WRITING PHASE ROUTES  
+# ============================================================================
+
+@writing_router.post("/", response_model=ArticleStatus)
+async def create_writing_draft(request: CreateDraftRequest):
+    """Create a queued writing draft (doesn't start writing yet)"""
     load_entities()
-    load_drafts()
-    load_articles()
+    load_research_drafts()
+    load_writing_drafts()
     
-    # Check if draft exists
-    if not draft_exists(draft_id):
-        raise HTTPException(status_code=404, detail="Draft not found")
+    if not research_draft_exists(request.id):
+        raise HTTPException(status_code=404, detail="Research draft not found")
+    
+    if writing_draft_exists(request.id):
+        raise HTTPException(
+            status_code=409,
+            detail="Writing draft already exists for this entity"
+        )
+    
+    research_draft = research_drafts_store[request.id]
+    results = research_draft.get('results', {})
+    
+    # Check if research has been started
+    if not research_draft.get('statuses'):
+        raise HTTPException(
+            status_code=400,
+            detail="Research has not been started yet. Call POST /drafts/research/{draft_id}/start first."
+        )
+    
+    # Check if all research sections are complete
+    completed_sections = sum(1 for result in results.values() if result is not None)
+    total_sections = len(results)
+    
+    if completed_sections < total_sections:
+        raise HTTPException(
+            status_code=400, 
+            detail=f"Research not complete. {completed_sections}/{total_sections} sections completed."
+        )
+    
+    timestamp = datetime.utcnow().isoformat()
+    
+    # Create queued writing draft with no writing jobs started yet
+    writing_draft_data = {
+        "id": request.id,
+        "type": request.type,
+        "statuses": None,  # No job IDs yet
+        "results": None,   # No results yet
+        "created_at": timestamp,
+        "updated_at": timestamp
+    }
+    
+    writing_drafts_store[request.id] = writing_draft_data
+    save_writing_drafts()
+    
+    # Update entity status to queued writing phase
+    update_entity_status(request.id, {
+        'state': 'draft_writing',
+        'phase': 'queued'
+    })
+    
+    return ArticleStatus(**writing_draft_data)
+
+@writing_router.post("/{draft_id}/start", response_model=ArticleStatus)
+async def start_writing_jobs(draft_id: str):
+    """Start the actual writing jobs for a queued draft"""
+    load_entities()
+    load_research_drafts()
+    load_writing_drafts()
+    
+    if not writing_draft_exists(draft_id):
+        raise HTTPException(status_code=404, detail="Writing draft not found")
+    
+    writing_draft = writing_drafts_store[draft_id]
+    
+    # Check if writing has already been started
+    if writing_draft.get('statuses'):
+        raise HTTPException(
+            status_code=400,
+            detail="Writing has already been started for this draft"
+        )
+    
+    # Get research data
+    research_draft = research_drafts_store.get(draft_id)
+    if not research_draft:
+        raise HTTPException(status_code=404, detail="Research draft not found")
+    
+    results = research_draft.get('results', {})
     
     # Get entity data
     entity_data = entities_store.get(draft_id)
     if not entity_data:
         raise HTTPException(status_code=404, detail="Entity not found")
     
-    # Get draft data with completed research results
-    draft_data = drafts_store.get(draft_id)
-    if not draft_data:
-        raise HTTPException(status_code=404, detail="Draft data not found")
+    entity_name = entity_data.get('name', draft_id)
+    entity_context = entity_data.get('context', '')
+    entity_type = research_draft.get('type', 'venture_capitalist')
     
-    results = draft_data.get('results', {})
-    if not results:
-        raise HTTPException(status_code=400, detail="No research results found")
+    # Helper function to get all sources from all research tasks
+    def get_all_research_pages():
+        all_pages = []
+        
+        # Research sections to combine
+        research_sections = ['early_life', 'pre_vc_career', 'vc_career', 'notable_investments', 'personal_life']
+        
+        for section_key in research_sections:
+            section_result = results.get(section_key, {})
+            if 'pages' in section_result:
+                all_pages.extend(section_result['pages'])
+        
+        return all_pages
+    
+    # Get all pages from all research tasks
+    all_research_pages = get_all_research_pages()
+    all_pages_str = json.dumps(all_research_pages)
     
     timestamp = datetime.utcnow().isoformat()
     
     try:
-        entity_name = entity_data.get('name', draft_id)
-        entity_context = entity_data.get('context', '')
-        
-        # Helper function to get all sources from all research tasks
-        def get_all_research_pages():
-            all_pages = []
-            
-            # Research sections to combine
-            research_sections = ['early_life', 'pre_vc_career', 'vc_career', 'notable_investments', 'personal_life']
-            
-            for section_key in research_sections:
-                section_result = results.get(section_key, {})
-                if 'pages' in section_result:
-                    all_pages.extend(section_result['pages'])
-            
-            return all_pages
-        
-        # Get all pages from all research tasks
-        all_research_pages = get_all_research_pages()
-        all_pages_str = json.dumps(all_research_pages)
-        
         # Create background jobs for all article sections
         job_ids, initial_sections = await create_article_drafting_jobs(draft_id, all_pages_str, entity_name, entity_context)
         
-        # Create or update article entry
-        existing_article = articles_store.get(draft_id)
-        article_data = {
-            "id": draft_id,
-            "status": "drafting",
-            "sections": initial_sections,
-            "job_ids": job_ids,
-            "created_at": existing_article.get("created_at", timestamp) if existing_article else timestamp,
-            "updated_at": timestamp
-        }
+        # Update writing draft with job IDs and initial sections
+        writing_draft['statuses'] = job_ids
+        writing_draft['results'] = initial_sections
+        writing_draft['updated_at'] = timestamp
         
-        # Save to articles store (overwrites if exists)
-        articles_store[draft_id] = article_data
-        save_articles()
+        writing_drafts_store[draft_id] = writing_draft
+        save_writing_drafts()
         
-        # Update entity status
-        update_entity_status(draft_id, 'drafting_article')
+        # Update entity status to processing writing phase
+        update_entity_status(draft_id, {
+            'state': 'draft_writing',
+            'phase': 'processing'
+        })
         
-        return ArticleStatus(**article_data)
+        return ArticleStatus(**writing_draft)
         
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error creating article drafting jobs: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error creating writing jobs: {str(e)}")
 
-@router.get("/articles/{article_id}", response_model=ArticleStatus)
-async def get_article(article_id: str):
-    """Get a specific article by ID"""
-    load_articles()
+@writing_router.get("/{draft_id}", response_model=ArticleStatus)
+async def get_writing_status(draft_id: str):
+    """Get writing status for a specific draft"""
+    load_writing_drafts()
     
-    if article_id not in articles_store:
-        raise HTTPException(status_code=404, detail="Article not found")
+    if not writing_draft_exists(draft_id):
+        raise HTTPException(status_code=404, detail="Writing draft not found")
     
-    return ArticleStatus(**articles_store[article_id])
+    return ArticleStatus(**writing_drafts_store[draft_id])
 
-@router.get("/articles/", response_model=list[ArticleStatus])
-async def list_articles():
-    """List all articles"""
-    load_articles()
+@writing_router.get("/", response_model=list[ArticleStatus])
+async def list_writing_drafts():
+    """List all writing drafts"""
+    load_writing_drafts()
     
-    return [ArticleStatus(**article) for article in articles_store.values()]
+    return [ArticleStatus(**draft) for draft in writing_drafts_store.values()]
 
-@router.put("/articles/{article_id}", response_model=ArticleStatus)
-async def update_article(article_id: str, request: UpdateArticleRequest):
-    """Update a specific article by ID"""
-    load_articles()
+@writing_router.get("/{draft_id}/progress", response_model=ArticleProgressResponse)
+async def check_writing_progress(draft_id: str):
+    """Check progress of writing tasks for a draft and update any completed results"""
+    load_writing_drafts()
     
-    if article_id not in articles_store:
-        raise HTTPException(status_code=404, detail="Article not found")
+    if not writing_draft_exists(draft_id):
+        raise HTTPException(status_code=404, detail="Writing draft not found")
     
-    # Get existing article data
-    existing_article = articles_store[article_id]
+    draft_data = writing_drafts_store[draft_id]
+    job_ids = draft_data.get('statuses', {})
+    sections = draft_data.get('results', {})
+    
+    updated_sections = []
+    total_sections = len(job_ids)
+    
+    # Check each background task
+    for job_key, job_id in job_ids.items():
+        section_name = job_key.replace('_id', '')
+        
+        if job_id and sections.get(section_name) is None:
+            task_result = await check_background_task_status(job_id)
+            if task_result is not None:
+                sections[section_name] = task_result
+                updated_sections.append(section_name)
+    
+    # Count completed sections
+    completed_sections = sum(1 for section in sections.values() if section is not None)
+    pending_sections = total_sections - completed_sections
+    progress_percentage = (completed_sections / total_sections) * 100 if total_sections > 0 else 0
+    is_complete = completed_sections == total_sections
+    
+    # Update the writing draft if any sections were updated
+    if updated_sections:
+        draft_data['results'] = sections
+        draft_data['updated_at'] = datetime.utcnow().isoformat()
+        
+        # Update entity status to completed if all sections are complete
+        if is_complete:
+            update_entity_status(draft_id, {
+                'state': 'draft_writing',
+                'phase': 'completed'
+            })
+        
+        save_writing_drafts()
+    
+    return ArticleProgressResponse(
+        id=draft_id,
+        total_sections=total_sections,
+        completed_sections=completed_sections,
+        pending_sections=pending_sections,
+        progress_percentage=progress_percentage,
+        updated_sections=updated_sections,
+        is_complete=is_complete
+    )
+
+@writing_router.put("/{draft_id}", response_model=ArticleStatus)
+async def update_writing_draft(draft_id: str, request: UpdateArticleRequest):
+    """Update a specific writing draft"""
+    load_writing_drafts()
+    
+    if not writing_draft_exists(draft_id):
+        raise HTTPException(status_code=404, detail="Writing draft not found")
+    
+    # Get existing draft data
+    existing_draft = writing_drafts_store[draft_id]
     
     # Update only the fields that are provided
-    if request.status is not None:
-        existing_article["status"] = request.status
-    
     if request.sections is not None:
-        existing_article["sections"] = request.sections
+        existing_draft["results"] = request.sections
     
     # Update the timestamp
-    existing_article["updated_at"] = datetime.utcnow().isoformat()
+    existing_draft["updated_at"] = datetime.utcnow().isoformat()
     
-    # Save the updated article
-    articles_store[article_id] = existing_article
-    save_articles()
+    # Save the updated draft
+    writing_drafts_store[draft_id] = existing_draft
+    save_writing_drafts()
     
-    return ArticleStatus(**existing_article)
+    return ArticleStatus(**existing_draft)
 
-@router.get("/articles/{article_id}/check-progress", response_model=ArticleProgressResponse)
-async def check_article_progress(article_id: str):
-    """Check progress of background tasks for an article and update any completed results"""
-    load_articles()
-    return await update_article_progress(article_id)
+@writing_router.get("/articles/{article_id}", response_model=ArticleStatus)
+async def get_article_content(article_id: str):
+    """Get article content from writing drafts store"""
+    load_writing_drafts()
+    
+    if not writing_draft_exists(article_id):
+        raise HTTPException(status_code=404, detail="Article not found")
+    
+    return ArticleStatus(**writing_drafts_store[article_id])
+
+# Add a route that matches the old path structure
+@articles_router.get("/articles/{article_id}", response_model=ArticleStatus)
+async def get_article_content_old_path(article_id: str):
+    """Get article content from writing drafts store (old path structure)"""
+    load_writing_drafts()
+    
+    if not writing_draft_exists(article_id):
+        raise HTTPException(status_code=404, detail="Article not found")
+    
+    return ArticleStatus(**writing_drafts_store[article_id])
+
+
 
 # Load data on module import
 load_entities()
-load_drafts()
+load_research_drafts()
+load_writing_drafts()
 load_articles()

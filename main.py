@@ -35,7 +35,9 @@ app.add_middleware(
 # Include routers
 app.include_router(entities.router)
 app.include_router(notability.router)
-app.include_router(drafts.router)
+app.include_router(drafts.research_router)
+app.include_router(drafts.writing_router)
+app.include_router(drafts.articles_router)
 
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):

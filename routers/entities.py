@@ -363,16 +363,29 @@ def delete_entity(entity_id: str):
     except Exception as e:
         print(f"[WARNING] Error removing notability data for {entity_id}: {e}")
     
-    # Remove from data/drafts.txt if it exists
+    # Remove from data/drafts_research.txt if it exists
     try:
-        drafts_file = "data/drafts.txt"
-        if os.path.exists(drafts_file):
-            remove_entity_from_file(drafts_file, entity_id, "# Article drafts KV store - ID -> {type, statuses, results}")
-            
+        from routers.drafts import research_drafts_store, save_research_drafts
+        
+        if entity_id in research_drafts_store:
+            research_drafts_store.pop(entity_id)
+            save_research_drafts()
             if DEBUG_ENTITIES:
-                print(f"[DEBUG] Removed draft data for entity {entity_id}")
+                print(f"[DEBUG] Removed research draft data for entity {entity_id}")
     except Exception as e:
-        print(f"[WARNING] Error removing draft data for {entity_id}: {e}")
+        print(f"[WARNING] Error removing research draft data for {entity_id}: {e}")
+    
+    # Remove from data/drafts_writing.txt if it exists
+    try:
+        from routers.drafts import writing_drafts_store, save_writing_drafts
+        
+        if entity_id in writing_drafts_store:
+            writing_drafts_store.pop(entity_id)
+            save_writing_drafts()
+            if DEBUG_ENTITIES:
+                print(f"[DEBUG] Removed writing draft data for entity {entity_id}")
+    except Exception as e:
+        print(f"[WARNING] Error removing writing draft data for {entity_id}: {e}")
     
     # Remove from data/articles.txt if it exists
     try:
